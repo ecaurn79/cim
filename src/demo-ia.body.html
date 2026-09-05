@@ -1,0 +1,312 @@
+<section class="page-hero">
+  <div class="wrap page-hero-img">
+    <div>
+    <span class="kicker">⚡ Démonstration · 100 % gratuite · sans inscription</span>
+    <h1>Parlez à une IA qui tourne sur <span style="color:var(--teal)">votre</span> ordinateur.</h1>
+    <p class="lead">Grâce à la technologie open source <b>WebLLM</b> (projet MLC-AI) et à WebGPU, un vrai modèle de langage s'installe directement dans votre navigateur. Aucune inscription, aucun serveur : vos phrases ne quittent jamais votre machine. C'est la version miniature de l'IA souveraine que nous déployons pour les entreprises.</p>
+    </div>
+    <div class="hero-img-card">
+      <img src="img/voix-hero.jpg" alt="Une onde sonore lumineuse sort d'un micro et se transforme en notes de musique">
+      <div class="float-note">🔒 Vos phrases ne quittent jamais votre machine</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="wrap chat-wrap">
+    <div class="sim-panel">
+      <div class="sim-head">
+        <span class="sim-title">💬 Votre IA privée</span>
+        <span class="sim-badge">Fonctionne sur votre ordinateur</span>
+        <select id="modelSel" style="width:auto;margin-left:auto" aria-label="Choisir le modèle"></select>
+      </div>
+
+      <!-- ÉTAPES DE CHARGEMENT : toujours visibles -->
+      <div class="load-zone" id="loadZone">
+        <div style="padding:18px 20px 6px">
+          <div class="load-status"><span>Installation de votre IA, étape par étape</span><span class="pct" id="loadPct">—</span></div>
+        </div>
+        <div style="padding:0 20px 8px" class="steps-vertical">
+          <div class="lstep" id="ls1"><span class="ls-ic" id="ls1i">…</span><div><b>Vérification de votre navigateur</b><small id="ls1t">Test de WebGPU (l'accélérateur 3D utilisé pour faire tourner l'IA)</small></div></div>
+          <div class="lstep" id="ls2"><span class="ls-ic" id="ls2i">…</span><div><b>Préparation de la bibliothèque et de la liste des modèles</b><small id="ls2t">Lancée automatiquement à l'ouverture de la page</small></div></div>
+          <div class="lstep" id="ls3"><span class="ls-ic" id="ls3i">…</span><div><b>Téléchargement du modèle choisi</b><small id="ls3t">Une seule fois — ensuite il reste dans votre navigateur</small><div class="pbar" style="margin-top:8px"><div id="loadBar"></div></div></div></div>
+          <div class="lstep" id="ls4"><span class="ls-ic" id="ls4i">…</span><div><b>Préparation sur votre carte graphique</b><small id="ls4t">Compilation et mise en mémoire — quelques secondes</small></div></div>
+        </div>
+        <div style="padding:10px 20px 18px">
+          <div class="load-hint" id="loadHint">Choisissez un modèle dans la liste ci-dessus (le plus léger se télécharge en quelques minutes), puis cliquez sur le bouton.</div>
+          <div style="padding-top:14px"><button class="btn btn-primary btn-lg" id="loadBtn">⬇️ Installer le modèle choisi</button></div>
+        </div>
+      </div>
+
+      <!-- CONVERSATION -->
+      <div class="chat-zone" id="chatZone" style="display:none">
+        <div class="chat-scroll" id="chatScroll">
+          <div class="bubble ai">Bonjour 👋 Je suis une IA open source qui fonctionne entièrement sur votre ordinateur. Choisissez une question ou écrivez la vôtre !</div>
+        </div>
+        <div class="suggest" id="suggest">
+          <button class="chip" data-q="Explique-moi simplement ce qu'est un RAG, en 3 phrases.">💡 C'est quoi un RAG ?</button>
+          <button class="chip" data-q="Donne-moi 3 idées de services qu'une petite entreprise peut créer avec l'IA.">🚀 3 idées pour ma PME</button>
+          <button class="chip" data-q="Écris un court poème en français sur la Méditerranée et l'informatique.">🌊 Poème Méditerranée</button>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Écrivez votre message…" disabled>
+          <button class="btn btn-primary" id="sendBtn" disabled>Envoyer</button>
+        </div>
+        <p style="font-size:.74rem;color:var(--muted);margin-top:10px" id="genStatus">L'IA réfléchit sur votre machine — la première réponse peut prendre quelques secondes.</p>
+      </div>
+
+      <div class="sim-note">🛡️ Vos messages ne quittent jamais votre ordinateur · Démonstration proposée gratuitement par le Hub IA du C.I.M. · <a href="demo-image.html">Envie d'images plutôt que de texte ? → Générateur d'images</a></div>
+    </div>
+
+    <div class="notice" style="margin-top:18px"><span>ℹ️</span><div><b>De quoi avez-vous besoin ?</b> Un navigateur récent type Chrome ou Edge sur ordinateur (WebGPU), une connexion Internet pour le premier téléchargement (de 0,5 à 4 Go selon le modèle), et un peu de patience. En cas de souci, le diagnostic s'affiche étape par étape ci-dessus.</div></div>
+  </div>
+</section>
+
+<!-- DEMO JETONS -->
+<section style="padding-top:36px">
+  <div class="wrap" style="max-width:840px">
+    <div class="sim-panel reveal">
+      <div class="sim-head"><span class="sim-title">🔢 Le compteur de jetons</span><span class="sim-badge">Estimation locale — comment l'IA « découpe » votre texte</span></div>
+      <div class="sim-body" id="tokDemo">
+        <p style="font-size:.88rem;color:var(--muted);margin-top:0">Un LLM ne lit pas des lettres : il lit des <b>jetons</b> — des morceaux de mots. Chaque jeton consomme du contexte et coûte des fractions de centime. Testez : votre texte est découpé ci-dessous en petits blocs colorés, comme le verrait le modèle.</p>
+        <textarea id="tokIn" rows="3" style="width:100%;padding:14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;font-size:.9rem" placeholder="Écrivez ou collez du texte ici…">Les chats dorment seize heures par jour.</textarea>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin:12px 0;font-weight:800;font-size:.85rem">
+          <span>Caractères : <b id="tokChars" style="color:var(--teal-dark)">0</b></span>
+          <span>Mots : <b id="tokWords" style="color:var(--teal-dark)">0</b></span>
+          <span>Jetons (estimation) : <b id="tokEst" style="color:var(--amber)">0</b></span>
+        </div>
+        <div id="tokOut" style="display:flex;flex-wrap:wrap;gap:4px;min-height:40px;padding:12px;background:var(--soft);border-radius:12px"></div>
+        <p style="font-size:.74rem;color:var(--muted);margin:10px 0 0">ℹ️ Estimation approchée (≈ 4 caractères par jeton en français) : le vrai découpage dépend de chaque modèle. L'idée à retenir : <b>écrire dense, c'est économiser du contexte et de l'argent.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="kicker reveal">Un schéma vaut mille mots</span>
+    <svg class="schema-svg reveal" id="schema-local" viewBox="0 0 900 190" role="img" aria-label="Schéma : IA dans le cloud contre IA dans le navigateur">
+      <g font-size="13" font-weight="700" fill="#0f1f33" text-anchor="middle">
+        <text x="225" y="28" fill="#b45309">☁️ L'IA « dans le cloud »</text>
+        <rect x="40" y="48" width="120" height="46" rx="12" fill="#ffffff" stroke="#c6d8e4"/><text x="100" y="76">Votre phrase</text>
+        <line x1="160" y1="71" x2="200" y2="71" stroke="#b45309" stroke-width="2" marker-end="url(#arwA)"/>
+        <rect x="205" y="48" width="120" height="46" rx="12" fill="#ffffff" stroke="#c6d8e4"/><text x="265" y="76">Internet</text>
+        <line x1="325" y1="71" x2="365" y2="71" stroke="#b45309" stroke-width="2" marker-end="url(#arwA)"/>
+        <rect x="370" y="48" width="120" height="46" rx="12" fill="#fff3e6" stroke="#d97706" stroke-width="1.8"/><text x="430" y="76">Serveur distant</text>
+        <path d="M430 104 q0 26 -110 26" fill="none" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arwA)"/>
+        <text x="225" y="152" font-size="11" fill="#8a6a3a" font-weight="600">Vos mots voyagent, sont traités ailleurs, puis reviennent</text>
+        <text x="675" y="28" fill="#0a6d89">💻 L'IA « dans votre navigateur » (cette démo)</text>
+        <rect x="520" y="48" width="150" height="46" rx="12" fill="#ffffff" stroke="#c6d8e4"/><text x="595" y="76">Votre phrase</text>
+        <line x1="670" y1="71" x2="710" y2="71" stroke="#0c87a8" stroke-width="2" marker-end="url(#arw2)"/>
+        <rect x="715" y="40" width="160" height="62" rx="14" fill="#e3f3f9" stroke="#0c87a8" stroke-width="1.8"/><text x="795" y="66">Votre machine</text><text x="795" y="86" font-size="10.5" font-weight="600" fill="#0a6d89">modèle + réponse, en local</text>
+        <text x="675" y="152" font-size="11" fill="#0a6d89" font-weight="600">Rien ne sort : le voyage fait 10 centimètres, dans votre ordinateur</text>
+      </g>
+      <defs><marker id="arw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0c87a8"/></marker><marker id="arwA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d97706"/></marker></defs>
+    </svg>
+    <span class="kicker reveal">Pourquoi cette démo est importante</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Trois leçons à retenir.</h2>
+    <div class="grid-3" style="margin-top:32px">
+      <div class="card pad reveal" style="padding:0;overflow:hidden"><img src="img/chatia.jpg" alt="Une personne discute avec son assistant IA au coucher du soleil" style="width:100%;height:150px;object-fit:cover"><div style="padding:18px 22px 22px"><h3 style="margin:0 0 6px">🛡️ La confidentialité est possible</h3><p style="font-size:.88rem;color:var(--muted)">Tout reste sur votre machine. Pour une entreprise, c'est le même principe en version serveur professionnel — notre métier.</p></div></div>
+      <div class="card pad reveal"><img src="img/gen-cout-maitrise.jpg" alt="Pile de factures nouée et manomètre vintage dont l aiguille repose dans le vert" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Le coût peut être maîtrisé</h3><p style="font-size:.88rem;color:var(--muted)">Ce modèle est gratuit et illimité. Sur vos serveurs, la même logique réduit fortement la facture des services d'IA à grande échelle.</p></div>
+      <div class="card pad reveal"><img src="img/gen-metier-grand.jpg" alt="Grand plateau de studio créatif nocturne où humains et robots travaillent parmi les baies de serveurs" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">C'est notre métier, en plus grand</h3><p style="font-size:.88rem;color:var(--muted)">Nous déployons ces mêmes familles de modèles (Mistral, Llama, Gemma) sur des serveurs privés, connectés à vos documents. <a href="ia-souveraine.html">Voir l'offre →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const loadBtn=$('loadBtn'),loadPct=$('loadPct'),loadBar=$('loadBar'),loadHint=$('loadHint'),
+        chatZone=$('chatZone'),chatScroll=$('chatScroll'),input=$('chatInput'),send=$('sendBtn'),
+        modelSel=$('modelSel'),genStatus=$('genStatus'),suggest=$('suggest');
+  let engine=null,ready=false,busy=false,webllm=null,modelId=null,watchdog=null,lastProgressTs=0,libState='wait';
+  const stepIc={wait:'…',run:'⏳',ok:'✓',ko:'✗'};
+  function step(n,state,txt){const ic=$('ls'+n+'i');ic.textContent=stepIc[state];ic.className='ls-ic '+state;
+    $('ls'+n).className='lstep '+state;if(txt){const el=$('ls'+n+'t');if(el)el.textContent=txt}}
+  function stepHTML(n,html){$('ls'+n+'t').innerHTML=html}
+  function setPct(p){const v=Math.min(100,Math.round((p||0)*100));loadPct.textContent=v+' %';loadBar.style.width=v+'%'}
+  function hint(t){loadHint.textContent=t}
+  function hintHTML(t){loadHint.innerHTML=t}
+
+  /* ── Liste de secours affichée immédiatement (vérifiée ensuite contre la vraie config WebLLM) ── */
+  const FALLBACK=[
+    ['Llama-3.2-1B-Instruct-q4f16_1-MLC','Llama 3.2 · 1 Mrd params · ~0,9 Go — équilibré'],
+    ['Qwen2.5-0.5B-Instruct-q4f16_1-MLC','Qwen 2.5 · 0,5 Mrd params · ~0,5 Go — ultra rapide'],
+    ['Qwen2.5-1.5B-Instruct-q4f16_1-MLC','Qwen 2.5 · 1,5 Mrd params · ~1,5 Go'],
+    ['Llama-3.2-3B-Instruct-q4f16_1-MLC','Llama 3.2 · 3 Mrd params · ~2,3 Go'],
+    ['gemma-2-2b-it-q4f16_1-MLC','Gemma 2 · 2 Mrd params · ~1,7 Go'],
+    ['Phi-3.5-mini-instruct-q4f16_1-MLC','Phi 3.5 mini · 3,8 Mrd params · ~2,5 Go']
+  ];
+  function fillFallback(){
+    modelSel.innerHTML='';
+    FALLBACK.forEach(([id,lab])=>modelSel.add(new Option(lab,id)));
+  }
+  function fillReal(){
+    let ids=[];
+    try{ids=webllm.prebuiltAppConfig.model_list.map(m=>m.model_id)}catch(e){}
+    const PREFER=['Llama-3.2-1B-Instruct-q4f16_1-MLC','Qwen2.5-0.5B-Instruct-q4f16_1-MLC','SmolLM2-360M-Instruct-q4f16_1-MLC','Qwen2.5-1.5B-Instruct-q4f16_1-MLC','gemma-2-2b-it-q4f16_1-MLC','Phi-3.5-mini-instruct-q4f16_1-MLC','Llama-3.2-3B-Instruct-q4f16_1-MLC'];
+    let chosen=PREFER.filter(x=>ids.includes(x));
+    if(!chosen.length)chosen=ids.filter(x=>x.includes('q4f16_1')).slice(0,12);
+    if(!chosen.length)return false;
+    const prev=modelSel.value;
+    modelSel.innerHTML='';
+    chosen.forEach(x=>{
+      let extra='';
+      try{const rec=webllm.prebuiltAppConfig.model_list.find(m=>m.model_id===x);
+        if(rec&&rec.vram_required_MB)extra=' · '+Math.round(rec.vram_required_MB/102.4)/10+' Go';
+      }catch(e){}
+      modelSel.add(new Option(x.replace('-q4f16_1-MLC','').replace(/-/g,' ')+extra,x));
+    });
+    if(chosen.includes(prev))modelSel.value=prev;
+    return true;
+  }
+
+  /* ── Étape 1 : WebGPU, dès l'arrivée ── */
+  if(navigator.gpu){step(1,'ok','WebGPU disponible ✓ — votre navigateur peut faire tourner l\'IA')}
+  else{step(1,'ko','WebGPU absent : utilisez Chrome ou Edge récents sur ordinateur');
+    hint('Votre navigateur ne supporte pas WebGPU. Ouvrez cette page avec Chrome ou Edge récents.');loadBtn.disabled=true;loadBtn.textContent='⚠️ Navigateur non compatible'}
+
+  /* ── Étape 2 : bibliothèque + liste des modèles, chargées automatiquement à l'ouverture ── */
+  const CDN=['https://esm.run/@mlc-ai/web-llm@0.2.79','https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.79/+esm','https://esm.sh/@mlc-ai/web-llm@0.2.79'];
+  let modelHost='huggingface.co';
+  async function loadLib(){
+    let lastErr=null;
+    for(const url of CDN){
+      try{step(2,'run','Essai via '+new URL(url).host+' …');const m=await import(url);if(m&&m.CreateMLCEngine)return m}catch(e){lastErr=e}
+    }
+    throw lastErr||new Error('Aucun CDN joignable');
+  }
+  fillFallback();
+  (async()=>{
+    try{
+      webllm=await loadLib();
+      if(fillReal()){libState='ok';step(2,'ok','Bibliothèque chargée ✓ — liste officielle des modèles prête ci-dessus')}
+      else{libState='ok';step(2,'ok','Bibliothèque chargée ✓ (liste indicative affichée)')}
+    }catch(e){
+      libState='ko';
+      step(2,'ko','Pas encore de connexion — liste indicative affichée. La bibliothèque se rechargera au clic.');
+      console.warn('WebLLM CDN indisponible au préchargement',e);
+    }
+  })();
+
+  /* ── Test de connexion au serveur de modèles (avant de lancer le gros téléchargement) ── */
+  async function netOk(){
+    try{const c=new AbortController();const t=setTimeout(()=>c.abort(),7000);
+      await fetch('https://huggingface.co/favicon.ico',{mode:'no-cors',cache:'no-store',signal:c.signal});
+      clearTimeout(t);return true}catch(e){return false}
+  }
+  function startWatchdog(){
+    clearInterval(watchdog);lastProgressTs=Date.now();
+    watchdog=setInterval(()=>{
+      if(ready)return;
+      const idle=Date.now()-lastProgressTs;
+      if(idle>12000&&$('ls3').className.includes('run')){
+        stepHTML(3,'⚠️ Aucune progression depuis '+(idle/1000|0)+' s — le téléchargement est bloqué ('+modelHost+').');
+        hintHTML('<b style="color:#b45309">Le téléchargement semble bloqué.</b> Causes fréquentes : page consultée dans un aperçu sans accès à Internet, réseau filtré, ou serveur saturé. Sur un ordinateur connecté, <b><a href="" onclick="location.reload();return false">rechargez la page</a></b> et réessayez ; sinon choisissez un modèle plus léger en haut de la liste.');
+      }
+    },4000);
+  }
+  function stopWatchdog(){clearInterval(watchdog)}
+
+  loadBtn.addEventListener('click',async()=>{
+    if(ready||busy)return;busy=true;loadBtn.disabled=true;loadBtn.textContent='⏳ Installation en cours…';
+    try{
+      if(!webllm){ /* le préchargement a échoué : on retente maintenant */
+        step(2,'run');webllm=await loadLib();
+        if(fillReal()){libState='ok';step(2,'ok','Bibliothèque chargée ✓ — liste officielle des modèles prête')}
+        else{libState='ok';step(2,'ok','Bibliothèque chargée ✓ (liste indicative)')}
+      }
+      step(3,'run','Test de connexion au serveur de modèles…');setPct(0);
+      if(!await netOk()){
+        step(3,'ko','Impossible de joindre '+modelHost+' depuis cette page');
+        hintHTML('<b style="color:#b45309">Cette page n\'a pas accès à Internet.</b> C\'est le cas dans les aperçus intégrés (comme ici) : les téléchargements y sont bloqués par la sécurité de l\'aperçu, <b>pas par notre site</b>. Ouvrez la page dans votre navigateur (site en ligne ou fichier local) avec une connexion normale : le modèle se téléchargera alors sans difficulté. Vos messages, eux, ne partiront de toute façon jamais de votre machine.');
+        loadBtn.disabled=false;loadBtn.textContent='🔄 Réessayer';busy=false;return;
+      }
+      step(3,'run','Connexion OK — téléchargement en cours…');
+      modelId=modelSel.value;
+      let inCache=false;
+      try{if(webllm.hasModelInCache)inCache=await webllm.hasModelInCache(modelId)}catch(e){}
+      $('ls3t').textContent=inCache?'✓ Déjà en cache sur cette machine — chargement rapide !':'Depuis '+modelHost+' — une seule fois, ensuite tout reste dans votre navigateur.';
+      startWatchdog();
+      const t0=Date.now();
+      const chrono=setInterval(()=>{if(inCache)return;const s=Math.floor((Date.now()-t0)/1000);
+        const el=$('ls3t');
+        if(el&&!el.textContent.includes('⚠️')&&!el.textContent.includes('cache')&&!el.textContent.includes('reçus'))
+          el.textContent='Depuis '+modelHost+' — '+Math.floor(s/60)+' min '+String(s%60).padStart(2,'0')+' s écoulées';
+      },1000);
+      const make=(m)=>webllm.CreateMLCEngine(m,{initProgressCallback:r=>{
+        lastProgressTs=Date.now();setPct(r.progress||0);
+        const t=(r.text||'').replace(/\s+/g,' ').trim();
+        if(t){const mb=(t.match(/(\d+)\s*\/\s*(\d+)\s*MB/));const done=mb?(' — '+mb[1]+' Mo reçus sur '+mb[2]):'';stepHTML(3,(t.length>90?t.slice(0,90)+'…':t)+done)}
+      }});
+      try{engine=await make(modelId)}
+      catch(e){
+        step(3,'run','Format graphique non supporté → variante compatible (f32)…');
+        engine=await make(modelId.replace('q4f16_1','q4f32_1'));
+      }
+      clearInterval(chrono);stopWatchdog();setPct(1);
+      step(3,'ok',inCache?'Modèle rechargé depuis le cache ✓':'Modèle téléchargé et mis en cache ✓');
+      step(4,'run');
+      await new Promise(r=>setTimeout(r,250));step(4,'ok','Prêt sur votre carte graphique ✓');
+      ready=true;hint('Installation terminée. Le chat s\'ouvre…');
+      setTimeout(()=>{$('loadZone').style.display='none';chatZone.style.display='block';input.focus()},700);
+    }catch(e){
+      stopWatchdog();console.error(e);
+      ['2','3','4'].forEach(n=>{if($('ls'+n).className.includes('run'))step(n,'ko')});
+      setPct(0);
+      const msg=String(e&&e.message||e);
+      hintHTML('<b style="color:#b45309">Erreur : '+msg.slice(0,120)+' — réessayez, ou choisissez un modèle plus léger en haut de la liste.</b>');
+      loadBtn.disabled=false;loadBtn.textContent='🔄 Réessayer';
+    }
+    busy=false;
+  });
+
+  async function ask(q){
+    if(!ready||busy||!q.trim())return;busy=true;
+    const u=document.createElement('div');u.className='bubble user';u.textContent=q;chatScroll.appendChild(u);
+    input.value='';input.disabled=true;send.disabled=true;suggest.style.display='none';
+    genStatus.textContent='⏳ L\'IA rédige sa réponse… (elle tourne sur votre ordinateur)';
+    const bub=document.createElement('div');bub.className='bubble ai';chatScroll.appendChild(bub);chatScroll.scrollTop=chatScroll.scrollHeight;
+    let acc='';
+    try{
+      const SYS={role:'system',content:"Tu es l'assistant du Hub IA du C.I.M. à Montpellier. Réponds toujours en français, de façon claire, concise (max 120 mots) et pédagogique. Si on te demande qui tu es : un modèle open source qui tourne entièrement dans le navigateur de l'utilisateur, sans serveur."};
+      const stream=await engine.chat.completions.create({messages:[SYS,{role:'user',content:q}],stream:true});
+      for await(const ch of stream){const d=ch.choices?.[0]?.delta?.content||'';if(d){acc+=d;bub.textContent=acc;chatScroll.scrollTop=chatScroll.scrollHeight}}
+      if(!acc)bub.textContent='(Réponse vide — reformulez votre question.)';
+    }catch(e){bub.textContent='Oups, une erreur pendant la génération. Réessayez.'}
+    genStatus.textContent='Réponse générée localement — aucune donnée envoyée ✓';
+    input.disabled=false;send.disabled=false;input.focus();busy=false;
+  }
+  send.addEventListener('click',()=>ask(input.value));
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')ask(input.value)});
+  suggest.addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(b&&ready)ask(b.dataset.q)});
+  modelSel.addEventListener('change',()=>{if(ready){ready=false;chatZone.style.display='none';$('loadZone').style.display='block';
+    ['2','3','4'].forEach(n=>step(n,'wait'));setPct(0);$('ls3t').textContent='Nouveau modèle sélectionné : '+modelSel.selectedOptions[0].text;
+    loadBtn.textContent='⬇️ Installer le modèle choisi';loadBtn.disabled=false;hint('Changer de modèle relance un téléchargement (mis en cache ensuite).')}});
+})();
+</script>
+<script>
+(function(){
+  const IN=document.getElementById('tokIn'),OUT=document.getElementById('tokOut'),
+        CH=document.getElementById('tokChars'),WO=document.getElementById('tokWords'),ES=document.getElementById('tokEst');
+  if(!IN)return;
+  const COL=['#c8ecf5','#dcd6f7','#ffe6b8','#d4f2dd','#ffd9d9'];
+  function run(){
+    const t=IN.value;
+    CH.textContent=t.length;
+    const words=t.trim()?t.trim().split(/\s+/).length:0;
+    WO.textContent=words;
+    ES.textContent=Math.ceil(t.length/4);
+    OUT.innerHTML='';
+    for(let i=0;i<t.length;i+=4){
+      const s=document.createElement('span');
+      s.textContent=t.slice(i,i+4).replace(/ /g,'␣');
+      s.style.cssText='padding:4px 7px;border-radius:7px;font-family:ui-monospace,monospace;font-size:.8rem;color:#0f1f33;background:'+COL[(i/4|0)%COL.length];
+      OUT.appendChild(s);
+    }
+    if(!t)OUT.innerHTML='<span style="font-size:.8rem;color:var(--muted)">Tapez du texte pour voir le découpage…</span>';
+  }
+  IN.addEventListener('input',run);run();
+})();
+</script>

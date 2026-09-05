@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>La Confrérie du Gris — RPG tactique gratuit au tour par tour | Hub IA C.I.M.</title>
+<meta name="description" content="Dirigez une confrérie de mercenaires dans ce RPG tactique hexagonal 100 % navigateur : initiative, fatigue, ripostes, arbalétriers, blessures permanentes, salaires. 3 contrats, IA ennemie expliquée. Gratuit, sans compte.">
+<meta name="keywords" content="jeu tactique tour par tour gratuit, rpg tactique navigateur, mercenaires jeu de role, wargame hexagones navigateur, tactical rpg français sans inscription, Battle Brothers like gratuit, jeu de stratégie au tour par tour, compagnie de mercenaires, initiative fatigue riposte">
+<meta name="author" content="C.I.M. — Club Informatique & Multimédia, Montpellier">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0c87a8">
+<meta name="geo.region" content="FR-34">
+<meta name="geo.placename" content="Montpellier">
+<meta name="ICBM" content="43.6108, 3.8767">
+<link rel="canonical" href="https://cim.alwaysdata.net/confrerie.html">
+<link rel="alternate" hreflang="fr" href="https://cim.alwaysdata.net/confrerie.html">
+<link rel="alternate" hreflang="x-default" href="https://cim.alwaysdata.net/confrerie.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hub IA C.I.M. — Montpellier">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://cim.alwaysdata.net/confrerie.html">
+<meta property="og:title" content="La Confrérie du Gris — RPG tactique gratuit au tour par tour | Hub IA C.I.M.">
+<meta property="og:description" content="Dirigez une confrérie de mercenaires dans ce RPG tactique hexagonal 100 % navigateur : initiative, fatigue, ripostes, arbalétriers, blessures permanentes, salaires. 3 contrats, IA ennemie expliquée. Gratuit, sans compte.">
+<meta property="og:image" content="https://cim.alwaysdata.net/img/gris-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="654">
+<meta property="og:image:alt" content="La Confrérie du Gris — RPG tactique gratuit au tour par tour">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La Confrérie du Gris — RPG tactique gratuit au tour par tour | Hub IA C.I.M.">
+<meta name="twitter:description" content="Dirigez une confrérie de mercenaires dans ce RPG tactique hexagonal 100 % navigateur : initiative, fatigue, ripostes, arbalétriers, blessures permanentes, salaires. 3 contrats, IA ennemie expliquée. Gratuit, sans compte.">
+<meta name="twitter:image" content="https://cim.alwaysdata.net/img/gris-hero.jpg">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://cim.alwaysdata.net/#org", "name": "Hub IA du C.I.M. — Club Informatique & Multimédia", "url": "https://cim.alwaysdata.net/", "foundingDate": "2015-08-12", "description": "Hub IA & FabLab associatif (ESS) à Montpellier : IA souveraine, agents autonomes, machine éditoriale, open source, robotique, jeux vidéo.", "areaServed": ["Montpellier", "La Grande-Motte", "Pérols", "Lattes", "Hérault", "Occitanie", "France"], "address": {"@type": "PostalAddress", "addressLocality": "Montpellier", "addressRegion": "Occitanie", "postalCode": "34000", "addressCountry": "FR"}, "sameAs": ["https://www.youtube.com/@nexus-horizon-ai", "https://www.youtube.com/@melodyz2026", "https://www.youtube.com/@essentiel2026", "https://www.youtube.com/@k-antiques1823", "https://www.youtube.com/@sfr2026"]}, {"@type": "WebSite", "@id": "https://cim.alwaysdata.net/#website", "url": "https://cim.alwaysdata.net/", "name": "Hub IA C.I.M.", "inLanguage": "fr-FR", "publisher": {"@id": "https://cim.alwaysdata.net/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cim.alwaysdata.net/"}, {"@type": "ListItem", "position": 2, "name": "La Confrérie du Gris", "item": "https://cim.alwaysdata.net/confrerie.html"}]}, {"@type": "WebPage", "@id": "https://cim.alwaysdata.net/confrerie.html#page", "url": "https://cim.alwaysdata.net/confrerie.html", "name": "La Confrérie du Gris", "description": "Dirigez une confrérie de mercenaires dans ce RPG tactique hexagonal 100 % navigateur : initiative, fatigue, ripostes, arbalétriers, blessures permanentes, salaires. 3 contrats, IA ennemie expliquée. Gratuit, sans compte.", "inLanguage": "fr-FR", "image": "https://cim.alwaysdata.net/img/gris-hero.jpg", "keywords": "jeu tactique tour par tour gratuit, rpg tactique navigateur, mercenaires jeu de role, wargame hexagones navigateur, tactical rpg français sans inscription, Battle Brothers like gratuit, jeu de stratégie au tour par tour, compagnie de mercenaires, initiative fatigue riposte", "isPartOf": {"@id": "https://cim.alwaysdata.net/#website"}, "about": {"@id": "https://cim.alwaysdata.net/#org"}}]}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="top">
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="logo" href="index.html"><svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="11" fill="#0c87a8"/><circle cx="14" cy="15" r="3.2" fill="#fff"/><circle cx="26" cy="15" r="3.2" fill="#a5e3f4"/><circle cx="20" cy="26" r="3.2" fill="#fff"/><path d="M14 15 L26 15 M14 15 L20 26 M26 15 L20 26" stroke="#fff" stroke-width="1.6" stroke-opacity=".7"/></svg><span>C.I.M.<small>HUB IA · FABLAB</small></span></a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-list" id="navList"><li><a href="index.html">Accueil</a></li><li><a href="demo-ia.html">Chat IA</a></li><li><a href="demo-image.html">Images IA</a></li><li><a href="agents-ia.html">Agents IA</a></li><li><a href="machine-editoriale.html">Éditoriale</a></li><li><a href="ia-souveraine.html">Souveraine</a></li><li><a href="open-source.html">Open source</a></li><li><a href="jeux-video.html">Jeux IA</a></li><li><a href="actualites.html">Actus</a></li><li><a href="medias.html">Médias</a></li><li><a href="realisations.html">Réalisations</a></li><li><a href="services.html">Services</a></li><li><a class="btn btn-primary btn-sm nav-cta" href="contact.html">Nous écrire</a></li></ul>
+  </nav>
+</header>
+<style>
+/* v23 — plein écran réel ou simulé (iframes) */
+.cim-fs{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;max-width:none!important;z-index:99990!important;background:#0d0f14;border-radius:0!important;margin:0!important;overflow:auto}
+
+/* ── Confrérie du Gris (tactique) ── */
+.gr-stage{position:relative;background:#0b0d11;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(10,12,16,.45);min-height:640px}
+#grMenu,#grEndWrap{position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(8,9,12,.9),rgba(14,14,16,.95));color:#eef2f5;padding:18px;overflow:auto}
+#grBattle{display:none;padding:14px}
+.gr-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;color:#cfd8de;font-size:.86rem;padding:2px 4px 12px}
+.gr-top b{color:#ffc46b}
+.gr-top .gr-sp{flex:1}
+.gr-btn{background:#1c2128;border:1px solid #333c46;color:#cfd8de;font-weight:700;font-size:.8rem;padding:8px 14px;border-radius:10px;cursor:pointer}
+.gr-btn:hover{border-color:#c0392b;color:#fff} /* v27 : identité cramoisie (différente de LOGRES or/bleu) */
+.gr-btn:disabled{opacity:.4;cursor:not-allowed}
+.gr-btn-amber{background:linear-gradient(135deg,#a93226,#7b241c);border:none;color:#fff}
+.gr-btn.sm{font-size:.72rem;padding:5px 10px}
+.gr-btn.ghost{background:transparent}
+#grStage{position:relative;background:#0b0d11;border-radius:12px;overflow:hidden;min-height:420px}
+#grCanvas{display:block;width:100%}
+#grBanner{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(10,12,16,.85);color:#ff8a7a;font-weight:800;letter-spacing:.08em;padding:8px 18px;border-radius:10px;border:1px solid #3a4652;transition:opacity .6s;z-index:5}
+#grQueue{display:flex;gap:5px;flex-wrap:wrap}
+.gr-chip{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:#232c36;border:1px solid #333c46;color:#9fb2bd;font-weight:800;font-family:ui-monospace,monospace}
+.gr-chip.me{background:#0f2e2a;border-color:#4ad8c0;color:#4ad8c0}
+.gr-chip.foe{background:#33191a;border-color:#e05555;color:#e05555}
+.gr-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:14px}
+.gr-panel{background:#141a22;border:1px solid #232c36;border-radius:12px;padding:12px 14px;color:#cfd8de}
+.gr-panel h4{margin:0 0 8px;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#7fa8b8}
+#grActive{font-weight:800;color:#ffc46b}
+#grActiveInfo{font-size:.76rem;color:#9fb2bd;line-height:1.45;margin-top:4px;min-height:2.6em}
+#grLog{background:#10151c;border-radius:10px;padding:9px 11px;font-size:.78rem;line-height:1.5;color:#b9c6d1;height:150px;overflow-y:auto;margin-top:10px}
+#grLog div:first-child{opacity:.55}
+.gr-acts{display:flex;flex-wrap:wrap;gap:7px;padding-top:10px}
+/* menu */
+.gr-menu-panel{max-width:820px;width:100%;max-height:100%;overflow:auto;text-align:center}
+.gr-title{font-size:clamp(1.7rem,4.5vw,2.7rem);margin:0;letter-spacing:.1em;color:#cfd8de;font-weight:900}
+.gr-title em{color:#ffc46b;font-style:normal}
+.gr-sub{color:#9fb2bd;margin:6px 0 14px;font-size:.94rem}
+.gr-lore{font-size:.93rem;line-height:1.6;color:#cfd8de;background:rgba(207,216,222,.06);border:1px solid rgba(207,216,222,.22);border-radius:12px;padding:12px 15px;margin:0 0 16px;text-align:left}
+.gr-menu-note{font-size:.72rem;color:#6b7a85;margin:12px 0 0;line-height:1.5}
+/* camp (entre-deux) */
+#grBetween{position:absolute;inset:0;z-index:9;display:none;background:#10151c;color:#dbe4ea;padding:18px;overflow:auto}
+.gr-between-in{max-width:920px;margin:0 auto}
+.gr-between-in h3{color:#ffc46b;margin:0 0 4px}
+.gr-cards2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.gr-merc,.gr-item{background:#141a22;border:1px solid #232c36;border-radius:12px;padding:10px 12px;font-size:.84rem;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;justify-content:space-between}
+.gr-merc small,.gr-item small{color:#8fa2b0}
+.gr-merc{flex-direction:column;align-items:flex-start}
+.gr-hpbar{height:8px;background:#232c36;border-radius:5px;overflow:hidden;width:100%}
+.gr-hpbar div{height:100%;background:linear-gradient(90deg,#5cbf72,#8fd3a0)}
+.gr-eq{color:#7fa8b8}
+.gr-dim{color:#5d6c78;font-size:.84rem}
+#grSignBtn{width:100%;padding:14px;font-size:1rem;margin-top:6px}
+/* fin */
+#grSumBox,#grEndBox{max-width:560px;width:100%;background:#151b23;border:1px solid #2c3a48;border-radius:16px;padding:22px;text-align:center}
+#grSum{text-align:left;font-size:.92rem;line-height:1.6}
+#grSum h3{margin:0 0 8px}
+#grSum p{margin:6px 0}
+/* sections claires */
+.gr-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:22px 0}
+.gr-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;box-shadow:0 3px 14px rgba(15,31,51,.05)}
+.gr-card h3{margin:0 0 8px;font-size:1.05rem;color:#0f1f33}
+.gr-card p{margin:0;font-size:.9rem;line-height:1.6;color:#3d4d61}
+.gr-card .gr-ico{font-size:1.5rem;display:block;margin-bottom:8px}
+.gr-dia{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin:18px 0}
+.gr-dia h3{margin:0 0 6px;font-size:1rem;color:#0f1f33}
+.gr-dia p{margin:0 0 10px;font-size:.88rem;color:#3d4d61;line-height:1.6}
+.gr-dia svg{display:block;width:100%;max-width:620px;height:auto;margin:0 auto}
+.gr-faq details{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px 18px;margin-bottom:10px}
+.gr-faq summary{font-weight:700;color:#0f1f33;cursor:pointer;font-size:.95rem}
+.gr-faq p{margin:10px 0 0;font-size:.9rem;line-height:1.65;color:#3d4d61}
+.gr-banner{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:26px 0}
+.gr-banner a{display:block;background:linear-gradient(135deg,#12212c,#0f1f33);color:#dbe4ea;border-radius:16px;padding:22px;text-decoration:none;border:1px solid #234252;transition:transform .15s}
+.gr-banner a:hover{transform:translateY(-3px)}
+.gr-banner b{display:block;color:#8fd3e8;font-size:1.05rem;margin-bottom:6px}
+.gr-banner span{font-size:.86rem;color:#9fb2bd;line-height:1.5}
+@media (max-width:880px){
+  .gr-grid{grid-template-columns:1fr}
+  .gr-cards2{grid-template-columns:1fr}
+}
+
+/* v25 — écrans lisibles : panneaux contrastés, gros boutons */
+[id$="Menu"]>div,[class*="menu-panel"],[class*="menuBox"],.fps-panel{background:rgba(13,18,15,.97)!important;border:2px solid rgba(255,210,77,.5)!important;border-radius:22px!important;box-shadow:0 0 0 5px rgba(0,0,0,.4),0 30px 90px rgba(0,0,0,.75)!important;padding:28px 34px!important;max-width:min(94%,780px)!important}
+[id$="Menu"] h2,[id$="Menu"] h3,[class*="menu-panel"] h2,[class*="menu-panel"] h3,[class*="menuBox"] h2,[class*="menuBox"] h3,.fps-title{color:#fff!important;text-shadow:0 2px 12px rgba(0,0,0,.85)!important}
+[id$="Menu"] p,[id$="Menu"] li,[class*="menu-panel"] p,[class*="menuBox"] p{color:#d6ded4!important}
+[id$="Menu"] button,[class*="menu-panel"] button,[class*="menuBox"] button{font-size:1.02rem!important;min-height:48px!important;padding:10px 22px!important;border-radius:12px!important}
+/* v25 — le plein écran remplisse vraiment l'écran (la colonne .wrap s'étale) */
+.cim-fs .wrap{max-width:none!important;width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;padding:10px 14px!important;box-sizing:border-box!important}
+.cim-fs .wrap>div{flex:1 1 auto;min-height:0}
+.cim-fs .wrap>p{flex:0 0 auto}
+canvas{display:block}
+
+/* v26 — le plein écran NATIF aussi : la section plein écran s'étale, le stage prend toute la hauteur */
+:fullscreen .wrap{max-width:none!important;width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;padding:8px 12px!important;box-sizing:border-box!important}
+:fullscreen .wrap>div{flex:1 1 auto;min-height:0}
+:fullscreen .wrap>p{flex:0 0 auto;margin:0 0 8px!important}
+:fullscreen .gr-stage,:fullscreen .lg-stage-wrap,:fullscreen .ak-stage,:fullscreen .zn-stage,:fullscreen .ca-stage,:fullscreen .nd-stage,:fullscreen .cr-stage,:fullscreen #crStage,:fullscreen #fpsWrap,:fullscreen .zn2-stage{height:auto!important;flex:1 1 auto!important;min-height:0!important}
+</style>
+
+<section class="page-hero" style="background:linear-gradient(180deg,#141419 0%,#13151a 100%)">
+  <div class="wrap page-hero-img">
+    <div>
+      <span class="kicker" style="color:#c8d2da">🔥 Nouveau · Tactique au tour par tour · 100 % navigateur</span>
+      <h1 style="color:#fff">La Confrérie du Gris — chaque homme a un nom.</h1>
+      <p class="lead" style="color:#d8cfc9">Une compagnie de mercenaires endettés, trois contrats, un royaume en ruine.
+      Déploiement hexagonal, initiative, fatigue, ripostes, armes qui percent l'armure, blessures qui marquent pour
+      de bon : un RPG tactique inspiré des grands du genre, jouable au doigt ou au clavier, avec
+      <b>l'IA ennemie disséquée</b> sous le jeu. Aucune installation, aucun compte.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#grJeu">⚔ Signer le premier contrat</a>
+        <a class="btn btn-outline" style="color:#dbe4ea;border-color:#4a5560" href="#grIA">Comment pense l'ennemi ?</a>
+      </div>
+    </div>
+    <div class="hero-img-card">
+      <img src="img/gris-hero.jpg" alt="Une compagnie de mercenaires en armures grises traverse une lande brumeuse, bannières en lambeaux">
+      <div class="float-note">🪖 « Le salaire se paie avant la gloire. »</div>
+    </div>
+  </div>
+</section>
+
+<section id="grJeu" style="padding-top:40px;background:#121317">
+  <div class="wrap">
+    <p style="color:#9fb2bd;max-width:60em;margin:0 0 12px"><b>Souris</b> : cliquez un mercenaire, puis sa destination ou sa cible · <b>G</b> garder la position · <b>E</b> capacité spéciale · <b>F</b> fin du tour · le jeu démarre en plein écran.</p>
+    <div class="gr-stage">
+      <div id="grBattle">
+        <div class="gr-top">
+          <span>Round <b id="grRound">1</b></span>
+          <span>Caisse : <b id="grGold">0</b> or</span>
+          <span class="gr-sp"></span>
+          <button class="gr-btn" id="grGuardBtn">🛡 Garde <kbd>G</kbd></button>
+          <button class="gr-btn" id="grEndBtn">⏭ Fin du tour <kbd>F</kbd></button>
+          <button class="gr-btn" id="grInfoBtn">📋 Ordres</button>
+        </div>
+        <div class="gr-grid">
+          <div>
+            <div id="grStage">
+              <canvas id="grCanvas" width="720" height="520"></canvas>
+              <div id="grBanner" style="display:none"></div>
+            </div>
+            <div id="grLog"></div>
+          </div>
+          <div class="gr-panel">
+            <h4>File d'initiative</h4>
+            <div id="grQueue"></div>
+            <div style="margin-top:12px" id="grActive">—</div>
+            <div id="grActiveInfo"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="grMenu">
+        <div class="gr-menu-panel">
+          <h2 class="gr-title">LA CONFRÉRIE DU <em>GRIS</em></h2>
+          <p class="gr-sub">RPG tactique mercenaire — trois contrats, des hommes qui meurent pour de vrai.</p>
+          <p class="gr-lore">Le royaume s'effrite et les routes ne sont plus sûres. Vous levez une troupe :
+          un épéiste, un arbalétrier, une brute à la hache… Chaque contrat paye la paie du suivant ; chaque
+          tombe creusée coûte plus cher que le butin. Déplacez vos hommes sur les hexagones, choisissez vos
+          cibles, gardez la ligne — et rappelez-vous : <b>les blessures restent</b>.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <button class="gr-btn gr-btn-amber" id="grNew" style="padding:13px 30px;font-size:.98rem">⚔ Fonder la confrérie</button>
+            <button class="gr-btn" id="grContinue" style="display:none;padding:13px 22px">↩ Reprendre la campagne</button>
+          </div>
+          <p class="gr-menu-note">Clic pour déplacer (hexagones turquoise) et attaquer (cercles rouges) ·
+          <b>G</b> garde · <b>F</b> fin du tour · sauvegarde automatique dans votre navigateur entre les batailles.</p>
+        </div>
+      </div>
+
+      <div id="grBetween">
+        <div class="gr-between-in">
+          <p class="gr-dim" id="grBetweenNote"></p>
+          <h3 id="grContractName">Contrat</h3>
+          <p style="color:#9fb2bd;font-size:.9rem;line-height:1.6" id="grContractBrief"></p>
+          <div class="gr-top" style="padding-left:0">
+            <span>Caisse : <b id="grCampGold">0</b> or</span>
+            <span>Salaires dus à la signature : <b id="grWages">0</b> or</span>
+          </div>
+          <div class="gr-cards2">
+            <div><h4 style="color:#7fa8b8;margin:0 0 8px;font-size:.8rem;text-transform:uppercase">La troupe</h4><div id="grRoster"></div></div>
+            <div>
+              <h4 style="color:#7fa8b8;margin:0 0 8px;font-size:.8rem;text-transform:uppercase">Écurie : butin &amp; recrues</h4>
+              <div id="grStock" style="margin-bottom:12px"></div>
+              <div id="grRecruits"></div>
+            </div>
+          </div>
+          <button class="gr-btn gr-btn-amber" id="grSignBtn">✒ Signer le contrat — payer la troupe et marcher</button>
+        </div>
+      </div>
+
+      <div id="grEndWrap">
+        <div id="grSumBox">
+          <div id="grSum"></div>
+          <button class="gr-btn gr-btn-amber" id="grSumNext" style="margin-top:14px;padding:12px 26px">Retour au camp</button>
+        </div>
+        <div id="grEndBox" style="display:none">
+          <h2 id="grEndTitle" class="gr-title" style="font-size:1.5rem"></h2>
+          <p style="color:#9fb2bd;font-size:.92rem;line-height:1.6;margin:12px 0" id="grEndText"></p>
+          <p style="color:#ffc46b;font-size:.9rem" id="grEndStats"></p>
+          <button class="gr-btn gr-btn-amber" id="grEndNext" style="margin-top:14px;padding:12px 26px">Nouvelle confrérie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:46px">
+  <div class="wrap">
+    <span class="kicker">Prendre en main</span>
+    <h2>Le métier des armes, en quatre réflexes</h2>
+    <div class="gr-cards">
+      <div class="gr-card"><span class="gr-ico">🧭</span><h3>1. Déployer en ligne</h3>
+        <p>Vos hexagones turquoise montent jusqu'où chacun peut marcher ce tour. Tenez une ligne : un mercenaire
+        isolé se fait entourer, et un entouré ne riposte qu'une fois par round.</p></div>
+      <div class="gr-card"><span class="gr-ico">🏹</span><h3>2. User de la portée</h3>
+        <p>L'arbalétrier frappe à 5 hexagones, mais ne tire qu'en <b>ligne de vue</b> : un rocher ou un arbre mort
+        bloque le carreau. Les fourrés (❀) donnent +2 de défense contre les tirs — couvrez-y vos blessés.</p></div>
+      <div class="gr-card"><span class="gr-ico">🪓</span><h3>3. Choisir ses lames</h3>
+        <p>La <b>hache</b> perce l'armure (2), la <b>lance</b> frappe à 2 hexagones, l'<b>arbalète</b> a une charge
+        lente mais longue. Regardez la défense ennemie : contre les mortals cuirassés, envoyez la brute.</p></div>
+      <div class="gr-card"><span class="gr-ico">🩹</span><h3>4. Ménager les hommes</h3>
+        <p>La fatigue s'accumule (déplacement, charges) et ralentit : les rounds passés à se replacer comptent.
+        Entre deux contrats, la troupe se soigne à moitié — et le chirurgien efface les blessures, contre or.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="grIA" style="padding-top:46px;background:#fff;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">
+  <div class="wrap">
+    <span class="kicker">Pédagogie</span>
+    <h2>Comment l'ennemi décide (et comment le surprendre)</h2>
+    <p style="max-width:820px;color:#3d4d61;font-size:.95rem;line-height:1.7">Chaque brigand, loup ou mortal exécute
+    le même petit cerveau en trois questions, posées à son tour de jeu. Aucune triche : il ne voit que sa portée et
+    sa ligne de vue, comme vous.</p>
+    <div class="gr-cards">
+      <div class="gr-card"><span class="gr-ico">🎯</span><h3>« Quelle cible vaut le coup ? »</h3>
+        <p>L'IA note chaque adversaire : distance d'abord, puis — pour les bêtes — les PV restants. Elle charge
+        le plus proche, ou le plus affaibli si elle a flairé le sang. <b>Astuce :</b> un mercenaire blessé et en
+        première ligne attire tous les crocs.</p></div>
+      <div class="gr-card"><span class="gr-ico">🗺️</span><h3>« Par où marcher ? »</h3>
+        <p>Un parcours en largeur (BFS, le même « flair » que nos roguelikes) numérote les hexagones depuis sa
+        cible ; l'IA marche vers le numéro d'avant. Les obstacles concaves sont contournés — mais vous pouvez
+        <b>fermer un couloir à deux hommes</b> pour encaisser.</p></div>
+      <div class="gr-card"><span class="gr-ico">🏹</span><h3>« Tirer ou reculer ? »</h3>
+        <p>Les tireurs (arbalétriers brigands) gardent leurs distances : si vous les collez, ils <b>fuient</b> vers
+        l'hexagone le plus loin de vous, puis retournent le carreau. Courez-y à deux, ou shottez-les de plus loin.</p></div>
+      <div class="gr-card"><span class="gr-ico">⏱️</span><h3>Initiative &amp; fatigue</h3>
+        <p>Chaque round, les unités agissent du plus rapide au plus lent (les bêtes sont rapides, les mortals
+        lents). Déplacements et attaques fatiguent : au-delà du seuil, −1 pas et −1 dégât. Les rounds de manœuvre
+        ne sont jamais perdus.</p></div>
+    </div>
+    <div class="gr-dia">
+      <h3>Schéma — un tour d'Ombeline l'arbalétrière</h3>
+      <p>En turquoise : les 6 hexagones où elle peut marcher (3 pas). En rouge pointillé : sa portée de tir (5),
+      bloquée par l'arbre mort. Le brigand du bas est trop loin d'un pas : elle avance d'abord, tirera au prochain round —
+      sauf si la brute le retient au corps à corps, où il ne pourra plus fuir.</p>
+      <svg viewBox="0 0 620 240" role="img" aria-label="Schéma d'un tour tactique : déplacement, portée, couvert">
+        <rect width="620" height="240" fill="#f7fafc"/>
+        <g stroke="#cbd5e1" stroke-width="1.4">
+          <polygon points="120,40 160,62 160,106 120,128 80,106 80,62" fill="#e8eef4"/>
+          <polygon points="200,40 240,62 240,106 200,128 160,106 160,62" fill="#c8f0e6" stroke="#4ad8c0"/>
+          <polygon points="280,40 320,62 320,106 280,128 240,106 240,62" fill="#c8f0e6" stroke="#4ad8c0"/>
+          <polygon points="160,106 200,128 200,172 160,194 120,172 120,128" fill="#c8f0e6" stroke="#4ad8c0"/>
+          <polygon points="240,106 280,128 280,172 240,194 200,172 200,128" fill="#c8f0e6" stroke="#4ad8c0"/>
+          <polygon points="320,106 360,128 360,172 320,194 280,172 280,128" fill="#e8eef4"/>
+          <polygon points="360,128 400,150 400,194 360,216 320,194 320,172" fill="#dbe7d8"/>
+          <polygon points="440,128 480,150 480,194 440,216 400,194 400,150" fill="#e8eef4"/>
+          <polygon points="520,128 560,150 560,194 520,216 480,194 480,150" fill="#f4e6d8"/>
+        </g>
+        <text x="200" y="84" text-anchor="middle" font-size="26" font-weight="bold" fill="#0c87a8" font-family="monospace">A</text>
+        <text x="400" y="178" text-anchor="middle" font-size="24" font-weight="bold" fill="#e05555" font-family="monospace">b</text>
+        <text x="520" y="178" text-anchor="middle" font-size="22" fill="#51705a">♠</text>
+        <line x1="215" y1="80" x2="395" y2="170" stroke="#e05555" stroke-width="2" stroke-dasharray="6 5"/>
+        <g fill="#3d4d61" font-size="12.5" font-family="sans-serif">
+          <text x="452" y="60">● A = Ombeline (arbalétrier, portée 5)</text>
+          <text x="452" y="82">● turquoise : 3 pas de déplacement</text>
+          <text x="452" y="104">● pointillé rouge : ligne de tir possible</text>
+          <text x="452" y="126">● ♠ arbre mort = bloque la ligne de vue</text>
+          <text x="452" y="148">● b = brigand : s'il approche à contact,</text>
+          <text x="452" y="170">  l'arbalétrier ne peut plus fuir à temps</text>
+          <text x="452" y="192">● l'IA ennemie raisonne exactement ainsi</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:46px">
+  <div class="wrap">
+    <span class="kicker">Questions fréquentes</span>
+    <h2>Avant de signer</h2>
+    <div class="gr-faq" style="margin-top:18px">
+      <details open><summary>En quoi est-ce différent de Cendres, votre roguelike ?</summary>
+        <p>Cendres : <b>un</b> héros, donjon aléatoire, mort définitive, actions au pas du clavier. La Confrérie :
+        une <b>escouade</b> que vous coordonnez sur une carte hexagonale, des combats d'position, une campagne en
+        trois contrats avec salaires et blessures permanentes. Les deux partagent le même socle technique (le
+        « KERNEL » du site : dés, objets, raretés, sauvegardes).</p></details>
+      <details><summary>Mes mercenaires morts reviennent-ils ?</summary>
+        <p>Non — c'est le pacte du genre. Un mercenaire tombé reste tombé (la moitié du temps ; sinon il revient
+        <b>blessé</b>, avec moins de PV max jusqu'au chirurgien). Vous pouvez engager des recrues entre deux
+        contrats, mais les vétérans ne se remplacent pas.</p></details>
+      <details><summary>Pourquoi des hexagones ?</summary>
+        <p>L'hexagone a six voisins au lieu de quatre : les déplacements sont plus fluides, les encerclements plus
+        naturels, et c'est le standard des wargames — de nos références tactiques aux jeux de société. Techniquement,
+        la distance entre deux hexagones se calcule en une ligne de maths (coordonnées axiales), ce qui rend l'IA
+        rapide même sur un vieux téléphone.</p></details>
+      <details><summary>Le jeu est-il sauvegardé ? Puis-je tricher en rechargeant ?</summary>
+        <p>La campagne est sauvegardée automatiquement <b>entre les batailles</b> dans votre navigateur
+        (localStorage) — jamais pendant un combat : pas de « recharger la sauvegarde » pour annuler un coup raté,
+        c'est voulu. Effacer les données du navigateur efface la campagne.</p></details>
+      <details><summary>Ce jeu servira-t-il à autre chose ?</summary>
+        <p>Oui : ce moteur tactique (initiative, portées, ripostes, IA de poursuite) est écrit comme une
+        <b>bibliothèque réutilisable</b> — c'est le laboratoire du prochain grand projet du site, un jeu de
+        batailles en 3D légère qui réutilisera ces mêmes règles côté serveur de jeu. Jouer à la Confrérie, c'est
+        déjà tester le cœur du futur titre.</p></details>
+      <details><summary>Gratuit ? Avec des pubs ?</summary>
+        <p>Gratuit, sans compte, sans pub, sans donnée collectée — comme tout le site, porté par une association
+        loi 1901. Tout est dessiné en code et en glyphes ; aucune ressource de jeu commercial n'est utilisée.</p></details>
+    </div>
+
+    <div class="gr-banner">
+      <a href="cendres.html"><b>🕯️ CENDRES — le roguelike des cryptes</b><span>Un héros, huit profondeurs générées,
+      potions mystérieuses et boss final : l'autre face de notre KERNEL, en solo.</span></a>
+      <a href="hub-of-duty.html"><b>🔫 Hub of Duty — le FPS « 2029 »</b><span>Vagues de machines, IA traqueuse à la
+      vue : un hommage non commercial à Terminator, tout en 3D légère dans le navigateur.</span></a>
+      <a href="echecs.html"><b>♟️ Échecs contre l'IA — 8 niveaux</b><span>Notre moteur maison, indices, vue 3D et
+      réflexion de l'alpha-bêta en direct.</span></a>
+    </div>
+
+    <p style="color:#64748b;font-size:.82rem;max-width:860px;line-height:1.7">La Confrérie du Gris est la 17ᵉ page du
+    hub et la deuxième pierre du chantier « vrais jeux » : son moteur tactique est écrit comme bibliothèque
+    réutilisable pour les batailles 3D du prochain titre. La suite est annoncée dans la rubrique
+    <a href="jeux-video.html">Jeux contre l'IA</a>.</p>
+  </div>
+</section>
+
+<script>/* ═══════════════════════════════════════════════════════════════════
+   RPG-CORE — Le « KERNEL » des grands jeux du Hub C.I.M.
+   inv-core (inventaire/équipement) + loot-core (butin procédural,
+   affixes, raretés) + save-core (sauvegarde versionnée) + RNG seedé.
+   Utilisé par : Cendres (roguelike), puis Confrérie, Logres, Arkhantis,
+   Nordheim, La Zone, Caravanes. Tourne en navigateur ET en Node.
+   ═══════════════════════════════════════════════════════════════════ */
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = factory();
+  else root.RPGCORE = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  /* ── RNG déterministe (mulberry32 + hash de chaîne) ── */
+  function hashSeed(str) {
+    var h = 1779033703 ^ str.length;
+    for (var i = 0; i < str.length; i++) {
+      h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+      h = (h << 13) | (h >>> 19);
+    }
+    return (h >>> 0) || 1;
+  }
+  function makeRng(seed) {
+    var a = typeof seed === 'string' ? hashSeed(seed) : (seed >>> 0 || 1);
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function pick(rng, arr) { return arr[Math.floor(rng() * arr.length)]; }
+  function dice(rng, n, d) { var s = 0; for (var i = 0; i < n; i++) s += 1 + Math.floor(rng() * d); return s; }
+
+  /* ── Raretés ── */
+  var RARITY = [
+    { key: 'commun',     label: 'Commun',     color: '#c9d4dc', mult: 1.0,  aff: 0 },
+    { key: 'raffine',    label: 'Raffiné',    color: '#57d178', mult: 1.35, aff: 1 },
+    { key: 'rare',       label: 'Rare',       color: '#4aa8ff', mult: 1.8,  aff: 1 },
+    { key: 'epique',     label: 'Épique',     color: '#b06bff', mult: 2.5,  aff: 2 },
+    { key: 'legendaire', label: 'Légendaire', color: '#ff9d33', mult: 3.6,  aff: 3 }
+  ];
+  function rollRarity(rng, depth, boost) {
+    var r = rng() * 100 - (depth * 1.4) - (boost || 0);
+    if (r < 2) return 4;
+    if (r < 8) return 3;
+    if (r < 20) return 2;
+    if (r < 42) return 1;
+    return 0;
+  }
+
+  /* ── Bases d'objets ── */
+  var BASES = {
+    weapon: [
+      { base: 'dague',          dice: [1, 4], crit: 12, val: 12 },
+      { base: 'épée courte',    dice: [1, 6], crit: 6,  val: 20 },
+      { base: 'hache de guerre',dice: [1, 8], crit: 5,  val: 32 },
+      { base: 'marteau de fer', dice: [2, 4], crit: 4,  val: 40 },
+      { base: 'lance',          dice: [1, 6], crit: 6,  val: 26 },
+      { base: 'sabre cendré',   dice: [1, 7], crit: 9,  val: 55, minDepth: 3 },
+      { base: 'épée de basilic',dice: [2, 5], crit: 10, val: 80, minDepth: 5 }
+    ],
+    armor: [
+      { base: 'robe',           def: 1, val: 8 },
+      { base: 'cuir bouilli',   def: 2, val: 16 },
+      { base: 'cotte de cuir',  def: 3, val: 28 },
+      { base: 'mailles',        def: 5, val: 48, minDepth: 3 },
+      { base: 'harnois de plaques', def: 7, val: 90, minDepth: 5 }
+    ],
+    helm: [
+      { base: 'capuchon',       def: 1, val: 8 },
+      { base: 'casque de fer',  def: 2, val: 22 },
+      { base: 'grand heaume',   def: 3, val: 44, minDepth: 4 }
+    ],
+    shield: [
+      { base: 'targe',          def: 1, val: 12 },
+      { base: 'écu renforcé',   def: 2, val: 30, minDepth: 3 },
+      { base: 'pavois',         def: 3, val: 55, minDepth: 5 }
+    ],
+    amulet: [
+      { base: 'amulette de cendre', val: 30 },
+      { base: 'médaillon des profondeurs', val: 45, minDepth: 3 }
+    ],
+    ring: [
+      { base: 'anneau de fer',  val: 25 },
+      { base: 'anneau runique', val: 50, minDepth: 4 }
+    ]
+  };
+  var AFFIX_PRE = [
+    { k: 'atk',  v: [1, 2, 3, 5],   names: ['acéré', 'brutal', 'mortel', 'du bourreau'] },
+    { k: 'crit', v: [5, 8, 12, 18], names: ['précis', 'perçant', "d'escrimeur", 'de duelliste'] },
+    { k: 'vamp', v: [1, 2, 3, 4],   names: ['sanguinaire', 'avide', 'maudite de soif', 'du vampire'] }
+  ];
+  var AFFIX_SUF = [
+    { k: 'hp',   v: [4, 8, 14, 22], names: ['du sang vaillant', 'du colosse', 'du titan', 'des immortels'] },
+    { k: 'def',  v: [1, 2, 3, 5],   names: ['du rempart', 'de gardien', 'de la forteresse', 'du bastion'] },
+    { k: 'mana', v: [3, 6, 10, 16], names: ['du flambeau', 'du rune-souffle', 'de l\u2019archmage', 'des brumes'] },
+    { k: 'piety',v: [5, 10, 18, 30],names: ['du fervent', 'du pieux', 'des saints', 'des premiers'] }
+  ];
+
+  /* ── Fabrique d'objet ── */
+  var _idSeq = 1;
+  function rollItem(rng, depth, opts) {
+    opts = opts || {};
+    var kind = opts.kind || pick(rng, ['weapon', 'weapon', 'armor', 'helm', 'shield', 'amulet', 'ring']);
+    var bases = BASES[kind].filter(function (b) { return !(b.minDepth > depth); });
+    var b;
+    if (opts.force) {
+      b = BASES[kind].filter(function (x) { return x.base === opts.force; })[0] || bases[bases.length - 1];
+    } else {
+      b = bases[bases.length - 1 - Math.floor(Math.pow(rng(), 1.8) * bases.length)];
+      b = BASES[kind][Math.max(0, BASES[kind].indexOf(b))];
+    }
+    var rar = rollRarity(rng, depth, opts.boost || 0);
+    var it = {
+      id: _idSeq++, kind: kind, base: b.base,
+      rarity: rar, rarityKey: RARITY[rar].key,
+      affixes: [], val: Math.round(b.val * RARITY[rar].mult),
+      minDepth: b.minDepth || 1
+    };
+    if (kind === 'weapon') { it.dice = b.dice.slice(); it.crit = b.crit; }
+    if (b.def) it.def = b.def;
+    for (var i = 0; i < RARITY[rar].aff; i++) {
+      var pool = (kind === 'weapon' && i === 0) ? AFFIX_PRE : (rng() < 0.5 ? AFFIX_PRE : AFFIX_SUF);
+      var af = pick(rng, pool);
+      var tier = Math.min(3, Math.floor(rng() * (1 + Math.min(4, depth / 2))));
+      var aff = { k: af.k, v: af.v[tier], name: af.names[tier] };
+      it.affixes.push(aff);
+      it.val += af.v[tier] * 4;
+    }
+    it.name = itemFullName(it);
+    return it;
+  }
+  function itemFullName(it) {
+    var n = it.base;
+    if (it.affixes.length) {
+      var pre = it.affixes.filter(function (a) { return AFFIX_PRE.some(function (p) { return p.k === a.k; }); });
+      var suf = it.affixes.filter(function (a) { return !AFFIX_PRE.some(function (p) { return p.k === a.k; }); });
+      if (pre.length) n = pre[0].name + ' ' + n;
+      if (suf.length) n += ' ' + suf[suf.length - 1].name;
+    }
+    return n;
+  }
+  function affixTotal(it, k) {
+    var s = 0;
+    (it.affixes || []).forEach(function (a) { if (a.k === k) s += a.v; });
+    return s;
+  }
+
+  /* ── inv-core : inventaire + équipement ── */
+  var SLOTS = ['weapon', 'armor', 'helm', 'shield', 'amulet', 'ring1', 'ring2'];
+  function makeInventory(maxSlots) {
+    return { items: [], max: maxSlots || 20, eq: {} };
+  }
+  function invAdd(inv, it) {
+    if (inv.items.length >= inv.max) return false;
+    inv.items.push(it);
+    return true;
+  }
+  function invRemove(inv, it) {
+    var i = inv.items.indexOf(it);
+    if (i >= 0) { inv.items.splice(i, 1); return true; }
+    return false;
+  }
+  function invEquip(inv, it, actor) {
+    if (!invRemove(inv, it)) return false;
+    var slot = it.kind === 'ring' ? (!inv.eq.ring1 ? 'ring1' : (!inv.eq.ring2 ? 'ring2' : 'ring1')) : it.kind;
+    var old = inv.eq[slot];
+    inv.eq[slot] = it;
+    if (old) invAdd(inv, old);
+    if (actor && actor.onEquip) actor.onEquip(it, slot);
+    return true;
+  }
+  function invUnequip(inv, slot) {
+    var it = inv.eq[slot];
+    if (!it) return false;
+    if (!invAdd(inv, it)) return false; /* sac plein */
+    inv.eq[slot] = null;
+    return true;
+  }
+  /* Stats totales depuis l'équipement : {atk,def,hp,mana,crit,vamp,piety} */
+  function equipStats(inv) {
+    var s = { atk: 0, def: 0, hp: 0, mana: 0, crit: 0, vamp: 0, piety: 0 };
+    SLOTS.forEach(function (sl) {
+      var it = inv.eq[sl];
+      if (!it) return;
+      if (it.dice) s.atk += affixTotal(it, 'atk');
+      if (it.def) s.def += it.def + affixTotal(it, 'def');
+      s.hp += affixTotal(it, 'hp');
+      s.mana += affixTotal(it, 'mana');
+      s.crit += affixTotal(it, 'crit');
+      s.vamp += affixTotal(it, 'vamp');
+      s.piety += affixTotal(it, 'piety');
+    });
+    return s;
+  }
+
+  /* ── XP / niveaux ── */
+  function xpFor(level) { return Math.round(20 * Math.pow(level, 1.6)); }
+
+  /* ── save-core : sauvegarde versionnée ── */
+  var SAVE_VERSION = 1;
+  function saveGame(obj) {
+    obj = JSON.parse(JSON.stringify(obj));
+    obj._v = SAVE_VERSION;
+    obj._t = Date.now();
+    return JSON.stringify(obj);
+  }
+  function loadGame(str) {
+    try {
+      var o = JSON.parse(str);
+      if (!o || o._v !== SAVE_VERSION) return null;
+      return o;
+    } catch (e) { return null; }
+  }
+
+  return {
+    makeRng: makeRng, hashSeed: hashSeed, pick: pick, dice: dice,
+    RARITY: RARITY, rollRarity: rollRarity,
+    BASES: BASES, rollItem: rollItem, itemFullName: itemFullName, affixTotal: affixTotal,
+    SLOTS: SLOTS, makeInventory: makeInventory, invAdd: invAdd, invRemove: invRemove,
+    invEquip: invEquip, invUnequip: invUnequip, equipStats: equipStats,
+    xpFor: xpFor, saveGame: saveGame, loadGame: loadGame, SAVE_VERSION: SAVE_VERSION
+  };
+});
+</script>
+<script>/* ═══════════════════════════════════════════════════════════════
+   KERNEL · combat-tb.js — moteur de combat tactique hexagonal
+   Réutilisable (La Confrérie du Gris v17, LOGRES v18).
+   UMD : Node (module.exports) comme navigateur (window.COMBATTB).
+   Pur : aucune dépendance, rng injecté dans makeBattle.
+   ═══════════════════════════════════════════════════════════════ */
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = factory();
+  else root.COMBATTB = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  /* ── Coordonnées axiales (q, r) ── */
+  var DIRS = [[1, 0], [1, -1], [0, -1], [-1, 0], [-1, 1], [0, 1]];
+
+  function key(q, r) { return q + ',' + r; }
+  function hexDist(q1, r1, q2, r2) {
+    var dq = q1 - q2, dr = r1 - r2;
+    return (Math.abs(dq) + Math.abs(dr) + Math.abs(dq + dr)) / 2;
+  }
+  function neighbors(q, r) {
+    return DIRS.map(function (d) { return [q + d[0], r + d[1]]; });
+  }
+  function cube(q, r) { return [q, r, -q - r]; }
+  function cubeRound(x, y, z) {
+    var rx = Math.round(x), ry = Math.round(y), rz = Math.round(z);
+    var dx = Math.abs(rx - x), dy = Math.abs(ry - y), dz = Math.abs(rz - z);
+    if (dx > dy && dx > dz) rx = -ry - rz;
+    else if (dy > dz) ry = -rx - rz;
+    else rz = -rx - ry;
+    return [rx, ry, rz];
+  }
+
+  /* ── Terrains ── */
+  var TERRAIN = {
+    plain: { cost: 1, name: 'plaine' },
+    mud:   { cost: 2, name: 'bourbier' },
+    bush:  { cost: 1, cover: 2, name: 'fourré (couvert)' },
+    rock:  { cost: -1, blocks: true, name: 'rocher' },
+    tree:  { cost: -1, blocks: true, name: 'arbre mort' }
+  };
+
+  function genMap(rng, R, opts) {
+    opts = opts || {};
+    var rocks = opts.rocks == null ? 0.10 : opts.rocks;
+    var trees = opts.trees == null ? 0.08 : opts.trees;
+    var bush  = opts.bush  == null ? 0.10 : opts.bush;
+    var mud   = opts.mud   == null ? 0.10 : opts.mud;
+    var tiles = {};
+    for (var q = -R; q <= R; q++) {
+      var r1 = Math.max(-R, -q - R), r2 = Math.min(R, -q + R);
+      for (var r = r1; r <= r2; r++) {
+        var x = rng(), t = 'plain';
+        if (x < rocks) t = 'rock';
+        else if (x < rocks + trees) t = 'tree';
+        else if (x < rocks + trees + bush) t = 'bush';
+        else if (x < rocks + trees + bush + mud) t = 'mud';
+        tiles[key(q, r)] = t;
+      }
+    }
+    /* Connexité : BFS depuis le centre ; toute case franchissable non
+       reliée devient plaine (aucun isolat, aucune unité en cage). */
+    if (tiles['0,0'] === 'rock' || tiles['0,0'] === 'tree') tiles['0,0'] = 'plain';
+    var seen = { '0,0': 1 }, st = [[0, 0]];
+    while (st.length) {
+      var c = st.pop();
+      neighbors(c[0], c[1]).forEach(function (n) {
+        var k2 = key(n[0], n[1]);
+        if (tiles[k2] && !seen[k2] && !TERRAIN[tiles[k2]].blocks) { seen[k2] = 1; st.push(n); }
+      });
+    }
+    Object.keys(tiles).forEach(function (k2) {
+      /* toute case franchissable non reliée au centre devient un rocher :
+         aucune unité ne peut être déployée ou coincée dans une poche */
+      if (!seen[k2] && !TERRAIN[tiles[k2]].blocks) tiles[k2] = 'rock';
+    });
+    return tiles;
+  }
+
+  function blocks(B, q, r) {
+    var t = B.tiles[key(q, r)];
+    return !t || !!(t && TERRAIN[t].blocks);
+  }
+  function passableFor(B, u, q, r) {
+    /* le spectral traverse rochers et arbres (pas les unités, pas le vide) */
+    if (!B.tiles[key(q, r)]) return false;
+    if (u && u.phase && TERRAIN[B.tiles[key(q, r)]].blocks) return false;
+    return !blocks(B, q, r);
+  }
+  function unitAt(B, q, r) {
+    for (var i = 0; i < B.units.length; i++) {
+      var u = B.units[i];
+      if (u.alive && u.xq === q && u.xr === r) return u;
+    }
+    return null;
+  }
+
+  /* ── Déplacements ── */
+  function reachable(B, u) {
+    var dist = {}, prev = {}, start = key(u.xq, u.xr);
+    dist[start] = 0;
+    var queue = [[u.xq, u.xr]];
+    var mpMax = u.mpMax - (u.fatigue >= 5 ? 1 : 0);
+    while (queue.length) {
+      var c = queue.shift(), d0 = dist[key(c[0], c[1])];
+      if (d0 >= mpMax) continue;
+      for (var i = 0; i < 6; i++) {
+        var n = [c[0] + DIRS[i][0], c[1] + DIRS[i][1]], k2 = key(n[0], n[1]);
+        if (dist[k2] != null) continue;
+        if (!passableFor(B, u, n[0], n[1])) continue;
+        if (unitAt(B, n[0], n[1])) continue;
+        var nd = d0 + TERRAIN[B.tiles[k2]].cost;
+        if (nd <= mpMax) { dist[k2] = nd; prev[k2] = key(c[0], c[1]); queue.push(n); }
+      }
+    }
+    delete dist[start];
+    return { dist: dist, prev: prev };
+  }
+
+  /* plus court chemin complet (sans limite de pm) — pour l'IA ; le but
+     peut être occupé (on veut s'en approcher) */
+  function pathTo(B, u, destQ, destR) {
+    var start = key(u.xq, u.xr), goal = key(destQ, destR);
+    if (start === goal) return [];
+    var prev = {}, queue = [[u.xq, u.xr]];
+    prev[start] = null;
+    while (queue.length) {
+      var c = queue.shift();
+      for (var i = 0; i < 6; i++) {
+        var n = [c[0] + DIRS[i][0], c[1] + DIRS[i][1]], k2 = key(n[0], n[1]);
+        if (prev[k2] !== undefined) continue;
+        if (!passableFor(B, u, n[0], n[1])) continue;
+        if (unitAt(B, n[0], n[1]) && k2 !== goal) continue;
+        prev[k2] = key(c[0], c[1]);
+        if (k2 === goal) {
+          var path = [], cur = k2;
+          while (cur && cur !== start) {
+            var pp = cur.split(',');
+            path.unshift({ q: +pp[0], r: +pp[1] });
+            cur = prev[cur];
+          }
+          return path;
+        }
+        queue.push(n);
+      }
+    }
+    return null;
+  }
+
+  /* ── Ligne de vue : interpolation cubique ── */
+  function hasLOS(B, q1, r1, q2, r2) {
+    var N = hexDist(q1, r1, q2, r2);
+    if (N <= 1) return true;
+    var a = cube(q1, r1), b = cube(q2, r2);
+    for (var i = 1; i <= N - 1; i++) {
+      var t = i / N;
+      var c = cubeRound(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t);
+      if (blocks(B, c[0], c[1])) return false;
+    }
+    return true;
+  }
+
+  /* ── Bataille ── */
+  function log(B, txt) {
+    B.log.push(txt);
+    if (B.log.length > 80) B.log.shift();
+  }
+  function dice(B, n, d) {
+    var s = 0;
+    for (var i = 0; i < n; i++) s += 1 + Math.floor(B.rng() * d);
+    return s;
+  }
+
+  function makeBattle(cfg) {
+    var B = {
+      tiles: cfg.tiles || genMap(cfg.rng, cfg.radius || 4, cfg.terrain),
+      units: [], rng: cfg.rng, round: 1, qi: 0,
+      over: false, winner: null, log: [], radius: cfg.radius || 4, fx: []
+    };
+    (cfg.units || []).forEach(function (u, i) { B.units.push(makeUnit(u, i)); });
+    B.queue = buildQueue(B);
+    log(B, 'La bataille commence — round 1.');
+    checkOver(B);
+    return B;
+  }
+
+  function makeUnit(u, i) {
+    return {
+      id: i, side: u.side, name: u.name || 'Inconnu', cls: u.cls || '',
+      glyph: u.glyph || '?',
+      xq: u.q, xr: u.r,
+      hp: u.hp, maxhp: u.maxhp || u.hp,
+      mpMax: u.mp || 3, mp: 0, spd: u.spd || 5,
+      dice: u.dice || [1, 4], reach: u.reach || 1, ap: u.ap || 0,
+      ranged: !!u.ranged, def: u.def || 0, crit: u.crit || 5,
+      fatigue: 0, guarding: false, moved: false, attacked: false,
+      retaliated: false, phase: !!u.phase,
+      ai: u.ai || null, level: u.level || 1, xp: u.xp || 0, gold: u.gold || 0,
+      color: u.color || null, hero: !!u.hero, boss: !!u.boss, uid: u.uid, kind: u.kind,
+      ability: u.ability ? { k: u.ability.k, uses: u.ability.uses || 1 } : null,
+      routAt: u.routAt || 0, routed: false, rallied: 0,
+      alive: true
+    };
+  }
+
+  function buildQueue(B) {
+    /* moral : une unité démoralisée peut tourner le dos en début de manche */
+    if (B.round > 1 && !B.over) {
+      B.units.forEach(function (u) {
+        if (u.alive && u.routAt && u.hp / u.maxhp < u.routAt && B.rng() < .3) {
+          u.routed = true; u.alive = false;
+          log(B, u.name + ' tourne le dos et fuit le champ !');
+        }
+      });
+      checkOver(B);
+      if (B.over) return [];
+    }
+    B.units.forEach(function (u) { u.rallied = 0; });
+    var q = B.units.filter(function (u) { return u.alive; });
+    q.sort(function (a, b) {
+      var sa = a.spd - Math.floor(a.fatigue / 2), sb = b.spd - Math.floor(b.fatigue / 2);
+      if (sb !== sa) return sb - sa;
+      return a.id - b.id;
+    });
+    q.forEach(function (u) {
+      u.fatigue = Math.max(0, (u.fatigue || 0) - 1);
+      u.mp = u.mpMax - (u.fatigue >= 5 ? 1 : 0);
+      u.moved = false; u.attacked = false; u.retaliated = false; u.guarding = false;
+    });
+    return q;
+  }
+
+  function active(B) { return B.over ? null : (B.queue[B.qi] || null); }
+
+  function foes(B, u) {
+    return B.units.filter(function (f) { return f.alive && f.side !== u.side; });
+  }
+
+  function effDef(B, target, attacker) {
+    var d = target.def;
+    var t = B.tiles[key(target.xq, target.xr)];
+    if (t === 'bush' && attacker.ranged) d += TERRAIN.bush.cover;
+    if (target.guarding) d += 2;
+    if (target.rallied) d += 2;
+    return d;
+  }
+
+  function checkOver(B) {
+    var a = 0, b = 0;
+    B.units.forEach(function (u) { if (u.alive) { if (u.side === 'A') a++; else b++; } });
+    if (a === 0 || b === 0) {
+      B.over = true;
+      B.winner = a > 0 ? 'A' : 'B';
+      log(B, a > 0 ? 'Le terrain est aux mercenaires.' : 'La confrérie est anéantie…');
+    }
+  }
+
+  /* Le mort quitte la file d'initiative s'il n'a pas encore agi. */
+  function removeDead(B, dead) {
+    var i = B.queue.indexOf(dead);
+    if (i < 0) return;
+    if (i < B.qi) B.qi--;
+    B.queue.splice(i, 1);
+    /* le mort était le dernier acteur du round : la manche tourne,
+       sinon qi sort de la file et active() reste null pour toujours */
+    if (B.qi >= B.queue.length && B.queue.length > 0) {
+      B.round++;
+      B.queue = buildQueue(B);
+      B.qi = 0;
+      log(B, '— Round ' + B.round + ' —');
+    }
+  }
+
+  function act(B, a) {
+    a = a || {};
+    if (B.over) return { ok: false, why: 'bataille terminée' };
+    var u = active(B);
+    if (!u) return { ok: false, why: 'aucun acteur' };
+    if (a.t !== 'ai' && a.actor && a.actor !== u.id) return { ok: false, why: 'pas son tour' };
+    switch (a.t) {
+      case 'move': return actMove(B, u, a.q, a.r);
+      case 'attack': return actAttack(B, u, a.id);
+      case 'guard': return actGuard(B, u);
+      case 'ability': return doAbility(B, u, a.targetId);
+      case 'end': nextTurn(B); return { ok: true, ended: true };
+      default: return { ok: false, why: 'action inconnue' };
+    }
+  }
+
+  function actMove(B, u, q, r) {
+    if (u.moved) return { ok: false, why: 'a déjà bougé' };
+    if (u.attacked) return { ok: false, why: 'a déjà attaqué' };
+    var reach = reachable(B, u), k2 = key(q, r);
+    if (reach.dist[k2] == null) return { ok: false, why: 'hors de portée' };
+    if (unitAt(B, q, r)) return { ok: false, why: 'case occupée' };
+    u.xq = q; u.xr = r;
+    u.fatigue = Math.min(10, u.fatigue + 1);
+    u.moved = true;
+    log(B, u.name + ' se replace (' + TERRAIN[B.tiles[k2]].name + ').');
+    if (u.attacked) nextTurn(B);
+    return { ok: true };
+  }
+
+  function actAttack(B, u, targetId) {
+    if (u.attacked) return { ok: false, why: 'a déjà attaqué' };
+    var target = B.units.filter(function (x) { return x.id === targetId; })[0];
+    if (!target || !target.alive) return { ok: false, why: 'cible invalide' };
+    if (target.side === u.side) return { ok: false, why: 'allié !' };
+    var d = hexDist(u.xq, u.xr, target.xq, target.xr);
+    if (d > u.reach) return { ok: false, why: 'trop loin' };
+    if (u.ranged && !hasLOS(B, u.xq, u.xr, target.xq, target.xr))
+      return { ok: false, why: 'pas de ligne de vue' };
+
+    u.attacked = true;
+    u.fatigue = Math.min(10, u.fatigue + 2);
+    var dmg = dice(B, u.dice[0], u.dice[1]) - (u.fatigue >= 5 ? 1 : 0);
+    var eDef = effDef(B, target, u);
+    dmg -= Math.max(0, eDef - u.ap);
+    if (dmg < 1) dmg = 1;
+    var crit = B.rng() * 100 < u.crit;
+    if (crit) dmg = Math.ceil(dmg * 1.5);
+    target.hp -= dmg;
+    log(B, u.name + ' frappe ' + target.name + ' (−' + dmg + (crit ? ', COUP CRITIQUE !' : '') + ').');
+    B.fx.push({ x: target.xq, y: target.xr, t: 'hit', n: dmg });
+
+    if (target.hp <= 0) {
+      target.alive = false;
+      target.hp = 0;
+      u.kills = (u.kills || 0) + 1;
+      log(B, '☠ ' + target.name + ' tombe.');
+      removeDead(B, target);
+      checkOver(B);
+      if (B.over) return { ok: true, killed: target.id, over: true };
+      if (u.moved) { nextTurn(B); return { ok: true, killed: target.id }; }
+      return { ok: true, killed: target.id };
+    }
+
+    /* riposte : corps à corps adjacent, une fois par round */
+    if (d === 1 && !target.retaliated && !target.ranged) {
+      target.retaliated = true;
+      var rd = Math.ceil((dice(B, target.dice[0], target.dice[1]) - Math.max(0, effDef(B, u, target) - target.ap)) / 2);
+      if (rd < 1) rd = 1;
+      u.hp -= rd;
+      log(B, target.name + ' riposte (−' + rd + ').');
+      B.fx.push({ x: u.xq, y: u.xr, t: 'hit', n: rd });
+      if (u.hp <= 0) {
+        u.alive = false; u.hp = 0;
+        target.kills = (target.kills || 0) + 1;
+        log(B, '☠ ' + u.name + ' meurt sous la riposte !');
+        removeDead(B, u);
+        checkOver(B);
+        return { ok: true, killed: target.id, attackerDead: u.id };
+      }
+    }
+    if (u.moved) nextTurn(B);
+    return { ok: true };
+  }
+
+  function actGuard(B, u) {
+    u.guarding = true;
+    u.moved = true; u.attacked = true;
+    log(B, u.name + ' se met en garde (+2 défense au round suivant).');
+    nextTurn(B);
+    return { ok: true };
+  }
+
+  /* Capacités héroïques : strike (×2 dégâts, adjacent, pas de riposte),
+     pierce (ignore l'armure), rally (+2 déf aux alliés proches, 1 manche),
+     heal (soigne les alliés adjacents), nova (éclat de zone adjacent).
+     strike/pierce consomment l'attaque du tour ; les autres sont gratuites
+     (mais limitées à 1 usage par bataille). */
+  function doAbility(B, u, targetId) {
+    var ab = u.ability;
+    if (!ab || !ab.uses) return { ok: false, why: 'capacité déjà utilisée' };
+    var k = ab.k;
+    if (k === 'strike' || k === 'pierce') {
+      var target = B.units.filter(function (x) { return x.id === targetId; })[0];
+      if (!target || !target.alive || target.side === u.side) return { ok: false, why: 'cible invalide' };
+      if (hexDist(u.xq, u.xr, target.xq, target.xr) > 1) return { ok: false, why: 'cible non adjacente' };
+      u.attacked = true;
+      u.fatigue = Math.min(10, u.fatigue + 2);
+      ab.uses--;
+      var base = dice(B, u.dice[0], u.dice[1]) * (k === 'strike' ? 2 : 1);
+      var eDef = k === 'strike' ? Math.max(0, effDef(B, target, u) - u.ap) : 0;
+      var dmg = base - eDef;
+      if (dmg < 2) dmg = 2;
+      var crit = B.rng() * 100 < u.crit;
+      if (crit) dmg = Math.ceil(dmg * 1.5);
+      target.hp -= dmg;
+      log(B, u.name + (k === 'strike' ? ' déchaîne sa force sur ' : ' transperce la garde de ') + target.name + ' (−' + dmg + (crit ? ', CRITIQUE !' : '') + ').');
+      B.fx.push({ x: target.xq, y: target.xr, t: 'hit', n: dmg });
+      if (target.hp <= 0) {
+        target.alive = false; target.hp = 0;
+        u.kills = (u.kills || 0) + 1;
+        log(B, '☠ ' + target.name + ' tombe.');
+        removeDead(B, target);
+        checkOver(B);
+        if (B.over) return { ok: true, killed: target.id, over: true };
+        if (u.moved) { nextTurn(B); return { ok: true, killed: target.id }; }
+        return { ok: true, killed: target.id };
+      }
+      if (u.moved) nextTurn(B);
+      return { ok: true };
+    }
+    if (k === 'nova') {
+      ab.uses--;
+      var hits = 0;
+      foes(B, u).forEach(function (f) {
+        if (hexDist(u.xq, u.xr, f.xq, f.xr) !== 1) return;
+        var d2 = (1 + Math.floor(B.rng() * 6) + 1) - Math.max(0, effDef(B, f, u) - 2);
+        if (d2 < 1) d2 = 1;
+        f.hp -= d2;
+        hits++;
+        B.fx.push({ x: f.xq, y: f.xr, t: 'hit', n: d2 });
+        log(B, 'Une nova de brumes éclate sur ' + f.name + ' (−' + d2 + ').');
+        if (f.hp <= 0) {
+          f.alive = false; f.hp = 0;
+          u.kills = (u.kills || 0) + 1;
+          log(B, '☠ ' + f.name + ' s’effondre.');
+          removeDead(B, f);
+        }
+      });
+      if (!hits) { ab.uses++; return { ok: false, why: 'aucun ennemi adjacent' }; }
+      checkOver(B);
+      return { ok: true, hits: hits };
+    }
+    if (k === 'heal') {
+      ab.uses--;
+      var healed = 0;
+      B.units.forEach(function (f) {
+        if (!f.alive || f.side !== u.side) return;
+        if (hexDist(u.xq, u.xr, f.xq, f.xr) > 1) return;
+        var up = Math.min(6, f.maxhp - f.hp);
+        if (up <= 0) return;
+        f.hp += up; healed++;
+        B.fx.push({ x: f.xq, y: f.xr, t: 'heal', n: up });
+      });
+      if (!healed) { ab.uses++; return { ok: false, why: 'personne à soigner à côté' }; }
+      log(B, u.name + ' exaube l’office de soin (+' + healed + ' alliés).');
+      return { ok: true, healed: healed };
+    }
+    if (k === 'rally') {
+      ab.uses--;
+      var cnt = 0;
+      B.units.forEach(function (f) {
+        if (!f.alive || f.side !== u.side) return;
+        if (hexDist(u.xq, u.xr, f.xq, f.xr) > 2) return;
+        f.rallied = 1; cnt++;
+      });
+      log(B, u.name + ' lève l’étendard : ' + cnt + ' unités ralliées (+2 défense).');
+      return { ok: true, count: cnt };
+    }
+    return { ok: false, why: 'capacité inconnue' };
+  }
+
+  function nextTurn(B) {
+    if (B.over) return;
+    B.qi++;
+    if (B.qi >= B.queue.length) {
+      B.round++;
+      B.queue = buildQueue(B);
+      B.qi = 0;
+      log(B, '— Round ' + B.round + ' —');
+    }
+  }
+
+  /* ── IA générique (le « cerveau » réutilisable par LOGRES) ──
+     kinds : melee (charge le plus proche), ranged (kite à portée),
+     beast (charge le plus affaibli), phantom (comme melee + traverse
+     rochers/arbres). Toutes les actions passent par act(). */
+  function aiAct(B) {
+    if (B.over) return null;
+    var u = active(B);
+    if (!u || !u.ai) { if (u) act(B, { t: 'guard' }); return null; }
+
+    function bestFoe() {
+      var list = foes(B, u);
+      var score = function (f) {
+        var d = hexDist(u.xq, u.xr, f.xq, f.xr);
+        return d + (u.ai === 'beast' ? f.hp / f.maxhp * 3 : 0);
+      };
+      list.sort(function (x, y) { return score(x) - score(y); });
+      return list[0];
+    }
+    function stepToward(f) {
+      /* BFS de distance depuis la cible (à travers obstacles contournables),
+         puis case atteignable minimisant cette distance de route :
+         gère les obstacles concaves (contournement) et le bourbier. */
+      var rg = reachable(B, u);
+      var start = key(u.xq, u.xr);
+      var dmap = {};
+      dmap[key(f.xq, f.xr)] = 0;
+      var q2 = [[f.xq, f.xr]];
+      while (q2.length) {
+        var c = q2.shift(), d0 = dmap[key(c[0], c[1])];
+        for (var i = 0; i < 6; i++) {
+          var n = [c[0] + DIRS[i][0], c[1] + DIRS[i][1]], k2 = key(n[0], n[1]);
+          if (dmap[k2] != null) continue;
+          if (!passableFor(B, u, n[0], n[1])) continue;
+          if (unitAt(B, n[0], n[1]) && k2 !== start) continue;
+          dmap[k2] = d0 + 1;
+          q2.push(n);
+        }
+      }
+      var base = dmap[start];
+      if (base == null) return false;
+      var best = null, bd = base;
+      Object.keys(rg.dist).forEach(function (k2) {
+        if (dmap[k2] != null && dmap[k2] < bd) { bd = dmap[k2]; best = k2; }
+      });
+      if (!best) return false;
+      var pp = best.split(',');
+      var r = act(B, { t: 'move', q: +pp[0], r: +pp[1] });
+      return r.ok;
+    }
+    function shoot(f) {
+      return act(B, { t: 'attack', id: f.id }).ok;
+    }
+
+    var target = bestFoe();
+    if (!target) return null;
+
+    if (u.ranged) {
+      var d = hexDist(u.xq, u.xr, target.xq, target.xr);
+      var adjacent = foes(B, u).some(function (f) { return hexDist(u.xq, u.xr, f.xq, f.xr) === 1; });
+      if (adjacent) {
+        /* fuir : case atteignable maximisant la distance minimale aux ennemis */
+        var reach = reachable(B, u), best = null, bd = -1;
+        Object.keys(reach.dist).forEach(function (k2) {
+          var pp = k2.split(','), q = +pp[0], r = +pp[1];
+          var md = 99;
+          foes(B, u).forEach(function (f) { md = Math.min(md, hexDist(q, r, f.xq, f.xr)); });
+          if (md > bd) { bd = md; best = { q: q, r: r }; }
+        });
+        if (best && bd >= 2) act(B, { t: 'move', q: best.q, r: best.r });
+        d = hexDist(u.xq, u.xr, target.xq, target.xr);
+      }
+      if (d <= u.reach && hasLOS(B, u.xq, u.xr, target.xq, target.xr)) shoot(target);
+      else { stepToward(target); d = hexDist(u.xq, u.xr, target.xq, target.xr); if (d <= u.reach && hasLOS(B, u.xq, u.xr, target.xq, target.xr)) shoot(target); }
+    }
+
+    /* corps à corps */
+    else {
+      var d2 = hexDist(u.xq, u.xr, target.xq, target.xr);
+      if (d2 > u.reach) stepToward(target);
+      d2 = hexDist(u.xq, u.xr, target.xq, target.xr);
+      if (d2 <= u.reach) act(B, { t: 'attack', id: target.id });
+    }
+
+    /* garantie de terminaison : l'unité IA finit TOUJOURS son activation */
+    if (!B.over && active(B) === u) act(B, { t: 'guard' });
+    return true;
+  }
+
+  return {
+    DIRS: DIRS, key: key, hexDist: hexDist, neighbors: neighbors,
+    TERRAIN: TERRAIN, genMap: genMap, blocks: blocks, unitAt: unitAt,
+    reachable: reachable, pathTo: pathTo, hasLOS: hasLOS,
+    makeBattle: makeBattle, act: act, active: active, foes: foes,
+    effDef: effDef, aiAct: aiAct, checkOver: checkOver
+  };
+});
+</script>
+<script>/* ═══════════════════════════════════════════════════════════════
+   LA CONFRÉRIE DU GRIS — couche campagne (v17)
+   Moteur tactique : kernel/combat-tb.js · objets/sauvegardes : kernel/rpg-core.js
+   UMD : Node (module.exports) · navigateur (window.GRIS)
+   Boucle : contrat → bataille tactique → butin/salaires/recrues → contrat suivant.
+   ═══════════════════════════════════════════════════════════════ */
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports)
+    module.exports = factory(require('./kernel/rpg-core.js'), require('./kernel/combat-tb.js'));
+  else root.GRIS = factory(root.RPGCORE, root.COMBATTB);
+})(typeof self !== 'undefined' ? self : this, function (K, T) {
+  'use strict';
+
+  var LS = (function () { try { return (typeof localStorage !== 'undefined') ? localStorage : null; } catch (e) { return null; } })();
+
+  /* ── Noms de mercenaires ── */
+  var FIRST = ['Berthaud', 'Isar', 'Colart', 'Mahaut', 'Renaud', 'Sybille', 'Gauthier', 'Perceval', 'Alix', 'Hugues', 'Marote', 'Tiçet', 'Ombeline', 'Arnaud', 'Jaquet', 'Ysengrin'];
+  var LAST = ['le Roux', 'Bricembrac', 'de Montfaucon', 'Croquevilain', 'la Grise', 'Sans-Chagrin', 'Vieille-Écorce', 'Mauclerc', 'le Manchot', 'Ronge-Maille', 'd\'Auberoche', 'Trouve-Faille'];
+
+  /* ── Classes de mercenaires ── */
+  var CLASSES = {
+    epéiste:     { n: 'Épéiste',     glyph: 'E', hp: 28, mp: 3, spd: 6, weapon: 'épée courte',  pay: 40 },
+    arbalétrier: { n: 'Arbalétrier', glyph: 'A', hp: 22, mp: 3, spd: 5, weapon: 'arbalète',     pay: 55 },
+    brute:       { n: 'Brute',       glyph: 'B', hp: 36, mp: 3, spd: 4, weapon: 'hache de guerre', pay: 60 },
+    vétéran:     { n: 'Vétéran',     glyph: 'V', hp: 30, mp: 4, spd: 6, weapon: 'lance',        pay: 70 }
+  };
+  var CLS_KEYS = ['epéiste', 'arbalétrier', 'brute', 'vétéran'];
+
+  /* ── Armes à distance de la Confrérie (complètent le KERNEL) ── */
+  var RANGED_BASES = {
+    'arbalète':  { dice: [1, 7], crit: 5, val: 45, reach: 5 },
+    'arc long':  { dice: [1, 6], crit: 6, val: 35, reach: 6 },
+    'arc court': { dice: [1, 5], crit: 8, val: 25, reach: 4 }
+  };
+  function rangedWeapon(base) {
+    var b = RANGED_BASES[base];
+    return { kind: 'weapon', base: base, dice: b.dice.slice(), crit: b.crit, val: b.val, ranged: 1, reach: b.reach, affixes: [] };
+  }
+
+  /* Attributs tactiques déduits du nom d'arme (KERNEL + Confrérie) */
+  function weaponTags(w) {
+    if (!w) return { dice: [1, 2], reach: 1, ranged: false, ap: 0, crit: 0 };
+    if (w.ranged) return { dice: w.dice.slice(), reach: w.reach || 4, ranged: true, ap: 1, crit: w.crit || 5 };
+    var t = { dice: w.dice.slice(), reach: 1, ranged: false, ap: 0, crit: w.crit || 5 };
+    if (w.base.indexOf('lance') === 0) { t.reach = 2; t.ap = 1; }
+    if (w.base.indexOf('hache') >= 0) t.ap = 2;
+    if (w.base.indexOf('marteau') >= 0) t.ap = 1;
+    return t;
+  }
+
+  /* ── Mercenaires ── */
+  function makeName(rng) { return K.pick(rng, FIRST) + ' ' + K.pick(rng, LAST); }
+  function makeMerc(rng, clsKey, level) {
+    level = level || 1;
+    var c = CLASSES[clsKey];
+    var w = c.weapon.indexOf('arc') === 0 || c.weapon === 'arbalète' ? rangedWeapon(c.weapon) : K.rollItem(rng, 1, { kind: 'weapon', force: c.weapon, boost: false });
+    var inv = K.makeInventory(8);
+    K.invAdd(inv, w);
+    K.invEquip(inv, w);
+    var ar = K.rollItem(rng, 1, { kind: 'armor', boost: false });
+    K.invAdd(inv, ar);
+    K.invEquip(inv, ar);
+    return { id: ++_mid, cls: clsKey, name: makeName(rng), level: level, xp: 0, hp: 0, wounds: 0, inv: inv, pay: c.pay };
+  }
+  var _mid = 0;
+  function mercMaxHp(merc) {
+    var c = CLASSES[merc.cls];
+    var es = K.equipStats(merc.inv);
+    return Math.max(6, c.hp + 3 * (merc.level - 1) + (es.hp || 0) - 4 * merc.wounds);
+  }
+  function battleStats(merc) {
+    var c = CLASSES[merc.cls];
+    var es = K.equipStats(merc.inv);
+    var w = merc.inv.eq.weapon;
+    var tg = weaponTags(w);
+    return {
+      hp: mercMaxHp(merc),
+      mp: c.mp, spd: c.spd,
+      dice: tg.dice, reach: tg.reach, ranged: tg.ranged, ap: tg.ap,
+      def: es.def || 0, crit: 5 + (es.crit || 0)
+    };
+  }
+
+  /* ── Ennemis ── */
+  var MOB = {
+    brigand: { n: 'brigand',       glyph: 'b', hp: 11, dice: [1, 5], def: 1, mp: 3, spd: 5, reach: 1, ai: 'melee',  xp: 8,  gold: 5 },
+    tireur:  { n: 'tireur brigand',glyph: 't', hp: 12, dice: [1, 5], def: 0, mp: 3, spd: 5, reach: 4, ranged: 1, ai: 'ranged', xp: 12, gold: 8 },
+    chef:    { n: 'chef brigand',  glyph: 'C', hp: 24, dice: [1, 7], def: 2, mp: 3, spd: 6, reach: 1, ap: 1, ai: 'melee', xp: 18, gold: 18 },
+    loup:    { n: 'loup affamé',   glyph: 'l', hp: 10, dice: [1, 6], def: 0, mp: 5, spd: 8, reach: 1, ai: 'beast',  xp: 10, gold: 0 },
+    ours:    { n: 'ours des bois', glyph: 'O', hp: 34, dice: [2, 4], def: 2, mp: 4, spd: 5, reach: 1, ap: 1, ai: 'beast', xp: 20, gold: 0 },
+    mort:    { n: 'mortal',        glyph: 'm', hp: 19, dice: [1, 5], def: 3, mp: 2, spd: 3, reach: 1, ai: 'melee',  xp: 12, gold: 3 },
+    spectre: { n: 'spectre',       glyph: 's', hp: 16, dice: [1, 6], def: 1, mp: 3, spd: 5, reach: 1, phase: 1, ai: 'melee', xp: 16, gold: 4 },
+    abomination: { n: 'abomination des Mortailles', glyph: 'M', hp: 44, dice: [2, 5], def: 2, mp: 3, spd: 4, reach: 1, ap: 1, ai: 'melee', xp: 40, gold: 30, boss: 1 }
+  };
+
+  /* ── Contrats (MVP : 3) ── */
+  var CONTRACTS = [
+    {
+      key: 'brigands', nom: 'Le péage des brigands',
+      brief: 'Des déserteurs bloquent la vieille route et taxent les marchands. Leur chef, Gros-Colart, promet qu\'aucune lame ne passe. Les marchands paieront pour la route libre.',
+      comp: [['brigand', 4], ['tireur', 1], ['chef', 1]],
+      terrain: { rocks: .06, trees: .14, bush: .12, mud: .08 }, gold: 60, depth: 2
+    },
+    {
+      key: 'betes', nom: 'Les bêtes des bois',
+      brief: 'Un hiver trop long a jeté les bêtes sur les hameaux. Deux ours encore dans leur pelage d\'hiver mènent une meute qui ne craint plus l\'homme. Délogez-les avant la soudure.',
+      comp: [['loup', 3], ['ours', 2]],
+      terrain: { rocks: .06, trees: .22, bush: .16, mud: .06 }, gold: 80, depth: 4
+    },
+    {
+      key: 'mortailles', nom: 'Les Mortailles',
+      brief: 'Au fond de la vallée grise, une vieille fosse rend ce qu\'on y a jeté. Les morts remontent, lents mais patients, et quelque chose de plus grand les pousse. Bouchez la fosse — ou creusez-la davantage.',
+      comp: [['mort', 3], ['spectre', 1], ['abomination', 1]],
+      terrain: { rocks: .12, trees: .08, bush: .08, mud: .16 }, gold: 120, depth: 6
+    }
+  ];
+
+  /* ── Campagne ── */
+  function newCampaign(seed) {
+    var rng = K.makeRng(seed || ('gris-' + Date.now()));
+    var camp = {
+      _v: 1, seed: String(seed || ('gris-' + Math.floor(rng() * 1e9))),
+      gold: 130, contract: 0, roster: [], stock: [], graves: [],
+      done: false, over: false, cleared: 0
+    };
+    ['epéiste', 'arbalétrier', 'brute', 'epéiste'].forEach(function (ck) {
+      var m = makeMerc(rng, ck, 1);
+      m.hp = mercMaxHp(m);
+      camp.roster.push(m);
+    });
+    return camp;
+  }
+
+  /* colonnes de déploiement : toutes les cases franches de chaque bord,
+     triées — la garantie « jamais sur un rocher » est structurelle. */
+  function deployColumns(tiles) {
+    var left = [], right = [];
+    Object.keys(tiles).forEach(function (k2) {
+      if (T.TERRAIN[tiles[k2]].blocks) return;
+      var pp = k2.split(','), q = +pp[0], r = +pp[1];
+      if (q <= -2) left.push({ q: q, r: r });
+      if (q >= 2) right.push({ q: q, r: r });
+    });
+    left.sort(function (a, b) { return a.q - b.q || a.r - b.r; });
+    right.sort(function (a, b) { return b.q - a.q || a.r - b.r; });
+    return { left: left, right: right };
+  }
+
+  /* Démarre une bataille (session) — la sauvegarde se fait entre les batailles. */
+  function startBattle(camp, seedStr) {
+    var ct = CONTRACTS[camp.contract];
+    var rngMap = K.makeRng(camp.seed + ':map:' + camp.contract);
+    var tiles = T.genMap(rngMap, 4, ct.terrain);
+    var rng = K.makeRng(seedStr || (camp.seed + ':bat:' + camp.contract + ':' + Date.now()));
+    var units = [], mercByUnit = {};
+
+    var cols = deployColumns(tiles);
+    var la = cols.left.slice(), lb = cols.right.slice();
+    camp.roster.forEach(function (m, i) {
+      if (m.hp <= 0) return;
+      var st = battleStats(m);
+      var spot = la.shift() || { q: 0, r: 0 };
+      units.push({
+        side: 'A', q: spot.q, r: spot.r, name: m.name, cls: c_n(m.cls),
+        glyph: CLASSES[m.cls].glyph,
+        hp: Math.min(m.hp, st.hp), mp: st.mp, spd: st.spd,
+        dice: st.dice, reach: st.reach, ranged: st.ranged, ap: st.ap,
+        def: st.def, crit: st.crit
+      });
+      mercByUnit[units.length - 1] = m;
+    });
+    function c_n(k) { return CLASSES[k].n; }
+
+    var ei = 0;
+    ct.comp.forEach(function (pair) {
+      for (var j = 0; j < pair[1]; j++) {
+        var d = MOB[pair[0]];
+        var spot = lb.shift() || { q: 0, r: 0 };
+        units.push({
+          side: 'B', q: spot.q, r: spot.r, name: d.n, cls: d.n, glyph: d.glyph,
+          hp: d.hp, mp: d.mp, spd: d.spd, dice: d.dice.slice(),
+          reach: d.reach, ranged: !!d.ranged, ap: d.ap || 0, def: d.def,
+          crit: 5, phase: !!d.phase, ai: d.ai, xp: d.xp, gold: d.gold
+        });
+        ei++;
+      }
+    });
+
+    var B = T.makeBattle({ tiles: tiles, rng: rng, radius: 4, units: units });
+    return { B: B, mercByUnit: mercByUnit, contract: camp.contract };
+  }
+
+  /* Résolution après bataille : retours dans la campagne. */
+  function finishBattle(camp, ctx) {
+    var B = ctx.B;
+    var ct = CONTRACTS[camp.contract];
+    var rng = K.makeRng(camp.seed + ':res:' + camp.contract + ':' + B.round);
+    var won = B.winner === 'A';
+    var sum = { won: won, dead: [], wounded: [], levels: [], gold: 0, loot: [], fled: false };
+
+    /* PV et pertes */
+    Object.keys(ctx.mercByUnit).forEach(function (uid) {
+      var m = ctx.mercByUnit[uid], u = B.units[+uid];
+      if (!m || !u) return;
+      m.hp = Math.max(0, u.hp);
+      if (u.hp <= 0) {
+        if (rng() < 0.55 && m.wounds < 2) {
+          m.wounds++;
+          m.hp = 1;
+          sum.wounded.push(m.name);
+        } else {
+          sum.dead.push(m.name);
+          camp.graves.push(m.name + ' — contrat ' + (camp.contract + 1));
+          camp.roster = camp.roster.filter(function (x) { return x !== m; });
+        }
+      } else {
+        m.hp = Math.min(m.hp, mercMaxHp(m));
+      }
+    });
+
+    /* repos : la troupe récupère un tiers de ses PV max entre les contrats */
+    camp.roster.forEach(function (m) {
+      m.hp = Math.min(mercMaxHp(m), m.hp + Math.ceil(mercMaxHp(m) / 2));
+    });
+
+    if (won) {
+      /* XP : chaque mercenaire survivant gagne au prorata de ses kills */
+      var avgXp = 10 + camp.contract * 5;
+      var maxKills = 1;
+      B.units.forEach(function (u) { if (u.side === 'A' && u.kills) maxKills = Math.max(maxKills, u.kills); });
+      Object.keys(ctx.mercByUnit).forEach(function (uid) {
+        var m = ctx.mercByUnit[uid], u = B.units[+uid];
+        if (!m || !u || u.hp <= 0) return;
+        m.xp += (u.kills || 0) * avgXp + 4;
+        while (m.level < 9 && m.xp >= K.xpFor(m.level + 1)) {
+          m.level++;
+          m.hp = Math.min(mercMaxHp(m), m.hp + 4);
+          sum.levels.push(m.name + ' (niv. ' + m.level + ')');
+        }
+      });
+      /* Or : prime du contrat + coffres des ennemis tombés */
+      sum.gold = ct.gold;
+      B.units.forEach(function (u) {
+        if (u.side === 'B' && !u.alive) sum.gold += u.gold || 0;
+      });
+      camp.gold += sum.gold;
+      /* Butin : 1 à 2 objets */
+      var nbLoot = 1 + (rng() < 0.4 ? 1 : 0);
+      for (var i = 0; i < nbLoot; i++) {
+        if (rng() < 0.3) {
+          sum.loot.push(rangedWeapon(K.pick(rng, ['arbalète', 'arc long', 'arc court'])));
+        } else {
+          sum.loot.push(K.rollItem(rng, ct.depth, {}));
+        }
+      }
+      camp.stock = camp.stock.concat(sum.loot);
+      camp.cleared = camp.contract + 1;
+      camp.contract++;
+      if (camp.contract >= CONTRACTS.length) { camp.done = true; camp.contract = CONTRACTS.length - 1; }
+    }
+    if (camp.roster.length === 0) camp.over = true;
+    autosave(camp);
+    return sum;
+  }
+
+  /* ── Entre les batailles ── */
+  function wagesDue(camp) { return camp.roster.length * (6 + camp.contract * 4); }
+  function payWages(camp) {
+    var due = wagesDue(camp), leavers = [];
+    while (camp.gold < due && camp.roster.length > 1) {
+      var cheap = camp.roster.slice().sort(function (a, b) { return a.pay - b.pay; })[0];
+      camp.roster = camp.roster.filter(function (x) { return x !== cheap; });
+      leavers.push(cheap.name);
+      due = wagesDue(camp);
+    }
+    var paid = false;
+    if (camp.gold >= due) { camp.gold -= due; paid = true; }
+    if (camp.roster.length === 0) camp.over = true;
+    autosave(camp);
+    return { paid: paid, leavers: leavers, due: due };
+  }
+  function recruits(camp) {
+    var rng = K.makeRng(camp.seed + ':rec:' + camp.contract + ':' + camp.cleared);
+    var out = [];
+    for (var i = 0; i < 3; i++) {
+      var m = makeMerc(rng, K.pick(rng, CLS_KEYS), 1 + (camp.cleared >= 2 ? 1 : 0));
+      m.hp = mercMaxHp(m);
+      out.push({ merc: m, cost: 45 + 25 * m.level });
+    }
+    return out;
+  }
+  function buyRecruit(camp, cand) {
+    if (camp.gold < cand.cost || camp.roster.length >= 8) return false;
+    camp.gold -= cand.cost;
+    camp.roster.push(cand.merc);
+    autosave(camp);
+    return true;
+  }
+  function surgeryCost(m) { return 20 + 10 * m.wounds; }
+  function surgery(camp, m) {
+    var c = surgeryCost(m);
+    if (camp.gold < c || m.wounds <= 0) return false;
+    camp.gold -= c;
+    m.wounds = 0;
+    m.hp = Math.min(mercMaxHp(m), m.hp + 6);
+    autosave(camp);
+    return true;
+  }
+  function giveItem(camp, m, stockIdx) {
+    var it = camp.stock[stockIdx];
+    if (!it || !K.invAdd(m.inv, it)) return false;
+    camp.stock.splice(stockIdx, 1);
+    if (it.kind === 'weapon' || it.kind === 'armor' || it.kind === 'helm' || it.kind === 'shield') {
+      var es0 = K.equipStats(m.inv);
+      var score0 = (es0.def || 0) * 10 + (es0.hp || 0);
+      K.invEquip(m.inv, it);
+      var es1 = K.equipStats(m.inv);
+      if ((es1.def || 0) * 10 + (es1.hp || 0) < score0 && it.kind !== 'weapon') K.invUnequip(m.inv, it.kind);
+    }
+    autosave(camp);
+    return true;
+  }
+  function sellItem(camp, stockIdx) {
+    var it = camp.stock[stockIdx];
+    if (!it) return false;
+    camp.gold += Math.max(2, Math.round((it.val || 10) * 0.5));
+    camp.stock.splice(stockIdx, 1);
+    autosave(camp);
+    return true;
+  }
+
+  /* ── Sauvegarde ── */
+  function serialize(camp) { return camp; }
+  function autosave(camp) { if (LS) { try { LS.setItem('gris_save', K.saveGame(serialize(camp))); } catch (e) { } } }
+  function hasSave() { if (!LS) return false; try { return !!LS.getItem('gris_save'); } catch (e) { return false; } }
+  function loadSave() {
+    if (!LS) return null;
+    try {
+      var s = LS.getItem('gris_save');
+      if (!s) return null;
+      return restore(K.loadGame(s));
+    } catch (e) { return null; }
+  }
+  function restore(o) {
+    if (!o || !o.roster) return null;
+    o.roster.forEach(function (m) { m.id = m.id || (++_mid); });
+    return o;
+  }
+  function deleteSave() { if (LS) { try { LS.removeItem('gris_save'); } catch (e) { } } }
+
+  return {
+    CLASSES: CLASSES, CLS_KEYS: CLS_KEYS, MOB: MOB, CONTRACTS: CONTRACTS,
+    RANGED_BASES: RANGED_BASES, rangedWeapon: rangedWeapon, weaponTags: weaponTags,
+    makeMerc: makeMerc, mercMaxHp: mercMaxHp, battleStats: battleStats,
+    newCampaign: newCampaign, startBattle: startBattle, finishBattle: finishBattle,
+    wagesDue: wagesDue, payWages: payWages, recruits: recruits, buyRecruit: buyRecruit,
+    surgeryCost: surgeryCost, surgery: surgery, giveItem: giveItem, sellItem: sellItem,
+    serialize: serialize, restore: restore, autosave: autosave, hasSave: hasSave, loadSave: loadSave, deleteSave: deleteSave
+  };
+});
+</script>
+<script>/* ═══ LA CONFRÉRIE DU GRIS — interface : canvas hexagonal, entrées, écrans ═══ */
+(function () {
+'use strict';
+var T = window.COMBATTB, K = window.RPGCORE, E = window.GRIS;
+var $ = function (id) { return document.getElementById(id); };
+var canvas = $('grCanvas'), ctx = canvas.getContext('2d');
+
+var camp = null, ctxBat = null, busy = false, pendingEnd = null, enemyPhaseShown = false;
+var hover = null, showMoves = true, fxList = [];
+var SIZE = 30;
+
+/* ── géométrie écran (hexagones pointe en haut, coordonnées axiales) ── */
+function hexCenter(q, r) {
+  var ox = canvas.width / 2, oy = canvas.height / 2 + 6;
+  return { x: ox + SIZE * Math.sqrt(3) * (q + r / 2), y: oy + SIZE * 1.5 * r };
+}
+function pickHex(mx, my) {
+  var best = null, bd = 1e9;
+  Object.keys(ctxBat.B.tiles).forEach(function (k2) {
+    var pp = k2.split(','), c = hexCenter(+pp[0], +pp[1]);
+    var d = (mx - c.x) * (mx - c.x) + (my - c.y) * (my - c.y);
+    if (d < bd) { bd = d; best = { q: +pp[0], r: +pp[1] }; }
+  });
+  return bd < SIZE * SIZE ? best : null;
+}
+function hexPath(cx, cy, s) {
+  ctx.beginPath();
+  for (var i = 0; i < 6; i++) {
+    var a = Math.PI / 180 * (60 * i - 30);
+    var x = cx + s * Math.cos(a), y = cy + s * Math.sin(a);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+}
+
+/* ── écrans ── */
+function show(id) {
+  ['grMenu', 'grBattle', 'grBetween', 'grEndWrap'].forEach(function (s) { $(s).style.display = 'none'; });
+  if (id) $(id).style.display = 'block';
+}
+function showMenu() {
+  show('grMenu');
+  $('grContinue').style.display = E.hasSave() ? 'inline-block' : 'none';
+}
+
+function newCampaign() {
+  E.deleteSave();
+  camp = E.newCampaign(null);
+  ctxBat = null;
+  openBetween('La confrérie est fondée. Quatre lames, une bourse légère, un royaume en ruine.');
+}
+
+function continueCampaign() {
+  var o = E.loadSave();
+  if (!o) return;
+  camp = o;
+  ctxBat = null;
+  openBetween('La troupe se rallie. Le contrat attend.');
+}
+
+/* ── bataille ── */
+function startBattle() {
+  ctxBat = E.startBattle(camp);
+  show('grBattle');
+  $('grLog').innerHTML = '';
+  fxList = [];
+  resize();
+  banner('CONTRAT ' + (camp.contract + 1) + ' — ' + E.CONTRACTS[camp.contract].nom.toUpperCase());
+  log('⚔ ' + E.CONTRACTS[camp.contract].brief);
+  updateHud();
+}
+function banner(txt) {
+  var b = $('grBanner');
+  b.textContent = txt;
+  b.style.display = 'block';
+  b.style.opacity = '1';
+  setTimeout(function () { b.style.opacity = '0'; }, 1800);
+}
+function log(txt) {
+  var el = $('grLog');
+  var d = document.createElement('div');
+  d.textContent = txt;
+  el.appendChild(d);
+  while (el.children.length > 6) el.removeChild(el.firstChild);
+  el.scrollTop = el.scrollHeight;
+}
+
+function uinfo(u) {
+  return u.name + ' — PV ' + u.hp + '/' + u.maxhp + ' · dégâts ' + u.dice[0] + 'd' + u.dice[1] +
+    (u.ranged ? ' · portée ' + u.reach : '') + (u.ap ? ' · perce armure ' + u.ap : '') +
+    ' · défense ' + u.def + ' · vitesse ' + u.spd + (u.phase ? ' · spectral' : '');
+}
+
+function updateHud() {
+  var B = ctxBat.B, u = T.active(B);
+  $('grRound').textContent = B.round;
+  $('grGold').textContent = camp.gold;
+  /* file d'initiative */
+  var strip = '';
+  B.queue.forEach(function (x, i) {
+    var me = u && x.id === u.id;
+    strip += '<span class="gr-chip' + (me ? ' me' : (x.side === 'B' ? ' foe' : '')) + '">' + x.glyph + '</span>';
+  });
+  $('grQueue').innerHTML = strip;
+  if (u) {
+    $('grActive').textContent = (u.side === 'A' ? '▶ ' : '⏳ ') + u.name + (u.side === 'B' ? ' (ennemi)' : '');
+    $('grActiveInfo').textContent = uinfo(u);
+    $('grGuardBtn').disabled = u.side !== 'A';
+    $('grEndBtn').disabled = u.side !== 'A';
+  }
+  showMoves = true;
+}
+
+/* ── rendu ── */
+function resize() {
+  var wrap = $('grStage');
+  var w = wrap.clientWidth;
+  var h = Math.max(400, Math.min(w * 0.72, window.innerHeight * 0.62));
+  canvas.width = w; canvas.height = h;
+  SIZE = Math.max(18, Math.min(34, Math.floor(w / 24)));
+}
+window.addEventListener('resize', function () { if (ctxBat) resize(); });
+
+function draw() {
+  requestAnimationFrame(draw);
+  if (!ctxBat) { return; }
+  var B = ctxBat.B;
+  ctx.fillStyle = '#0b0d11';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  var u = T.active(B);
+  var moves = (showMoves && u && u.side === 'A' && !u.moved && !u.attacked) ? T.reachable(B, u).dist : {};
+  var targets = {};
+  if (u && u.side === 'A' && !u.attacked) {
+    T.foes(B, u).forEach(function (f) {
+      var d = T.hexDist(u.xq, u.xr, f.xq, f.xr);
+      if (d <= u.reach && (!u.ranged || T.hasLOS(B, u.xq, u.xr, f.xq, f.xr))) targets[f.id] = true;
+    });
+  }
+  var TER_FILL = { plain: '#262c35', mud: '#383023', bush: '#2b3a2c', rock: '#3f4750', tree: '#334136' };
+  Object.keys(B.tiles).forEach(function (k2) {
+    var pp = k2.split(','), q = +pp[0], r = +pp[1];
+    var t2 = B.tiles[k2], c = hexCenter(q, r);
+    hexPath(c.x, c.y, SIZE - 1.5);
+    ctx.fillStyle = TER_FILL[t2] || '#262c35';
+    ctx.fill();
+    ctx.strokeStyle = '#141920';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    if (t2 === 'tree') { ctx.fillStyle = '#51705a'; ctx.font = 'bold ' + Math.floor(SIZE * 0.7) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('♠', c.x, c.y); }
+    if (t2 === 'bush') { ctx.fillStyle = '#5d7a4e'; ctx.font = Math.floor(SIZE * 0.5) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('❀', c.x, c.y + 1); }
+    if (moves[k2] != null) {
+      hexPath(c.x, c.y, SIZE - 3);
+      ctx.fillStyle = 'rgba(74,216,192,.16)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(74,216,192,.5)';
+      ctx.stroke();
+    }
+  });
+  /* unités */
+  B.units.forEach(function (x) {
+    if (!x.alive) return;
+    var c = hexCenter(x.xq, x.xr);
+    var isA = x.side === 'A';
+    if (u && x.id === u.id) {
+      hexPath(c.x, c.y, SIZE - 2);
+      ctx.strokeStyle = isA ? '#4ad8c0' : '#e05555';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+    }
+    if (targets[x.id]) {
+      hexPath(c.x, c.y, SIZE - 3);
+      ctx.strokeStyle = '#ff7d5c';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    ctx.fillStyle = isA ? '#4ad8c0' : (x.ai === 'beast' ? '#d8a04a' : '#e05555');
+    ctx.font = 'bold ' + Math.floor(SIZE * 0.72) + 'px ui-monospace, monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(x.glyph, c.x, c.y - 3);
+    /* barre PV */
+    var w2 = SIZE * 1.3;
+    ctx.fillStyle = '#141920';
+    ctx.fillRect(c.x - w2 / 2, c.y + SIZE * 0.42, w2, 4);
+    ctx.fillStyle = x.hp / x.maxhp > 0.5 ? '#5cbf72' : (x.hp / x.maxhp > 0.25 ? '#d8a04a' : '#e05555');
+    ctx.fillRect(c.x - w2 / 2, c.y + SIZE * 0.42, w2 * Math.max(0, x.hp / x.maxhp), 4);
+    if (x.guarding) { ctx.fillStyle = '#8fd3e8'; ctx.font = 'bold ' + Math.floor(SIZE * 0.4) + 'px sans-serif'; ctx.fillText('🛡', c.x + SIZE * 0.55, c.y - SIZE * 0.45); }
+  });
+  /* effets flottants */
+  fxList = fxList.filter(function (f) { return f.t < 1; });
+  fxList.forEach(function (f) {
+    f.t += 0.03;
+    var c = hexCenter(f.q, f.r);
+    ctx.globalAlpha = 1 - f.t;
+    ctx.fillStyle = '#ff9d8a';
+    ctx.font = 'bold ' + Math.floor(SIZE * 0.55) + 'px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('−' + f.n, c.x, c.y - SIZE * (0.7 + f.t));
+    ctx.globalAlpha = 1;
+  });
+  /* survol */
+  if (hover) {
+    var hc = hexCenter(hover.q, hover.r);
+    hexPath(hc.x, hc.y, SIZE - 2);
+    ctx.strokeStyle = 'rgba(255,255,255,.35)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+}
+requestAnimationFrame(draw);
+
+/* injecte les dégâts du log en effets visuels */
+function harvestFx() {
+  var B = ctxBat.B;
+  while (B.fx.length) {
+    var f = B.fx.shift();
+    fxList.push({ q: f.x, r: f.y, n: f.n, t: 0 });
+  }
+}
+
+/* ── fin de bataille → résumé → écran entre-deux ── */
+function checkEnd() {
+  harvestFx();
+  var B = ctxBat.B;
+  if (!B.over) { updateHud(); return false; }
+  var sum = E.finishBattle(camp, ctxBat);
+  var el = $('grSum');
+  var html = sum.won ? '<h3>✅ Contrat accompli</h3>' : '<h3>❌ La confrérie a dû battre en retraite</h3>';
+  if (sum.dead.length) html += '<p>☠ Tombés sous les armes : <b>' + sum.dead.join(', ') + '</b></p>';
+  if (sum.wounded.length) html += '<p>🩹 Blessés (−4 PV max) : ' + sum.wounded.join(', ') + '</p>';
+  if (sum.levels.length) html += '<p>⭐ Niveaux : ' + sum.levels.join(', ') + '</p>';
+  if (sum.won) html += '<p>💰 Prime et coffres : +' + sum.gold + ' or</p>';
+  if (sum.loot.length) html += '<p>🎒 Butin : ' + sum.loot.map(function (it) { return K.itemFullName(it); }).join(' · ') + '</p>';
+  el.innerHTML = html;
+  $('grEndBox').style.display = 'none';
+  $('grSumBox').style.display = 'block';
+  $('grSumNext').onclick = null;
+  $('grSumNext').textContent = camp.done ? 'Voir le dénouement' : 'Retour au camp';
+  show('grEndWrap');
+  return true;
+}
+
+$('grSumNext').addEventListener('click', function () {
+  if (camp.done || camp.over) { showEnd(); return; }
+  openBetween('Le contrat suivant est sur la table.');
+});
+
+/* ── écran entre-deux (camp) ── */
+function openBetween(note) {
+  show('grBetween');
+  $('grBetweenNote').textContent = note || '';
+  var ct = E.CONTRACTS[camp.contract];
+  $('grContractName').textContent = 'Contrat ' + (camp.contract + 1) + ' — ' + ct.nom;
+  $('grContractBrief').textContent = ct.brief;
+  $('grCampGold').textContent = camp.gold;
+  $('grWages').textContent = E.wagesDue(camp);
+  /* troupe */
+  var html = '';
+  camp.roster.forEach(function (m, i) {
+    var c = E.CLASSES[m.cls], st = E.battleStats(m), w = m.inv.eq.weapon, ar = m.inv.eq.armor;
+    html += '<div class="gr-merc"><b>' + m.name + '</b> <small>' + c.n + ' · niv. ' + m.level + '</small>' +
+      '<div class="gr-hpbar"><div style="width:' + Math.max(3, 100 * m.hp / E.mercMaxHp(m)) + '%"></div></div>' +
+      '<small>' + m.hp + '/' + E.mercMaxHp(m) + ' PV · ' + st.dice[0] + 'd' + st.dice[1] +
+      (st.ranged ? ' portée ' + st.reach : '') + ' · déf ' + st.def + (m.wounds ? ' · 🩹 ' + m.wounds : '') + '</small>' +
+      '<small class="gr-eq">' + (w ? w.name || w.base : '—') + ' · ' + (ar ? ar.name || ar.base : '—') + '</small>' +
+      (m.wounds ? '<button class="gr-btn sm" data-surg="' + i + '">🩹 Chirurgien (' + E.surgeryCost(m) + ' or)</button>' : '') +
+      '</div>';
+  });
+  $('grRoster').innerHTML = html || '<p>Toute la confrérie dort au cimetière.</p>';
+  /* butin */
+  var st2 = '';
+  camp.stock.forEach(function (it, i) {
+    var opts = camp.roster.map(function (m, j) { return '<option value="' + j + '">' + m.name.split(' ')[0] + '</option>'; }).join('');
+    st2 += '<div class="gr-item"><span>' + K.itemFullName(it) + '</span>' +
+      '<span><select data-gsel="' + i + '">' + opts + '</select>' +
+      '<button class="gr-btn sm" data-give="' + i + '">Donner</button>' +
+      '<button class="gr-btn sm ghost" data-sell="' + i + '">Vendre (+' + Math.max(2, Math.round((it.val || 10) * 0.5)) + ' or)</button></span></div>';
+  });
+  $('grStock').innerHTML = st2 || '<p class="gr-dim">Sacs vides — le butin arrive avec les victoires.</p>';
+  /* recrues */
+  var rec = E.recruits(camp);
+  var rh = '';
+  rec.forEach(function (cd, i) {
+    var c = E.CLASSES[cd.merc.cls];
+    rh += '<div class="gr-item"><span><b>' + cd.merc.name + '</b> <small>' + c.n + ' niv. ' + cd.merc.level + '</small></span>' +
+      '<button class="gr-btn sm" data-hire="' + i + '"' + (camp.gold < cd.cost || camp.roster.length >= 8 ? ' disabled' : '') + '>Engager (' + cd.cost + ' or)</button></div>';
+  });
+  $('grRecruits').innerHTML = rh;
+  $('grSignBtn').disabled = false;
+}
+document.addEventListener('click', function (e) {
+  var b;
+  if ((b = e.target.closest('[data-surg]'))) { E.surgery(camp, camp.roster[+b.dataset.surg]); openBetween('Le chirurgien a travaillé.'); }
+  else if ((b = e.target.closest('[data-give]'))) {
+    var sel = document.querySelector('[data-gsel="' + b.dataset.give + '"]');
+    if (sel && E.giveItem(camp, camp.roster[+sel.value], +b.dataset.give)) openBetween('Objet remis.');
+  }
+  else if ((b = e.target.closest('[data-sell]'))) { E.sellItem(camp, +b.dataset.sell); openBetween('Objet vendu.'); }
+  else if ((b = e.target.closest('[data-hire]'))) {
+    var rec = E.recruits(camp);
+    if (E.buyRecruit(camp, rec[+b.dataset.hire])) openBetween('Un nouveau bras rejoint la confrérie.');
+  }
+});
+$('grSignBtn').addEventListener('click', function () {
+  var pay = E.payWages(camp);
+  var note = pay.paid ? 'Salaires versés (−' + pay.due + ' or).' : 'Impayés ! ' + pay.leavers.join(', ') + ' quittent la confrérie.';
+  if (camp.over) { showEnd(); return; }
+  startBattle();
+  log(note);
+});
+
+/* ── fin de campagne ── */
+function showEnd() {
+  var best = 0;
+  try {
+    best = parseInt(localStorage.getItem('gris_best') || '0', 10) || 0;
+    if (camp.cleared > best) { localStorage.setItem('gris_best', String(camp.cleared)); best = camp.cleared; }
+  } catch (e2) { }
+  E.deleteSave();
+  $('grEndTitle').textContent = camp.done ? '👑 LA ROUTE EST LIBRE' : '☠ LA CONFRÉRIE SE DISSOUT';
+  $('grEndText').textContent = camp.done
+    ? 'Trois contrats, trois victoires. Les marchands reprennent la route, les loups regagnent les bois, et la fosse des Mortailles se tait — pour un temps. Le nom de votre confrérie sera murmuré dans les tavernes.'
+    : 'Sans mercenaires, il n\u2019y a plus de confrérie. Les contrats restent en attente, le royaume grince des dents… Une autre troupe se formera.';
+  $('grEndStats').textContent = 'Contrats accomplis : ' + camp.cleared + ' · or final : ' + camp.gold + ' · record : ' + best + ' contrat(s)';
+  show('grEndWrap');
+  $('grSumBox').style.display = 'none';
+  $('grEndBox').style.display = 'block';
+  $('grEndNext').textContent = 'Nouvelle confrérie';
+  $('grEndNext').onclick = function () { showMenu(); };
+}
+
+/* ── entrées bataille ── */
+function enemyTurns() {
+  if (!ctxBat || ctxBat.B.over) { checkEnd(); return; }
+  var u = T.active(ctxBat.B);
+  if (!u) { checkEnd(); return; }
+  if (u.side === 'A') {
+    busy = false; updateHud();
+    if (enemyPhaseShown) { enemyPhaseShown = false; banner('⚔ À vos ordres !'); }
+    return;
+  }
+  if (!enemyPhaseShown) { enemyPhaseShown = true; banner('⏳ Les ennemis agissent…'); } /* v27 : phase annoncée */
+  busy = true;
+  T.aiAct(ctxBat.B);
+  harvestFx();
+  var tail = ctxBat.B.log.slice(-2);
+  tail.forEach(function (l) { log(l); });
+  setTimeout(function () {
+    if (ctxBat.B.over) { busy = false; checkEnd(); return; }
+    enemyTurns();
+  }, 340);
+}
+
+canvas.addEventListener('mousemove', function (e) {
+  if (!ctxBat) return;
+  var rect = canvas.getBoundingClientRect();
+  hover = pickHex(e.clientX - rect.left, e.clientY - rect.top);
+});
+canvas.addEventListener('click', function (e) {
+  if (!ctxBat || busy) return;
+  var rect = canvas.getBoundingClientRect();
+  var h2 = pickHex(e.clientX - rect.left, e.clientY - rect.top);
+  if (!h2) return;
+  var B = ctxBat.B, u = T.active(B);
+  if (!u || u.side !== 'A') return;
+  var target = T.unitAt(B, h2.q, h2.r);
+  if (target && target.side === 'B') {
+    var r = T.act(B, { t: 'attack', id: target.id });
+    if (!r.ok && r.why === 'trop loin' && !u.moved) log('Trop loin — déplacez-vous d\u2019abord (cases turquoise), puis frappez.');
+    else if (!r.ok && r.why === 'pas de ligne de vue') log('Pas de ligne de vue — un obstacle bloque le tir.');
+    else if (!r.ok) log('Impossible : ' + r.why + '.');
+    harvestFx();
+    B.log.slice(-3).forEach(function (l) { log(l); });
+    if (!checkEnd()) enemyTurns();
+    return;
+  }
+  if (!target && movesFor(u)[T.key(h2.q, h2.r)] != null) {
+    var r2 = T.act(B, { t: 'move', q: h2.q, r: h2.r });
+    if (r2.ok) { B.log.slice(-1).forEach(function (l) { log(l); }); updateHud(); }
+    return;
+  }
+  if (target && target.side === 'A') { log(uinfo(target)); return; }
+});
+function movesFor(u) {
+  return (u && !u.moved && !u.attacked) ? T.reachable(ctxBat.B, u).dist : {};
+}
+$('grGuardBtn').addEventListener('click', function () {
+  if (!ctxBat || busy) return;
+  T.act(ctxBat.B, { t: 'guard' });
+  ctxBat.B.log.slice(-1).forEach(function (l) { log(l); });
+  if (!checkEnd()) enemyTurns();
+});
+$('grEndBtn').addEventListener('click', function () {
+  if (!ctxBat || busy) return;
+  T.act(ctxBat.B, { t: 'end' });
+  if (!checkEnd()) enemyTurns();
+});
+$('grInfoBtn').addEventListener('click', function () {
+  var B = ctxBat.B;
+  var list = B.units.filter(function (x) { return x.alive; }).map(function (x) {
+    return (x.side === 'A' ? '🛡 ' : '⚔ ') + uinfo(x);
+  });
+  log('— Ordres de bataille —');
+  list.forEach(function (l) { log(l); });
+});
+document.addEventListener('keydown', function (e) {
+  if (!ctxBat || busy || $('grBattle').style.display === 'none') return;
+  if (e.key === 'g' || e.key === 'G') $('grGuardBtn').click();
+  if (e.key === 'f' || e.key === 'F') $('grEndBtn').click();
+});
+
+/* ── menu ── */
+$('grNew').addEventListener('click', newCampaign);
+$('grContinue').addEventListener('click', continueCampaign);
+
+/* démarrage */
+showMenu();
+resize();
+})();
+</script>
+
+<script>
+/* ═══ v23 — CIMFS : chaque jeu démarre en plein écran ═══
+   Plein écran natif si le navigateur l'autorise ; sinon plein écran
+   « simulé » (l'aire de jeu remplit tout l'écran). Bouton ⛶ dans le jeu. */
+(function () {
+  'use strict';
+  var CFG = {
+    stage: '#grJeu',
+    starts: ["grNew", "grContinue"],
+    quits: [],
+    seed: false,
+    cls: false
+  };
+  var sim = false, stage = null;
+  function el(id) { return document.getElementById(id); }
+  function isFs() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function resize() { setTimeout(function () { try { window.dispatchEvent(new Event('resize')); } catch (e) {} }, 90); }
+  function simOn() {
+    if (!stage) return;
+    sim = true;
+    try { if (getComputedStyle(stage).position === 'static') stage.style.position = 'relative'; } catch (e) {}
+    stage.classList.add('cim-fs');
+    resize();
+  }
+  function enter(st) {
+    stage = st || stage;
+    if (!stage || sim || isFs()) { resize(); return; }
+    var done = false;
+    function fallback() { if (!done && !isFs()) { done = true; simOn(); } }
+    try {
+      var p = null;
+      if (stage.requestFullscreen) p = stage.requestFullscreen();
+      else if (stage.webkitRequestFullscreen) p = stage.webkitRequestFullscreen();
+      if (p && p.then) p.then(function () { done = true; resize(); }, fallback);
+      else if (p) { /* ancien webkit : pas de promesse */ }
+      else fallback();
+    } catch (e) { fallback(); }
+    setTimeout(fallback, 400);
+  }
+  function exit() {
+    if (sim) { sim = false; stage.classList.remove('cim-fs'); resize(); return; }
+    try {
+      if (isFs()) {
+        var d = document.exitFullscreen || document.webkitExitFullscreen;
+        if (d) d.call(document);
+      }
+    } catch (e) {}
+  }
+  function toggle() { (sim || isFs()) ? exit() : enter(); }
+  window.CIMFS = { enter: enter, exit: exit, toggle: toggle, on: function () { return sim || isFs(); }, sim: function () { return sim; } };
+
+  function target() {
+    if (stage) return stage;
+    return stage = (CFG.stage.charAt(0) === '#' ? el(CFG.stage.slice(1)) : document.querySelector(CFG.stage));
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== document) {
+      var id = t.id || '';
+      if (id && CFG.quits.indexOf(id) >= 0) { exit(); return; }
+      if (id && CFG.starts.indexOf(id) >= 0) { enter(target()); return; }
+      if (CFG.seed && t.getAttribute && t.getAttribute('data-seed')) { enter(target()); return; }
+      if (CFG.cls && t.getAttribute && t.getAttribute('data-cls')) { enter(target()); return; }
+      t = t.parentNode;
+    }
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.code === 'Escape' && sim) { e.preventDefault(); exit(); }
+  }, true);
+  /* bouton ⛶ */
+  function mount() {
+    var st = target();
+    if (!st) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '\u26F6 Plein écran';
+    b.title = 'Plein écran (Échap pour sortir)';
+    b.setAttribute('style', 'position:absolute;top:8px;right:8px;z-index:99000;padding:6px 13px;border-radius:9px;border:1px solid rgba(255,255,255,.28);background:rgba(8,12,18,.72);color:#fff;font-size:.86rem;cursor:pointer');
+    b.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); });
+    try { if (getComputedStyle(st).position === 'static') st.style.position = 'relative'; } catch (e) {}
+    st.appendChild(b);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <b style="color:#fff;font-size:1.05rem">C.I.M. — Hub IA & FabLab</b>
+      <p style="margin-top:10px">Le hub d'intelligence artificielle du Club Informatique & Multimédia — association loi 1901, champ ESS.<br>Montpellier · La Grande-Motte · Pérols · Lattes — et à distance partout en France.</p>
+    </div>
+    <div>
+      <h4>Démonstrations</h4>
+      <ul>
+        <li><a href="demo-ia.html">💬 Chat IA local</a></li>
+        <li><a href="demo-image.html">🎨 Générateur d'images</a></li>
+        <li><a href="jeux-video.html">🕹️ Jeux contre l'IA</a></li>
+        <li><a href="agents-ia.html">🤖 Équipe d'agents</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Expertises</h4>
+      <ul>
+        <li><a href="ia-souveraine.html">IA souveraine & RAG</a></li>
+        <li><a href="agents-ia.html">Agents autonomes</a></li>
+        <li><a href="machine-editoriale.html">Machine éditoriale</a></li>
+        <li><a href="open-source.html">Open source & robotique</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explorer</h4>
+      <ul>
+        <li><a href="actualites.html">Fil d'actualité IA</a></li>
+        <li><a href="medias.html">Nos médias</a></li>
+        <li><a href="services.html">Solutions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom"><div class="foot-bottom-in">
+    <span>© <span data-year></span> Hub IA C.I.M. — association loi 1901 · ESS · hébergé en France sur alwaysdata.</span>
+    <span>Fait en Occitanie, avec des agents IA et beaucoup de café ☕</span>
+  </div></div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

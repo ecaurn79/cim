@@ -1,0 +1,162 @@
+<section class="page-hero">
+  <div class="wrap page-hero-img">
+    <div>
+      <span class="kicker">⚡ Démonstration · Machine éditoriale</span>
+      <h1>Un livre, une BD, un podcast : l’équipe d’IA fabrique, vous décidez.</h1>
+      <p class="lead">Notre « machine éditoriale » est une chaîne d'IA réelle, orchestrée par <b>LangGraph</b> et <b>CrewAI</b>. D'un sujet brut en français, elle produit un texte structuré, relu par un humain, mis en page et prêt pour l'impression ou Kindle. Voici comment, étape par étape — avec un cas réel.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#chaine">⚙️ Voir la machine en action</a>
+        <a class="btn btn-outline" href="#qui">« Et pour mon usage ? »</a>
+      </div>
+    </div>
+    <div class="hero-img-card">
+      <img src="img/me-hero.jpg" alt="Une autrice reçoit un livre imprimé d'un petit bras robot, tablette de planches de BD à côté">
+      <div class="float-note">📚 40+ ouvrages produits avec nos ateliers</div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTOIRE -->
+<section style="padding-top:50px">
+  <div class="wrap story-box reveal">
+    <div style="flex:none;width:170px"><img src="img/atelier-memoire.jpg" alt="Un animateur aide des seniors à écrire leurs souvenirs lors d'un atelier" style="width:170px;height:170px;object-fit:cover;border-radius:14px;box-shadow:var(--shadow)"></div>
+    <div>
+      <span class="kicker">Cas réel — atelier mémoire de groupe</span>
+      <p style="margin-top:8px">« Je n'ai jamais touché à un traitement de texte. L'équipe du Hub a transformé mes souvenirs dictés en un livre relié de 112 pages que mes petits-enfants se disputent. » — <b>Adèle, 72 ans, atelier « Mémoire de quartier »</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- LA CHAÎNE INTERACTIVE -->
+<section id="chaine" style="padding-top:36px">
+  <div class="wrap">
+    <span class="kicker reveal">Comment ça marche</span>
+    
+<figure class="fig-full reveal">
+  <img src="img/me-projets.jpg" alt="Un livre illustré, une planche de bande dessinée et un micro de podcast sur un bureau lumineux" loading="lazy">
+  <figcaption>Trois sorties, une seule chaîne : livre illustré, planche de BD, podcast. Chaque projet suit la même boucle — brouillon de l'IA → relecture humaine → mise en page — et vous validez à chaque étape.</figcaption>
+</figure>
+<h2 class="reveal" style="margin:14px 0 8px">La machine, en vrai : cliquez sur les étapes.</h2>
+    <p class="reveal" style="max-width:760px;color:var(--muted)">Chaque bloc est un <b>agent logiciel spécialisé</b> (rédacteur, correcteur, maquettiste…). Cliquez pour voir le document évoluer à chaque étape, avec l'outil utilisé et le temps réel constaté sur nos ateliers.</p>
+
+    <div class="chain-demo reveal">
+      <div class="chain-steps" id="chainSteps">
+        <button class="chain-step active" data-i="0"><span class="cs-ic">📝</span><div><b>1 · Le sujet</b><small>Vous, 2 min</small></div></button>
+        <button class="chain-step" data-i="1"><span class="cs-ic">🤖</span><div><b>2 · Rédaction</b><small>Agent rédacteur · CrewAI</small></div></button>
+        <button class="chain-step" data-i="2"><span class="cs-ic">🗂️</span><div><b>3 · Recherche</b><small>Agent RAG · LangGraph</small></div></button>
+        <button class="chain-step" data-i="3"><span class="cs-ic">✂️</span><div><b>4 · Relecture</b><small>Agent correcteur</small></div></button>
+        <button class="chain-step" data-i="4"><span class="cs-ic">🧑</span><div><b>5 · Validation humaine</b><small>Vous — toujours</small></div></button>
+        <button class="chain-step" data-i="5"><span class="cs-ic">🎨</span><div><b>6 · Couverture IA</b><small>Stable Diffusion</small></div></button>
+        <button class="chain-step" data-i="6"><span class="cs-ic">📕</span><div><b>7 · Publication</b><small>Impression locale + Kindle</small></div></button>
+      </div>
+      <div class="chain-view" id="chainView"><!-- rempli par JS --></div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:16px 22px;border-top:1px solid var(--line);background:var(--soft)">
+        <button class="btn btn-primary btn-sm" id="chainPlay">▶️ Lancer toute la chaîne</button>
+        <span style="font-size:.8rem;color:var(--muted)" id="chainStatus">Cliquez une étape, ou lancez la chaîne complète.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÇA SERT À QUOI -->
+<section class="section-alt" id="qui">
+  <div class="wrap">
+    <span class="kicker reveal">Et concrètement, pour qui ?</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Une machine, quatre publics.</h2>
+<div class="me-personas">
+  <div class="p-card reveal"><div class="p-emo">🎣</div><h3>Influenceurs &amp; créateurs</h3><b>Un pipeline qui tourne pendant que vous dormez</b><p>Veille du matin, script d'épisode, miniature, sous-titres : la chaîne prépare, vous enregistrez. Votre voix, votre visage, vos opinions — dix fois plus de contenu.</p></div>
+  <div class="p-card reveal"><div class="p-emo">✍️</div><h3>Auteurs</h3><b>Du brouillon au manuscrit testable</b><p>Relecture de cohérence, synopsis alternatifs, bible des personnages tenue à jour, mise en page Kindle : la machine relit, propose et formate. Vous gardez la plume.</p></div>
+  <div class="p-card reveal"><div class="p-emo">🎓</div><h3>Enseignants</h3><b>Vos cours, déclinés en cinq formats</b><p>Fiches de révision, QCM, plans différenciés, corpus de documents interrogeable en local : préparez une séance complète en une soirée, sans envoyer un seul devoir d'élève dans le cloud.</p></div>
+  <div class="p-card reveal"><div class="p-emo">🏢</div><h3>Entreprises</h3><b>Une rédaction interne infatigable</b><p>Documentation, réponses support, propositions commerciales : une agence d'agents sur vos serveurs, qui réutilise vos trames — et que vous pouvez éteindre.</p></div>
+</div>
+
+    <div class="aud-tabs reveal" id="audTabs">
+      <button class="chip active" data-a="inf">🕊️ Influences & créateurs</button>
+      <button class="chip" data-a="aut">✍️ Auteurs</button>
+      <button class="chip" data-a="ens">🎓 Enseignants</button>
+      <button class="chip" data-a="ent">🏢 Entreprises</button>
+    </div>
+    <div class="aud-panel reveal" id="audPanel"></div>
+  </div>
+</section>
+
+<!-- PÉDAGOGIE -->
+<section>
+  <div class="wrap">
+    <span class="kicker reveal">Sous le capot</span>
+    <h2 class="reveal" style="margin:14px 0 8px">LangGraph et CrewAI, expliqués simplement.</h2>
+    <div class="grid-2" style="margin-top:32px">
+      <div class="card pad reveal"><h3 style="margin:0 0 8px">🔀 CrewAI — l'équipe d'agents</h3><p style="font-size:.88rem;color:var(--muted)">On définit des agents avec un rôle précis (« rédacteur », « correcteur », « maquettiste ») et une tâche. CrewAI les fait travailler ensemble, chacun passant son travail au suivant. C'est notre équipe virtuelle de rédaction.</p></div>
+      <div class="card pad reveal"><h3 style="margin:0 0 8px">🗺️ LangGraph — le chef d'orchestre</h3><p style="font-size:.88rem;color:var(--muted)">LangGraph décrit la chaîne comme un graphe : qui fait quoi, dans quel ordre, que faire en cas d'erreur, où intervient l'humain. C'est lui qui garantit qu'aucun livre ne part à l'impression sans validation.</p></div>
+    </div>
+    <div class="pledge reveal" style="margin-top:26px"><span class="ic">🤝</span><div><b>L'IA assiste, l'humain décide.</b> À toutes les étapes, le document reste modifiable et la validation finale est humaine. Vos textes restent les vôtres : aucune donnée ne sort de nos serveurs souverains, et vous conservez tous les droits sur l'ouvrage publié.</div></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  /* ── Contenu des 7 étapes ── */
+  const STEPS=[
+   {badge:'vous',who:'Étape 1 · Vous',time:'2 minutes',body:'<h3 style="margin:0 0 10px">Le point de départ : votre idée, en français</h3><p style="font-size:.9rem">Adèle a simplement dicté : <i>« Parle de la boulangerie du coin, des étés à Palavas, et de l\'usine qui fermait à 16 h. »</i> Pas de formulaire, pas de jargon : la machine accepte une note, un e-mail vocal ou quelques pages manuscrites scannées.</p><p style="font-size:.9rem;background:var(--soft);padding:12px;border-radius:10px">💡 <b>Ce que fait l\'atelier C.I.M.</b> : un accompagnant note le sujet avec vous, puis le dépose dans la machine. Vous n\'utilisez jamais l\'ordinateur vous-même si vous ne le souhaitez pas.</p>'},
+   {badge:'agent',who:'Étape 2 · Agent rédacteur',time:'≈ 90 secondes',body:'<h3 style="margin:0 0 10px">Un premier jet structuré</h3><p style="font-size:.9rem">L\'agent (un LLM open source <b>Mistral</b> tournant sur nos serveurs, piloté par <b>CrewAI</b>) transforme les notes en chapitres, ajoute des transitions, garde la voix du narrateur.</p><div class="paper messy"><div class="pp-line" style="font-weight:700">Chapitre 3 — L\'été 1968, la boulangerie du coin…</div><div class="pp-line">adèle raconte la boulangerie du coin, les ode le matin a 6 heure, l\'usine fermait a 16h…</div><div class="pp-line del">[note : verifier le nom du boulanger mr roux?]</div><div class="pp-line">les étés a Palavas, la plage, le tramway…</div></div><p style="font-size:.78rem;color:var(--muted);margin-top:8px">⚠️ À ce stade : fautes, répétitions, trous. C\'est normal — c\'est un brouillon de travail.</p>'},
+   {badge:'agent',who:'Étape 3 · Agent RAG',time:'≈ 40 secondes',body:'<h3 style="margin:0 0 10px">La machine vérifie et enrichit</h3><p style="font-size:.9rem">Un deuxième agent (pipeline <b>RAG LangGraph</b>) relit le brouillon et interroge une base documentaire : archives municipales numérisées, dictionnaire des rues, corpus local déposé par l\'atelier. Il signale ce qui se vérifie et ce qui manque.</p><div class="paper"><div class="pp-line">L\'usine ferma definitivement en <mark>mars 1968 — confirmé : archives Hérault, série 12J45</mark>.</div><div class="pp-line">Le tramway <mark>ligne 2 desservait Palavas depuis 1881 (à corroborer)</mark>.</div><div class="pp-line del">« mr roux » → <mark>Henri Roux, boulanger 34 rue…</mark></div></div><p style="font-size:.78rem;color:var(--muted);margin-top:8px">Aucune donnée ne quitte nos serveurs : la base documentaire est interne et souveraine.</p>'},
+   {badge:'agent',who:'Étape 4 · Agent correcteur',time:'≈ 25 secondes',body:'<h3 style="margin:0 0 10px">Orthographe, style, rythme</h3><div class="paper"><div class="pp-line">L\'usine ferma définitivement en mars 1968.</div><div class="pp-line"><span class="comment">l\'ode → l\'odeur du pain ? plus évocateur (correcteur)</span>Chaque matin, à 6 heures, l\'odeur du pain traversait la rue…</div><div class="pp-line">Les étés à Palavas, la plage, le tramway…</div></div><p style="font-size:.9rem;margin-top:10px">Le correcteur propose : il n\'impose pas. Chaque suggestion apparaît comme un commentaire ; tout reste réversible d\'un clic.</p>'},
+   {badge:'human',who:'Étape 5 · Validation humaine',time:'le temps qu\'il faut',body:'<h3 style="margin:0 0 10px">Personne ne publie à votre place</h3><p style="font-size:.9rem">Adèle relit le texte imprimé en gros caractères, raye une anecdote, ajoute une date au crayon. L\'accompagnant reporte ses corrections dans la machine. <b>C\'est l\'étape obligatoire du graphe LangGraph :</b> tant que l\'humain n\'a pas dit « validé », la chaîne refuse d\'aller plus loin.</p><div class="paper"><div class="pp-line">✍️ Annotation d\'Adèle : « c\'était la plage <span style="text-decoration:underline">des Abisses</span>, pas des Arènes ! »</div><div class="pp-line">Statut du document : <b style="color:#15803d">validé par l\'auteure</b> — signature apposée.</div></div><p style="font-size:.78rem;color:var(--muted);margin-top:8px">Coeur de notre charte « Clean & Trust » : transparence totale sur ce qui a été écrit par la machine, et validation humaine systématique.</p>'},
+   {badge:'agent',who:'Étape 6 · Couverture IA',time:'≈ 3 minutes',body:'<h3 style="margin:0 0 10px">Une couverture sur mesure, générée et choisie</h3><p style="font-size:.9rem">Un modèle de génération d\'images open source (<b>Stable Diffusion</b> sur nos serveurs) produit plusieurs propositions à partir du texte validé. Adèle a choisi « le tramway au couchant » sur la troisième proposition, retouchée par le FabLab.</p><div class="kdp-cover"><div style="font-size:2rem">🌅🚋</div><b>Mémoire des Abisses</b><span style="font-size:.72rem;color:var(--muted)">proposition n°3 · générée localement · retouchée au FabLab</span></div><p style="font-size:.78rem;color:var(--muted);margin-top:8px">Vous pouvez aussi fournir vos propres photos : elles sont scannées, restaurées et intégrées.</p>'},
+   {badge:'pub',who:'Étape 7 · Publication',time:'48 heures',body:'<h3 style="margin:0 0 10px">Le livre fini, partout où vous voulez</h3><div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:12px"><div class="kdp-card"><div class="kdp-cover" style="margin:0">📕<div style="margin-top:6px"><b>Mémoire des Abisses</b></div><span style="font-size:.68rem;color:var(--muted)">A. Fabre · 112 pages</span></div><span class="doc-badge pub">Publié</span></div><ul style="font-size:.88rem;color:var(--muted);margin:0"><li><b>Impression locale</b> : exemplaires reliés via nos partenaires imprimeurs.</li><li><b>Kindle / EPUB</b> : la machine exporte un fichier conforme Kindle Direct Publishing.</li><li><b>Prix libre</b> : la mise en ligne peut être gratuite ; nos ateliers sont sans but lucratif.</li></ul></div><p style="font-size:.78rem;color:var(--muted)">💡 Ce même export sert aux mémoires d\'associations, aux livres pédagogiques des enseignants partenaires et aux guides clients de nos entreprises adhérentes.</p>'}
+  ];
+
+  const view=document.getElementById('chainView'),stepsEl=document.getElementById('chainSteps'),statusEl=document.getElementById('chainStatus');
+  const badgeLabel={agent:['agent','🤖 Agent IA'],human:['human','🧑 Humain'],pub:['pub','📦 Publication'],vous:['human','🧑 Vous']};
+  let cur=0,playing=false;
+  function render(i){
+    cur=i;const s=STEPS[i];
+    stepsEl.querySelectorAll('.chain-step').forEach((b,j)=>b.classList.toggle('active',j===i));
+    const[lbl,txt]=badgeLabel[s.badge];
+    view.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><span class="doc-badge '+lbl+'">'+txt+'</span><span style="font-size:.78rem;color:var(--muted)">⏱️ '+s.time+'</span></div><div style="margin-top:6px;color:var(--muted);font-weight:700;font-size:.85rem">'+s.who+'</div>'+s.body;
+    view.classList.remove('fade-in');void view.offsetWidth;view.classList.add('fade-in');
+  }
+  stepsEl.addEventListener('click',e=>{const b=e.target.closest('.chain-step');if(b&&!playing)render(+b.dataset.i)});
+  document.getElementById('chainPlay').addEventListener('click',()=>{
+    if(playing)return;playing=true;let i=0;
+    statusEl.textContent='▶ La chaîne s\'exécute… chaque agent passe le relais au suivant (orchestration LangGraph).';
+    const tick=setInterval(()=>{render(i);i++;if(i>=STEPS.length){clearInterval(tick);playing=false;statusEl.textContent='✅ Chaîne complète : du sujet brut au livre publié. À vous de jouer !'}},2600);
+  });
+  render(0);
+
+  /* ── Onglets publics ── */
+  const AUD={
+   inf:{t:'🕊️ Influenceurs & créateurs de contenu',rows:[
+     ['Calendar éditorial','Un agent propose 30 idées de vidéos/posts alignées sur votre ligne éditoriale, sourcées depuis votre veille.'],
+     ['Recherche assistée','Le RAG lit vos 200 dernières publications et propose des angles jamais traités — avec rappel de vos anciens contenus.'],
+     ['Déclinaison multi-formats','Un script YouTube devient thread, newsletter et post LinkedIn — votre ton est préservé (prompt de style appris sur vos textes).'],
+     ['Garde-fous','Toute publication reste validée par vous ; sources citées ; zéro contenu généré non signalé.']],
+     tip:'💡 Nos ateliers « media lab » vous apprennent à construire ce pipeline vous-même — open source, sans abonnement.'},
+   aut:{t:'✍️ Auteurs & autobiographes',rows:[
+     ['Du dictaphone au manuscrit','Dictez vos souvenirs : transcription, structuration en chapitres, relecture — comme Adèle.'],
+     ['Cohérence narrative','Le graphe détecte les contradictions de dates/lieux entre chapitres et vous les signale.'],
+     ['Documentation','Enrichissement historique sourcé (archives locales, corpus que vous fournissez).'],
+     ['Droits','Vous restez l\'unique auteur·e : l\'IA est un outil, la création est la vôtre (charte affichée à l\'atelier).']],
+     tip:'💡 Format « mémoire de groupe » : 6 à 8 participants, un livre chacun en 10 séances.'},
+   ens:{t:'🎓 Enseignants & médiateurs',rows:[
+     ['Supports sur mesure','Un chapitre de manuel adapté au niveau de chaque classe en quelques minutes, à partir de vos propres documents.'],
+     ['Fiches pédagogiques','La machine génère questions, QCM et corrigés — vous gardez la main sur l\'esprit du cours.'],
+     ['Projets élèves','Vos classes peuvent fabriquer un vrai livre (fête de l\'école, CDI) avec la même chaîne, en mode encadré.'],
+     ['RGPD & sobriété','Aucune donnée élève dans le cloud : tout tourne sur nos serveurs ou en local.']],
+     tip:'💡 Formules d\'intervention en classe validées par des enseignants partenaires de l\'académie.'},
+   ent:{t:'🏢 Entreprises & collectivités',rows:[
+     ['Documentation vivante','Vos procédures deviennent guides illustrés, mis à jour automatiquement quand la source change.'],
+     ['Appels d\'offres','Réponse structurée en heures au lieu de semaines : les agents assemblent, vos experts valident.'],
+     ['Rapports annuels','Collecte des chiffres, premier jet, mise en page : la machine prépare, vous décidez.'],
+     ['Souveraineté','Vos documents ne quittent jamais votre périmètre : serveurs privés, modèles open source, audit possible.']],
+     tip:'💡 Étude de faisabilité gratuite : apportez un document type, repartez avec un prototype.'}};
+  const panel=document.getElementById('audPanel'),tabs=document.getElementById('audTabs');
+  function renderAud(k){
+    const a=AUD[k];
+    panel.innerHTML='<h3 style="margin:0 0 14px">'+a.t+'</h3><div class="need-rows">'+a.rows.map(r=>'<div class="need-row"><span>✓</span><div><b>'+r[0]+'</b> — '+r[1]+'</div></div>').join('')+'</div><div class="pledge" style="margin-top:16px"><span class="ic">📍</span><div>'+a.tip+'</div></div>';
+  }
+  tabs.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;
+    tabs.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderAud(b.dataset.a)});
+  renderAud('inf');
+})();
+</script>

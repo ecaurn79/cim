@@ -1,0 +1,127 @@
+<section id="znJeu" style="padding-top:40px;background:#0f120e">
+  <div class="wrap">
+    <h2 style="color:#e6ece4">Jouez — une sortie, une vie. Rentrez riche.</h2>
+    <p style="color:#9ab08e;max-width:60em"><b>ZQSD ou flèches</b> pour marcher · <b>Maj</b> pour courir · <b>souris</b> pour viser (visée libre automatique si la capture est refusée) · <b>clic</b> pour tirer · <b>R</b> recharger · <b>F</b> jeter un boulon-sonde · <b>E</b> ramasser / extraire · <b>3</b> trousse · <b>4</b> antirad · <b>M</b> PDA · <b>Échap</b> pause. La partie démarre en plein écran.</p>
+    <div class="zn-stage zn2-stage" style="margin-top:18px">
+      <div id="znView">
+        <div id="znHud" style="display:none">
+          <div class="zn2-top">
+            <div class="zn2-gauges">
+              <div class="zn2-lbl"><span>Santé</span><span id="znHpv">100</span></div>
+              <div class="zn-track" id="znBarHp"><div style="width:100%"></div></div>
+              <div class="zn2-lbl"><span>Radiation</span><span id="znRadv">0</span></div>
+              <div class="zn-track" id="znBarRad"><div style="width:0%"></div></div>
+              <div class="zn2-lbl"><span>Endurance</span></div>
+              <div class="zn-track" id="znBarSt"><div style="width:100%"></div></div>
+            </div>
+            <div class="zn2-right">
+              <div class="zn2-clock"><span id="znTimer">0:00</span> · <em id="znEmission">Émission dans —</em></div>
+              <div class="zn2-clock"><span id="znOr">—</span> · chargeur <b id="znAmmo">8 / —</b></div>
+              <div id="znBelt" class="zn2-belt"></div>
+              <div class="zn2-geiger">GEIGER <span id="znGeiger">●</span></div>
+            </div>
+          </div>
+          <div id="znAbri">🏢 À L'ABRI</div>
+          <div class="zn2-cross">+</div>
+          <div id="znHelpLine">ZQSD bouger · Maj courir · F boulon · E ramasser/extraire · clic tirer · M carte · 3 trousse · 4 antirad</div>
+          <div class="zn2-actions">
+            <button class="zn-btn" id="znUseMed">💊 Toussez moins (3)</button>
+            <button class="zn-btn" id="znUseAntirad">☣ Antirad (4)</button>
+            <button class="zn-btn" id="znMute2">🔊 Son</button>
+          </div>
+          <div id="znPrompt"></div>
+        </div>
+        <div id="znFlash"></div>
+        <div id="znBanner"></div>
+        <div id="znGlFail">
+          <div>
+            <h3>Ce navigateur n'a pas ouvert WebGL</h3>
+            <p style="color:#9ab08e;max-width:34em">La Zone nouvelle tourne en 3D accélérée (WebGL). Activez-le dans les réglages du navigateur, ou essayez un autre onglet/appareil — les autres jeux du site fonctionnent sans WebGL.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="znMenu" class="zn2-ov on" style="display:flex">
+        <div class="zn-menuBox">
+          <h2>LA ZONE</h2>
+          <p class="zn-sub">Prospection 3D · anomalies · chiens aveugles · émission — moteur maison adapté du FPS du site</p>
+          <p id="znRecords"></p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="zn-btn go" id="znNew" style="padding:13px 28px;font-size:.98rem">☢️ Nouvelle prospection</button>
+            <button class="zn-btn" id="znAideBtn">? Commandes</button>
+            <button class="zn-btn" id="znMute">🔊 Son</button>
+          </div>
+          <p class="zn2-tip">Objectif : entrer, sonder les anomalies vertes au boulon (F), ramasser des artefacts (E), et ressortir par la porte sud avant l'émission. Chaque émission réorganise la Zone — trois émissions et la journée est finie.</p>
+        </div>
+      </div>
+
+      <div id="znHangar" class="zn2-ov">
+        <div class="zn-menuBox" style="text-align:left;max-width:560px">
+          <h3 style="margin:0 0 4px">🏢 Le Hangar — préparez votre sortie</h3>
+          <p id="znHangarOr" style="color:#ffd24d;margin:0 0 8px;font-weight:700"></p>
+          <p id="znHangarStock" style="color:#9ab08e;font-size:.9rem;margin:0 0 12px"></p>
+          <div class="zn2-shop">
+            <button class="zn-btn" id="znBuyMed">💊 Trousse — 120 or</button>
+            <button class="zn-btn" id="znBuyAntirad">☣ Antirad — 100 or</button>
+            <button class="zn-btn" id="znBuyBolts">🔩 6 boulons — 60 or</button>
+            <button class="zn-btn" id="znBuyAmmo">🔸 32 munitions — 90 or</button>
+            <button class="zn-btn" id="znBuyBelt">🎽 Ceinture +1 (max 3) — 400 or</button>
+            <button class="zn-btn" id="znBuyDet">📡 Détecteur MK II (artefacts sur PDA) — 600 or</button>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+            <button class="zn-btn go" id="znGoBtn" style="padding:13px 28px;font-size:.98rem">▶ ENTRER DANS LA ZONE</button>
+            <button class="zn-btn" id="znHangarBack">← Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="znOver" class="zn2-ov">
+        <div class="zn-menuBox">
+          <h3 id="znOverTitle" style="margin:0 0 10px;font-size:1.5rem">—</h3>
+          <p id="znOverStats" style="color:#c9d5c2;font-size:.95rem;margin:0 0 16px"></p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="zn-btn go" id="znAgain" style="padding:12px 26px">🔁 Retour au Hangar</button>
+            <button class="zn-btn" id="znMenuBtn">Menu principal</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="znPause" class="zn2-ov">
+        <div class="zn-menuBox">
+          <h3 style="margin:0 0 12px">⏸ Pause</h3>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="zn-btn go" id="znResume" style="padding:12px 26px">▶ Reprendre</button>
+            <button class="zn-btn" id="znQuit">🏳 Abandonner (artefacts perdus)</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="znPda" class="zn2-ov">
+        <div class="zn-menuBox">
+          <h3 style="margin:0 0 10px">📋 PDA — carte de la Zone</h3>
+          <canvas id="znPdaCanvas" width="240" height="240" style="border-radius:12px"></canvas>
+          <p style="color:#9ab08e;font-size:.85rem;margin:10px 0 0">Vert : anomalies · ambre : abri · vert vif : porte sud<span id="znPdaDet"><br>Cyan : artefacts (Détecteur MK II)</span> · M ou Échap pour fermer</p>
+        </div>
+      </div>
+
+      <div id="znAide">
+        <div class="zn-menuBox" style="text-align:left;max-width:520px">
+          <h3 style="margin:0 0 10px">? Commandes</h3>
+          <table class="zn2-keys">
+            <tr><td>ZQSD / flèches</td><td>marcher (positions physiques : OK en AZERTY)</td></tr>
+            <tr><td>Maj</td><td>courir (l'endurance descend — et le bruit attire les chiens)</td></tr>
+            <tr><td>Souris / ← →</td><td>viser, pivoter (visée libre si la capture de souris est refusée)</td></tr>
+            <tr><td>Clic gauche</td><td>tirer (PM, 8 coups)</td></tr>
+            <tr><td>R</td><td>recharger</td></tr>
+            <tr><td>F</td><td>jeter un boulon-sonde : déclenche l'anomalie à distance</td></tr>
+            <tr><td>E</td><td>ramasser un artefact / extraire à la porte sud</td></tr>
+            <tr><td>3 / 4</td><td>trousse de soins / antirad</td></tr>
+            <tr><td>M</td><td>PDA (carte)</td></tr>
+            <tr><td>Échap</td><td>pause (et sortie du plein écran)</td></tr>
+          </table>
+          <div style="text-align:center;margin-top:12px"><button class="zn-btn" id="znAideClose">Fermer</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

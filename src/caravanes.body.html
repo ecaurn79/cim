@@ -1,0 +1,1779 @@
+<style>
+/* v23 — plein écran réel ou simulé (iframes) */
+.cim-fs{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;max-width:none!important;z-index:99990!important;background:#0d0f14;border-radius:0!important;margin:0!important;overflow:auto}
+
+/* ── Caravanes (sandbox d'escouade iso) ── */
+.ca-stage{position:relative;background:#1a140c;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(12,10,6,.5);height:600px}
+#caCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
+#caMenu,#caCity,#caBase,#caAide{position:absolute;inset:0;z-index:10;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(14,10,6,.94),rgba(20,14,8,.96));color:#f0e8dc;padding:18px;overflow:auto}
+#caHud{position:absolute;inset:0;display:none;pointer-events:none}
+#caHud>*{pointer-events:auto}
+#caPrompt{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(16,12,8,.85);border:1px solid #6a5a3a;color:#f0e4c8;font-size:.82rem;padding:6px 14px;border-radius:9px;pointer-events:none;white-space:nowrap;z-index:6}
+.ca-aside{position:absolute;right:12px;top:12px;width:258px;display:flex;flex-direction:column;gap:8px;max-height:calc(100% - 24px);overflow:auto}
+.ca-panel{background:rgba(20,15,10,.9);border:1px solid #4a3c26;border-radius:12px;padding:10px 12px;color:#e0d4c0}
+.ca-panel h4{margin:0 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#d8b878}
+.ca-track{height:9px;background:#33291a;border-radius:5px;overflow:hidden;margin-bottom:5px}
+.ca-track div{height:100%;border-radius:5px;transition:width .18s}
+#caBarHp div{background:linear-gradient(90deg,#3c8f4a,#7dc47f)}
+#caBarFaim div{background:linear-gradient(90deg,#b8691f,#e0a050)}
+#caBarEau div{background:linear-gradient(90deg,#2a6ab8,#6aa8e0)}
+#caSquad{display:flex;gap:5px;flex-wrap:wrap}
+.ca-mbr{background:#241c10;border:1px solid #4a3c26;color:#e0d4c0;border-radius:9px;padding:5px 8px;cursor:pointer;font-size:.72rem;display:flex;flex-direction:column;text-align:left;flex:1;min-width:70px}
+.ca-mbr.sel{border-color:#e0b45a;background:#33270f}
+.ca-mbr.ko{opacity:.5}
+.ca-mbr small{color:#a8946e}
+#caMini{border:1px solid #4a3c26;border-radius:8px;width:100%;image-rendering:pixelated}
+#caLog{background:rgba(14,10,6,.9);border-radius:10px;padding:8px 10px;font-size:.73rem;line-height:1.5;color:#c8b898;height:120px;overflow-y:auto}
+#caLog div:first-child{opacity:.55}
+.ca-btn{background:#241c10;border:1px solid #5a4a2e;color:#e8dcc4;font-weight:700;font-size:.8rem;padding:8px 14px;border-radius:10px;cursor:pointer}
+.ca-btn:hover{border-color:#e0b45a;color:#fff}
+.ca-btn:disabled{opacity:.4;cursor:not-allowed}
+.ca-btn.go{background:linear-gradient(135deg,#a8763a,#6a4a1e);border:none;color:#fff}
+#caInv{font-size:.72rem;color:#b8a680}
+.ca-menuBox{text-align:center;max-width:560px}
+.ca-menuBox h2{font-size:2.5rem;margin:0 0 4px;letter-spacing:.2em;color:#f0e0c0}
+.ca-menuBox .ca-sub{color:#a8906a;margin:0 0 16px}
+#caRecords{font-size:.78rem;color:#8a7a58;margin-bottom:16px}
+.ca-seeds{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.ca-dialog{width:min(640px,100%);max-height:100%;overflow:auto}
+.ca-dialog h3{margin:0 0 4px;color:#f0e0c0}
+.ca-mut{color:#a8906a;font-size:.8rem}
+.ca-mkt{width:100%;border-collapse:collapse;font-size:.78rem;color:#e0d4c0}
+.ca-mkt th{text-align:left;color:#d8b878;font-size:.68rem;text-transform:uppercase;padding:4px 6px;border-bottom:1px solid #4a3c26}
+.ca-mkt td{padding:4px 6px;border-bottom:1px solid #33291a}
+.ca-mkt button,.ca-tavR button,#caFound,.ca-bld button{background:#2c2214;border:1px solid #5a4a2e;color:#e8dcc4;font-size:.72rem;padding:4px 9px;border-radius:8px;cursor:pointer;margin:1px}
+.ca-mkt button:hover:not(:disabled),.ca-tavR button:hover:not(:disabled),#caFound:hover,.ca-bld button:hover:not(:disabled){border-color:#e0b45a}
+.ca-mkt button:disabled,.ca-tavR button:disabled,.ca-bld button:disabled{opacity:.4;cursor:not-allowed}
+.ca-tavR{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#241c10;border:1px solid #3a2e1a;border-radius:9px;padding:6px 10px;margin-bottom:5px;flex-wrap:wrap;font-size:.78rem}
+.ca-tavR small{color:#a8946e;display:block}
+.ca-blds{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.ca-bld{background:#241c10;border:1px solid #3a2e1a;border-radius:9px;padding:7px 10px;font-size:.78rem;display:flex;flex-direction:column;gap:4px}
+.ca-bld small{color:#a8946e}
+#caAide table{border-collapse:collapse;font-size:.82rem;color:#e0d4c0}
+#caAide td{padding:4px 12px 4px 0;border-bottom:1px solid #3a2e1a}
+#caAide kbd{background:#1a140c;border:1px solid #5a4a2e;border-radius:5px;padding:1px 7px;font-family:inherit;color:#e8cc90}
+.ca-topbar{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;font-size:.8rem;color:#e0d4c0;background:rgba(20,15,10,.88);border:1px solid #4a3c26;border-radius:12px;padding:9px 12px;max-width:340px}
+.ca-topbar b{color:#ffd98a}
+.ca-actions{display:flex;gap:6px;flex-wrap:wrap}
+.ca-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.ca-table th{text-align:left;color:#d8b878;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:2px solid #4a3c26}
+.ca-table td{padding:7px 10px;border-bottom:1px solid #33291a;color:#d8ccb4;vertical-align:top}
+
+/* v25 — écrans lisibles : panneaux contrastés, gros boutons */
+[id$="Menu"]>div,[class*="menu-panel"],[class*="menuBox"],.fps-panel{background:rgba(13,18,15,.97)!important;border:2px solid rgba(255,210,77,.5)!important;border-radius:22px!important;box-shadow:0 0 0 5px rgba(0,0,0,.4),0 30px 90px rgba(0,0,0,.75)!important;padding:28px 34px!important;max-width:min(94%,780px)!important}
+[id$="Menu"] h2,[id$="Menu"] h3,[class*="menu-panel"] h2,[class*="menu-panel"] h3,[class*="menuBox"] h2,[class*="menuBox"] h3,.fps-title{color:#fff!important;text-shadow:0 2px 12px rgba(0,0,0,.85)!important}
+[id$="Menu"] p,[id$="Menu"] li,[class*="menu-panel"] p,[class*="menuBox"] p{color:#d6ded4!important}
+[id$="Menu"] button,[class*="menu-panel"] button,[class*="menuBox"] button{font-size:1.02rem!important;min-height:48px!important;padding:10px 22px!important;border-radius:12px!important}
+/* v25 — le plein écran remplisse vraiment l'écran (la colonne .wrap s'étale) */
+.cim-fs .wrap{max-width:none!important;width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;padding:10px 14px!important;box-sizing:border-box!important}
+.cim-fs .wrap>div{flex:1 1 auto;min-height:0}
+.cim-fs .wrap>p{flex:0 0 auto}
+canvas{display:block}
+
+/* v26 — le plein écran NATIF aussi : la section plein écran s'étale, le stage prend toute la hauteur */
+:fullscreen .wrap{max-width:none!important;width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;padding:8px 12px!important;box-sizing:border-box!important}
+:fullscreen .wrap>div{flex:1 1 auto;min-height:0}
+:fullscreen .wrap>p{flex:0 0 auto;margin:0 0 8px!important}
+:fullscreen .gr-stage,:fullscreen .lg-stage-wrap,:fullscreen .ak-stage,:fullscreen .zn-stage,:fullscreen .ca-stage,:fullscreen .nd-stage,:fullscreen .cr-stage,:fullscreen #crStage,:fullscreen #fpsWrap,:fullscreen .zn2-stage{height:auto!important;flex:1 1 auto!important;min-height:0!important}
+</style>
+
+<section class="page-hero" style="background:linear-gradient(180deg,#161008 0%,#1c1408 100%)">
+  <div class="wrap" style="display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center">
+    <div>
+      <span class="kicker" style="color:#e0b45a">🐫 Jeu 07 · Sandbox d'escouade</span>
+      <h1 style="font-size:clamp(2rem,4.2vw,3.2rem);margin:14px 0 12px">Caravanes, <em>perdre est un chapitre.</em></h1>
+      <p style="font-size:1.05rem;color:#dccdb0;max-width:34em">Un désert après la fin du monde. Vous commencez seul, pauvre et faible : achetez bas, vendez haut, engagez des bras, fondez un avant-poste près d'une oasis — et écrivez l'histoire que le désert vous laissera écrire.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+        <a class="btn btn-primary btn-sm" href="#caJeu">🐫 Jouer maintenant</a>
+        <a class="btn btn-sm" href="#caIA">Comment ça marche ?</a>
+      </div>
+      <p style="margin-top:16px;font-size:.8rem;color:#8a7a58">Vue isométrique maison · compétences par l'usage · économie à 4 marchés · autosave agressive</p>
+    </div>
+    <img src="img/caravanes-hero.jpg" alt="Caravane de trois voyageurs et une bête de somme dans les dunes, ville fortifiée à l'horizon" style="width:100%;border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.5)" loading="lazy">
+  </div>
+</section>
+
+<section id="caJeu" style="padding-top:40px;background:#141008">
+  <div class="wrap">
+    <h2 style="color:#f0e8dc">Prenez la route — personne ne vous attend.</h2>
+    <p style="color:#a8906a;max-width:60em"><b>Clic gauche</b> : choisir un membre (ou cliquer le sol pour marcher) · <b>clic droit</b> : ordre de marche · <b>E</b> : marché / fouiller / oasis / chantier · <b>Espace</b> pause · <b>T</b> vitesse ×3. Achetez des épices à Corail, vendez-les à Poussière, et souvenez-vous : l'eau coûte plus cher que l'or, un soir sur deux.</p>
+    <div class="ca-stage" style="margin-top:18px">
+      <canvas id="caCanvas" width="960" height="560"></canvas>
+      <div id="caPrompt"></div>
+      <div id="caHud">
+        <div class="ca-topbar">
+          <div><b id="caTemps">Jour 1 — 07 h</b> · <span id="caOr">120 or</span></div>
+          <div id="caInv"></div>
+          <div class="ca-actions">
+            <button class="ca-btn" id="caPause" style="font-size:.7rem;padding:5px 10px">⏸ (Espace)</button>
+            <button class="ca-btn" id="caFast" style="font-size:.7rem;padding:5px 10px">×3 (T)</button>
+            <button class="ca-btn" id="caMute2" style="font-size:.7rem;padding:5px 10px">🔊 Son</button>
+            <button class="ca-btn" id="caQuit" style="font-size:.7rem;padding:5px 10px">🏳 Sauver &amp; menu</button>
+            <button class="ca-btn" id="caQuitX" title="Quitter vers le menu (sauvegarde automatique)" style="font-size:.8rem;padding:5px 11px;font-weight:700">✕</button>
+          </div>
+        </div>
+        <div class="ca-aside">
+          <div class="ca-panel">
+            <h4>Escouade</h4>
+            <div id="caSquad"></div>
+            <div style="margin-top:7px">
+              <div class="ca-track" id="caBarHp"><div style="width:100%"></div></div>
+              <div class="ca-track" id="caBarFaim"><div style="width:90%"></div></div>
+              <div class="ca-track" id="caBarEau"><div style="width:90%"></div></div>
+              <small style="color:#a8946e;display:block;margin-top:2px" id="caMbrInfo">—</small>
+            </div>
+            <div style="display:flex;gap:4px;margin-top:7px">
+              <button class="ca-btn" id="caDrink" style="flex:1;font-size:.66rem;padding:5px">Boire</button>
+              <button class="ca-btn" id="caEat" style="flex:1;font-size:.66rem;padding:5px">Pain</button>
+              <button class="ca-btn" id="caMeat" style="flex:1;font-size:.66rem;padding:5px">Viande</button>
+            </div>
+          </div>
+          <div class="ca-panel"><h4>Carte des dunes</h4><canvas id="caMini" width="230" height="230"></canvas>
+            <small style="color:#a8946e" id="caBaseTag"></small>
+          </div>
+          <div class="ca-panel" style="flex:1"><h4>Chronique</h4><div id="caLog"></div></div>
+        </div>
+      </div>
+      <div id="caMenu" style="display:flex">
+        <div class="ca-menuBox">
+          <h2>CARAVANES</h2>
+          <p class="ca-sub">Commerce · escouade · avant-poste · factions — l'esprit Kenshi, en plus clément</p>
+          <p id="caRecords"></p>
+          <div class="ca-seeds">
+            <button class="ca-btn go" data-seed="sel">🏜 Dunes de Sel</button>
+            <button class="ca-btn go" data-seed="verre">🌡 Mer de Verre</button>
+            <button class="ca-btn go" data-seed="cendre">🌫 Côtes de Cendre</button>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="ca-btn" id="caContinue" style="display:none">↩ Reprendre (sauvegarde)</button>
+            <button class="ca-btn" id="caAideBtn">? Commandes</button>
+            <button class="ca-btn" id="caMute">🔊 Son</button>
+          </div>
+        </div>
+      </div>
+      <div id="caCity">
+        <div class="ca-dialog">
+          <h3 id="caCityTitle">—</h3>
+          <p style="font-size:.8rem" id="caCityOp"></p>
+          <div id="caCityBody"></div>
+          <div style="margin-top:12px"><button class="ca-btn" id="caCityClose">Fermer (Échap)</button></div>
+        </div>
+      </div>
+      <div id="caBase">
+        <div class="ca-dialog">
+          <h3>Avant-poste</h3>
+          <div id="caBaseBody"></div>
+          <div style="margin-top:12px"><button class="ca-btn" id="caBaseClose">Fermer (Échap)</button></div>
+        </div>
+      </div>
+      <div id="caAide">
+        <div style="max-width:560px">
+          <h3 style="color:#f0e0c0;margin-top:0">Commandes</h3>
+          <table>
+            <tr><td><kbd>Clic gauche</kbd></td><td>sélectionner un membre de l'escouade</td></tr>
+            <tr><td><kbd>Clic droit</kbd></td><td>ordre de marche (toute l'escouade)</td></tr>
+            <tr><td><kbd>E</kbd></td><td>ville (marché, taverne) · ruine · oasis · avant-poste</td></tr>
+            <tr><td><kbd>1 2 3</kbd></td><td>sélection rapide</td></tr>
+            <tr><td><kbd>Espace</kbd> / <kbd>T</kbd></td><td>pause · vitesse ×3</td></tr>
+            <tr><td><kbd>Échap</kbd></td><td>fermer les panneaux</td></tr>
+          </table>
+          <p class="ca-mut" style="margin-top:12px">Tout le monde à terre = défaite : on vous vole la moitié de l'or et les curiosités, et vous vous réveillez en ville. Rien n'est jamais définitif — c'est le contrat.</p>
+          <button class="ca-btn" id="caAideClose" style="margin-top:8px">Fermer</button>
+          <button class="ca-btn" id="caAideCloseMenu" style="margin-top:8px;display:none">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="caIA" style="padding-top:46px">
+  <div class="wrap">
+    <h2>« Apprendre en faisant » : pas d'arbre de compétences, des cicatrices</h2>
+    <p style="max-width:64em;color:var(--muted)">Dans Caravanes, aucune fenêtre de talents : vos membres <b>deviennent ce qu'ils font</b>. Huit coups portés → +1 force. Trois marchés → +1 commerce. Un demi-kilomètre de dunes → +1 endurance. La fiche du personnage est la somme de son vécu — comme dans Kenshi, dont le jeu reprend l'esprit sans rien copier d'autre.</p>
+    <div class="card pad" style="margin-top:18px">
+      <svg viewBox="0 0 800 150" role="img" aria-label="Boucle apprendre en faisant : agir, mesurer, progresser" style="width:100%;max-width:800px;display:block;margin:0 auto">
+        <defs><marker id="caAr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e0b45a"/></marker></defs>
+        <g font-size="12" font-weight="700" text-anchor="middle" fill="#f0e4cc">
+          <rect x="30" y="42" width="150" height="60" rx="10" fill="#2a2012" stroke="#5a4a2e"/>
+          <text x="105" y="68">AGIR</text>
+          <text x="105" y="88" font-size="10" fill="#a8906a" font-weight="400">frapper · marchander · marcher</text>
+          <rect x="330" y="42" width="150" height="60" rx="10" fill="#2a2012" stroke="#5a4a2e"/>
+          <text x="405" y="68">COMPTER</text>
+          <text x="405" y="88" font-size="10" fill="#a8906a" font-weight="400">8 coups · 3 échanges · 0,5 km</text>
+          <rect x="620" y="42" width="150" height="60" rx="10" fill="#2e2412" stroke="#a8763a"/>
+          <text x="695" y="68">PROGRESSER</text>
+          <text x="695" y="88" font-size="10" fill="#a8906a" font-weight="400">+1 force · commerce · endurance</text>
+          <line x1="180" y1="72" x2="324" y2="72" stroke="#e0b45a" stroke-width="2" marker-end="url(#caAr)"/>
+          <line x1="480" y1="72" x2="614" y2="72" stroke="#e0b45a" stroke-width="2" marker-end="url(#caAr)"/>
+          <path d="M695 102 C 695 132 105 132 105 106" stroke="#e0b45a" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#caAr)"/>
+        </g>
+      </svg>
+    </div>
+
+    <h3 style="margin-top:34px">Quatre marchés, un métier : l'arbitrage</h3>
+    <p style="color:var(--muted);max-width:62em">Chaque ville a ses penchants : Corail produit des épices et paie cher le fer ; Poussière a faim de viande ; Fer-Sombre vend outils et tissu à prix cassé mais affame les voyageurs ; Braise achète ce que les autres délaissent. Les <b>opinions de faction</b> déplacent les prix : bien vendre à une ville l'adoucit, et elle vous le rend.</p>
+    <div class="card pad" style="margin-top:14px;overflow-x:auto">
+      <table class="ca-table">
+        <tr><th>Ville</th><th>Faction</th><th>Achat intéressant</th><th>Vente intéressante</th></tr>
+        <tr><td><b>Corail</b></td><td>Villes-Libres</td><td>eau (×0,8), épices (×0,7)</td><td>tissu, outils</td></tr>
+        <tr><td><b>Poussière</b></td><td>Guilde Marchande</td><td>viande (×0,8)</td><td>épices (×1,5), eau</td></tr>
+        <tr><td><b>Fer-Sombre</b></td><td>Enclave de Fer</td><td>tissu (×0,7), outils (×0,7)</td><td>eau, pain, viande</td></tr>
+        <tr><td><b>Braise</b></td><td>Villes-Libres</td><td>tissu (×0,8), épices (×0,8)</td><td>outils (×1,3), eau</td></tr>
+      </table>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:0">Exemple mesuré en test : 10 épices achetées 310 or à Corail, revendues 390 à Poussière. Lente mais sûre, la richesse — tant que les pillards vous laissent la route.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:26px">
+      <div class="card pad">
+        <h3 style="margin-top:0">L'avant-poste : quelque chose à perdre</h3>
+        <p style="font-size:.9rem;color:var(--muted)">Fondez votre camp <b>près d'une oasis</b> : puits (+2 eau/h), ferme (+1 pain/2 h), atelier (+1 outil/4 h), tour de garde (raids allégés). Les chantiers avancent avec le temps de jeu. Et à partir de là, les Pillards du Sable savent que vous existez : raids toutes les 18-30 h. Une base sans défenseurs se fait moissonner — l'or et les récoltes, jamais les murs.</p>
+        <svg viewBox="0 0 340 100" role="img" aria-label="Cycle de la base : produire, attirer les raids, défendre" style="width:100%">
+          <defs><marker id="caA2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e0b45a"/></marker></defs>
+          <g font-size="11.5" font-weight="700" text-anchor="middle" fill="#f0e4cc">
+            <rect x="14" y="34" width="88" height="34" rx="9" fill="#2a2012" stroke="#5a4a2e"/><text x="58" y="55">produire</text>
+            <rect x="128" y="34" width="88" height="34" rx="9" fill="#2c1a12" stroke="#a8563a"/><text x="172" y="55">attirer</text>
+            <rect x="240" y="34" width="88" height="34" rx="9" fill="#2a2412" stroke="#8a8a5a"/><text x="284" y="55">défendre</text>
+          </g>
+          <g stroke="#e0b45a" stroke-width="1.6" fill="none">
+            <line x1="102" y1="51" x2="124" y2="51" marker-end="url(#caA2)"/>
+            <line x1="216" y1="51" x2="236" y2="51" marker-end="url(#caA2)"/>
+            <path d="M284 68 C 284 92 58 92 58 70" stroke-dasharray="5 4" marker-end="url(#caA2)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="card pad">
+        <h3 style="margin-top:0">La défaite est un chapitre, pas une fin</h3>
+        <p style="font-size:.9rem;color:var(--muted)">Un membre à 0 PV s'effondre — il ne meurt pas. Il se relève sonné… <b>sauf si tout le monde tombe</b> : alors des marchands sans scrupules vous traînent jusqu'à la ville la plus proche et prélèvent la moitié de l'or et toutes les curiosités. La chronique le note, noir sur blanc, et la caravane repart. C'est le cœur de l'esprit Kenshi : l'histoire se écrit dans les recommencements.</p>
+        <p style="font-size:.82rem;color:#8a7a58;margin-bottom:0">Les captures, l'esclavagisme et les mutilations avec prothèses du dossier sont réservés à la V1 — le MVP les évite volontairement.</p>
+      </div>
+      <div class="card pad">
+        <h3 style="margin-top:0">Factions : quatre humeurs du désert</h3>
+        <p style="font-size:.9rem;color:var(--muted)"><b>Villes-Libres</b> (Corail, Braise) aiment les purgeurs de camps. La <b>Guilde Marchande</b> note chaque transaction. L'<b>Enclave de Fer</b> compte sur qui nettoie ses routes. Les <b>Pillards du Sable</b> n'ont pas d'opinion de vous qui vaille : chaque camp purgé vous fait +8 chez les villes et −12 chez eux — et leurs embuscades s'acharnent d'autant plus sur vos routes.</p>
+        <p style="font-size:.82rem;color:#8a7a58;margin-bottom:0">Opinion haute = achats jusqu'à −22 % et ventes +20 % chez les villes qui vous aiment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <div class="card pad" style="margin-top:14px">
+      <h3 style="margin-top:0">C'est un jeu de Kenshi ?</h3>
+      <p style="color:var(--muted)">C'est le « spirit » du dossier, assumé : désert ouvert, escouade qui grandit par la pratique, économie entre villes, base à défendre, et une défaite qui raconte au lieu de punir. Mais tout ici est original — Kenshi est un jeu commercial de Lo-Fi Games : le site reprend des <b>mécaniques générales</b> et rien d'autre (pas de noms, pas d'assets, pas de code). Côté open source : Cataclysm DDA (GPL → inspiration survie, concepts uniquement) et Veloren (MIT, étudié pour le gameplay).</p>
+      <h3>Pourquoi l'escouade est limitée à 3 ?</h3>
+      <p style="color:var(--muted)">C'est le MVP demandé par le dossier : « 1 personnage → escouade de 3 → commerce → base → factions ». La V1 ouvrira jusqu'à 12 membres, avec blessures permanentes et prothèses.</p>
+      <h3>Comment je gagne ?</h3>
+      <p style="color:var(--muted)">Vous ne « gagnez » pas : vous écrivez une chronique. Les records (or, jours, camps purgés, avant-poste) et le journal des 30 derniers événements sont sauvegardés. Purger les 3 camps, monter une base à 4 bâtiments et survoler 300 or est un honorable chapitre final.</p>
+      <h3>Pourquoi une vue isométrique « maison » plutôt que PixiJS ?</h3>
+      <p style="color:var(--muted)">Même arbitrage qu'Arkhantis : la contrainte du site est « statique, tout inline, sans étape de build ». PixiJS serait un fichier de plus à vendor — le canvas 2D isométrique maison fait le travail en quelques centaines de lignes lisibles, et la pédagogie y gagne.</p>
+      <h3>Et la sauvegarde ?</h3>
+      <p style="color:var(--muted)">« Autosave agressive », comme le demande le dossier : chaque achat, vente, recrutement, chantier, et une fois toutes les 8 secondes. Vous pouvez fermer l'onglet en pleine tempête de sable.</p>
+      <h3>Le temps passe quand je suis dans un menu ?</h3>
+      <p style="color:var(--muted)">Non : le temps ne s'arrête que sur les panneaux (marché, chantier, aide). Dans les dunes, il coule — ×1 ou ×3. La soif, elle, ne discute pas.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:26px">
+      <a class="card pad" href="nordheim.html" style="text-decoration:none"><b>🏔️ Nordheim</b><p style="margin:6px 0 0;font-size:.85rem;color:var(--muted)">Open world 3D viking : guildes, chasse, Troll.</p></a>
+      <a class="card pad" href="zone.html" style="text-decoration:none"><b>☢️ La Zone</b><p style="margin:6px 0 0;font-size:.85rem;color:var(--muted)">Survie FPS raycasting : anomalies, artefacts, Redout.</p></a>
+      <a class="card pad" href="arkhantis.html" style="text-decoration:none"><b>🔥 Les Ruines d'Arkhantis</b><p style="margin:6px 0 0;font-size:.85rem;color:var(--muted)">Hack &amp; slash iso : loot, affixes, Faille du jour.</p></a>
+      <a class="card pad" href="logres.html" style="text-decoration:none"><b>✝ LOGRES — La Table Ronde</b><p style="margin:6px 0 0;font-size:.85rem;color:var(--muted)">Wargame 3D léger : loyauté, Légitimité, Graal.</p></a>
+      <a class="card pad" href="confrerie.html" style="text-decoration:none"><b>🕯 La Confrérie du Gris</b><p style="margin:6px 0 0;font-size:.85rem;color:var(--muted)">Tactique hexagonale tour par tour.</p></a>
+    </div>
+  </div>
+</section>
+
+<script>/* ═══════════════════════════════════════════════════════════════════
+   RPG-CORE — Le « KERNEL » des grands jeux du Hub C.I.M.
+   inv-core (inventaire/équipement) + loot-core (butin procédural,
+   affixes, raretés) + save-core (sauvegarde versionnée) + RNG seedé.
+   Utilisé par : Cendres (roguelike), puis Confrérie, Logres, Arkhantis,
+   Nordheim, La Zone, Caravanes. Tourne en navigateur ET en Node.
+   ═══════════════════════════════════════════════════════════════════ */
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = factory();
+  else root.RPGCORE = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  /* ── RNG déterministe (mulberry32 + hash de chaîne) ── */
+  function hashSeed(str) {
+    var h = 1779033703 ^ str.length;
+    for (var i = 0; i < str.length; i++) {
+      h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+      h = (h << 13) | (h >>> 19);
+    }
+    return (h >>> 0) || 1;
+  }
+  function makeRng(seed) {
+    var a = typeof seed === 'string' ? hashSeed(seed) : (seed >>> 0 || 1);
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function pick(rng, arr) { return arr[Math.floor(rng() * arr.length)]; }
+  function dice(rng, n, d) { var s = 0; for (var i = 0; i < n; i++) s += 1 + Math.floor(rng() * d); return s; }
+
+  /* ── Raretés ── */
+  var RARITY = [
+    { key: 'commun',     label: 'Commun',     color: '#c9d4dc', mult: 1.0,  aff: 0 },
+    { key: 'raffine',    label: 'Raffiné',    color: '#57d178', mult: 1.35, aff: 1 },
+    { key: 'rare',       label: 'Rare',       color: '#4aa8ff', mult: 1.8,  aff: 1 },
+    { key: 'epique',     label: 'Épique',     color: '#b06bff', mult: 2.5,  aff: 2 },
+    { key: 'legendaire', label: 'Légendaire', color: '#ff9d33', mult: 3.6,  aff: 3 }
+  ];
+  function rollRarity(rng, depth, boost) {
+    var r = rng() * 100 - (depth * 1.4) - (boost || 0);
+    if (r < 2) return 4;
+    if (r < 8) return 3;
+    if (r < 20) return 2;
+    if (r < 42) return 1;
+    return 0;
+  }
+
+  /* ── Bases d'objets ── */
+  var BASES = {
+    weapon: [
+      { base: 'dague',          dice: [1, 4], crit: 12, val: 12 },
+      { base: 'épée courte',    dice: [1, 6], crit: 6,  val: 20 },
+      { base: 'hache de guerre',dice: [1, 8], crit: 5,  val: 32 },
+      { base: 'marteau de fer', dice: [2, 4], crit: 4,  val: 40 },
+      { base: 'lance',          dice: [1, 6], crit: 6,  val: 26 },
+      { base: 'sabre cendré',   dice: [1, 7], crit: 9,  val: 55, minDepth: 3 },
+      { base: 'épée de basilic',dice: [2, 5], crit: 10, val: 80, minDepth: 5 }
+    ],
+    armor: [
+      { base: 'robe',           def: 1, val: 8 },
+      { base: 'cuir bouilli',   def: 2, val: 16 },
+      { base: 'cotte de cuir',  def: 3, val: 28 },
+      { base: 'mailles',        def: 5, val: 48, minDepth: 3 },
+      { base: 'harnois de plaques', def: 7, val: 90, minDepth: 5 }
+    ],
+    helm: [
+      { base: 'capuchon',       def: 1, val: 8 },
+      { base: 'casque de fer',  def: 2, val: 22 },
+      { base: 'grand heaume',   def: 3, val: 44, minDepth: 4 }
+    ],
+    shield: [
+      { base: 'targe',          def: 1, val: 12 },
+      { base: 'écu renforcé',   def: 2, val: 30, minDepth: 3 },
+      { base: 'pavois',         def: 3, val: 55, minDepth: 5 }
+    ],
+    amulet: [
+      { base: 'amulette de cendre', val: 30 },
+      { base: 'médaillon des profondeurs', val: 45, minDepth: 3 }
+    ],
+    ring: [
+      { base: 'anneau de fer',  val: 25 },
+      { base: 'anneau runique', val: 50, minDepth: 4 }
+    ]
+  };
+  var AFFIX_PRE = [
+    { k: 'atk',  v: [1, 2, 3, 5],   names: ['acéré', 'brutal', 'mortel', 'du bourreau'] },
+    { k: 'crit', v: [5, 8, 12, 18], names: ['précis', 'perçant', "d'escrimeur", 'de duelliste'] },
+    { k: 'vamp', v: [1, 2, 3, 4],   names: ['sanguinaire', 'avide', 'maudite de soif', 'du vampire'] }
+  ];
+  var AFFIX_SUF = [
+    { k: 'hp',   v: [4, 8, 14, 22], names: ['du sang vaillant', 'du colosse', 'du titan', 'des immortels'] },
+    { k: 'def',  v: [1, 2, 3, 5],   names: ['du rempart', 'de gardien', 'de la forteresse', 'du bastion'] },
+    { k: 'mana', v: [3, 6, 10, 16], names: ['du flambeau', 'du rune-souffle', 'de l\u2019archmage', 'des brumes'] },
+    { k: 'piety',v: [5, 10, 18, 30],names: ['du fervent', 'du pieux', 'des saints', 'des premiers'] }
+  ];
+
+  /* ── Fabrique d'objet ── */
+  var _idSeq = 1;
+  function rollItem(rng, depth, opts) {
+    opts = opts || {};
+    var kind = opts.kind || pick(rng, ['weapon', 'weapon', 'armor', 'helm', 'shield', 'amulet', 'ring']);
+    var bases = BASES[kind].filter(function (b) { return !(b.minDepth > depth); });
+    var b;
+    if (opts.force) {
+      b = BASES[kind].filter(function (x) { return x.base === opts.force; })[0] || bases[bases.length - 1];
+    } else {
+      b = bases[bases.length - 1 - Math.floor(Math.pow(rng(), 1.8) * bases.length)];
+      b = BASES[kind][Math.max(0, BASES[kind].indexOf(b))];
+    }
+    var rar = rollRarity(rng, depth, opts.boost || 0);
+    var it = {
+      id: _idSeq++, kind: kind, base: b.base,
+      rarity: rar, rarityKey: RARITY[rar].key,
+      affixes: [], val: Math.round(b.val * RARITY[rar].mult),
+      minDepth: b.minDepth || 1
+    };
+    if (kind === 'weapon') { it.dice = b.dice.slice(); it.crit = b.crit; }
+    if (b.def) it.def = b.def;
+    for (var i = 0; i < RARITY[rar].aff; i++) {
+      var pool = (kind === 'weapon' && i === 0) ? AFFIX_PRE : (rng() < 0.5 ? AFFIX_PRE : AFFIX_SUF);
+      var af = pick(rng, pool);
+      var tier = Math.min(3, Math.floor(rng() * (1 + Math.min(4, depth / 2))));
+      var aff = { k: af.k, v: af.v[tier], name: af.names[tier] };
+      it.affixes.push(aff);
+      it.val += af.v[tier] * 4;
+    }
+    it.name = itemFullName(it);
+    return it;
+  }
+  function itemFullName(it) {
+    var n = it.base;
+    if (it.affixes.length) {
+      var pre = it.affixes.filter(function (a) { return AFFIX_PRE.some(function (p) { return p.k === a.k; }); });
+      var suf = it.affixes.filter(function (a) { return !AFFIX_PRE.some(function (p) { return p.k === a.k; }); });
+      if (pre.length) n = pre[0].name + ' ' + n;
+      if (suf.length) n += ' ' + suf[suf.length - 1].name;
+    }
+    return n;
+  }
+  function affixTotal(it, k) {
+    var s = 0;
+    (it.affixes || []).forEach(function (a) { if (a.k === k) s += a.v; });
+    return s;
+  }
+
+  /* ── inv-core : inventaire + équipement ── */
+  var SLOTS = ['weapon', 'armor', 'helm', 'shield', 'amulet', 'ring1', 'ring2'];
+  function makeInventory(maxSlots) {
+    return { items: [], max: maxSlots || 20, eq: {} };
+  }
+  function invAdd(inv, it) {
+    if (inv.items.length >= inv.max) return false;
+    inv.items.push(it);
+    return true;
+  }
+  function invRemove(inv, it) {
+    var i = inv.items.indexOf(it);
+    if (i >= 0) { inv.items.splice(i, 1); return true; }
+    return false;
+  }
+  function invEquip(inv, it, actor) {
+    if (!invRemove(inv, it)) return false;
+    var slot = it.kind === 'ring' ? (!inv.eq.ring1 ? 'ring1' : (!inv.eq.ring2 ? 'ring2' : 'ring1')) : it.kind;
+    var old = inv.eq[slot];
+    inv.eq[slot] = it;
+    if (old) invAdd(inv, old);
+    if (actor && actor.onEquip) actor.onEquip(it, slot);
+    return true;
+  }
+  function invUnequip(inv, slot) {
+    var it = inv.eq[slot];
+    if (!it) return false;
+    if (!invAdd(inv, it)) return false; /* sac plein */
+    inv.eq[slot] = null;
+    return true;
+  }
+  /* Stats totales depuis l'équipement : {atk,def,hp,mana,crit,vamp,piety} */
+  function equipStats(inv) {
+    var s = { atk: 0, def: 0, hp: 0, mana: 0, crit: 0, vamp: 0, piety: 0 };
+    SLOTS.forEach(function (sl) {
+      var it = inv.eq[sl];
+      if (!it) return;
+      if (it.dice) s.atk += affixTotal(it, 'atk');
+      if (it.def) s.def += it.def + affixTotal(it, 'def');
+      s.hp += affixTotal(it, 'hp');
+      s.mana += affixTotal(it, 'mana');
+      s.crit += affixTotal(it, 'crit');
+      s.vamp += affixTotal(it, 'vamp');
+      s.piety += affixTotal(it, 'piety');
+    });
+    return s;
+  }
+
+  /* ── XP / niveaux ── */
+  function xpFor(level) { return Math.round(20 * Math.pow(level, 1.6)); }
+
+  /* ── save-core : sauvegarde versionnée ── */
+  var SAVE_VERSION = 1;
+  function saveGame(obj) {
+    obj = JSON.parse(JSON.stringify(obj));
+    obj._v = SAVE_VERSION;
+    obj._t = Date.now();
+    return JSON.stringify(obj);
+  }
+  function loadGame(str) {
+    try {
+      var o = JSON.parse(str);
+      if (!o || o._v !== SAVE_VERSION) return null;
+      return o;
+    } catch (e) { return null; }
+  }
+
+  return {
+    makeRng: makeRng, hashSeed: hashSeed, pick: pick, dice: dice,
+    RARITY: RARITY, rollRarity: rollRarity,
+    BASES: BASES, rollItem: rollItem, itemFullName: itemFullName, affixTotal: affixTotal,
+    SLOTS: SLOTS, makeInventory: makeInventory, invAdd: invAdd, invRemove: invRemove,
+    invEquip: invEquip, invUnequip: invUnequip, equipStats: equipStats,
+    xpFor: xpFor, saveGame: saveGame, loadGame: loadGame, SAVE_VERSION: SAVE_VERSION
+  };
+});
+</script>
+<script>/* ============================================================
+   CARAVANES — moteur v1 (sandbox d'escouade, désert post-apo)
+   Page 22 du hub C.I.M. — v22. Dépend de rpg-core.js (KERNEL).
+   Sim pure (aucun rendu) : positions en mètres, monde 2400².
+   « Apprendre en faire » : les compétences montent par l'usage.
+   Perdre fait partie du récit : défaite = vol + réveil en ville.
+   ============================================================ */
+(function (root) {
+  'use strict';
+  var K = root.RPGCORE;
+  if (!K || !K.makeRng) throw new Error('RPGCORE requis : chargez rpg-core.js avant caravanes-engine.js');
+
+  var C = { VERSION: '1.0', SIZE: 2400 };
+  /* 1 h de jeu = 60 s réelles ; journée = 24 min */
+  C.HOUR = 60;
+
+  C.GOODS = { eau: 3, pain: 6, viande: 9, tissu: 14, outils: 30, epices: 45, vieilleries: 25 };
+  C.GOOD_KEYS = ['eau', 'pain', 'viande', 'tissu', 'outils', 'epices'];
+  C.NAMES = ['Kessa', 'Rhouk', 'Imra', 'Dahan', 'Sylte', 'Oma', 'Torv', 'Anouk', 'Bask', 'Feyd', 'Lira', 'Mokh', 'Yade', 'Sorn'];
+
+  /* 4 villes, 3 factions (les Pillards du Sable n'ont que des camps) */
+  C.FACTIONS = {
+    villes: { n: 'Villes-Libres', col: '#e0b45a' },
+    guilde: { n: 'Guilde Marchande', col: '#7ecbff' },
+    enclave: { n: 'Enclave de Fer', col: '#b48cff' },
+    pillards: { n: 'Pillards du Sable', col: '#e06a5a' }
+  };
+  C.FAC_KEYS = ['villes', 'guilde', 'enclave', 'pillards'];
+
+  C.BUILDS = {
+    ferme:  { n: 'Ferme d\u2019algues', or: 200, outils: 2, h: 5, prod: { bien: 'pain', per: 2, qty: 1 }, d: '+1 pain / 2 h' },
+    puits:  { n: 'Puits de sable', or: 150, outils: 1, h: 4, prod: { bien: 'eau', per: 1, qty: 2 }, d: '+2 eau / h' },
+    atelier:{ n: 'Atelier de récup', or: 300, outils: 3, h: 7, prod: { bien: 'outils', per: 4, qty: 1 }, d: '+1 outil / 4 h' },
+    tour:   { n: 'Tour de garde', or: 250, outils: 2, h: 6, prod: null, d: 'raids : −1 pillard' }
+  };
+  C.BUILD_KEYS = ['ferme', 'puits', 'atelier', 'tour'];
+
+  /* ══════════ MONDE (déterministe par graine) ══════════ */
+  C.genWorld = function (seedKey) {
+    var rng = K.makeRng('caravanes-' + seedKey);
+    /* v27 : géographie PAR GRAINE — Corail reste la ville-départ (sud-ouest),
+       les trois autres sont tirées au sort : routes, distances et arbitrage
+       changent entièrement d'une zone à l'autre. */
+    var towns = [
+      { n: 'Corail', fac: 'villes', x: 420, z: 420, r: 55 },
+      { n: 'Poussière', fac: 'guilde', x: 0, z: 0, r: 55 },
+      { n: 'Fer-Sombre', fac: 'enclave', x: 0, z: 0, r: 55 },
+      { n: 'Braise', fac: 'villes', x: 0, z: 0, r: 55 }
+    ];
+    (function () {
+      var fallbackX = [0, 0, 1980, 1880, 520], fallbackZ = [0, 0, 520, 1880, 1900];
+      for (var i = 1; i < 4; i++) {
+        var ok2 = false, guard2 = 0;
+        while (!ok2 && guard2++ < 400) {
+          var ang = rng() * Math.PI * 2, rr = 950 + rng() * 600;
+          var x2 = 1200 + Math.cos(ang) * rr, z2 = 1200 + Math.sin(ang) * rr;
+          if (x2 < 240 || x2 > 2160 || z2 < 240 || z2 > 2160) continue;
+          ok2 = true;
+          for (var j2 = 0; j2 < i; j2++) if (Math.hypot(x2 - towns[j2].x, z2 - towns[j2].z) < 730) { ok2 = false; break; }
+          if (ok2) { towns[i].x = Math.round(x2); towns[i].z = Math.round(z2); }
+        }
+        if (!ok2) { towns[i].x = fallbackX[i]; towns[i].z = fallbackZ[i]; }
+      }
+    })();
+    /* multiplicateurs de prix par ville (l'arbitrage, cœur du jeu) */
+    var mults = [
+      { eau: 0.8, pain: 0.9, viande: 1.2, tissu: 1.3, outils: 1.4, epices: 0.7 },
+      { eau: 1.2, pain: 1.1, viande: 0.8, tissu: 1.1, outils: 1.2, epices: 1.5 },
+      { eau: 1.5, pain: 1.4, viande: 1.3, tissu: 0.7, outils: 0.7, epices: 1.3 },
+      { eau: 1.4, pain: 1.2, viande: 0.9, tissu: 0.8, outils: 1.3, epices: 0.8 }
+    ];
+    towns.forEach(function (t2, i) { t2.mult = mults[i]; });
+    function far(rng2, min, list, coord) {
+      var x, z, ok = false, guard = 0;
+      while (!ok && guard++ < 400) {
+        x = 120 + rng2() * (C.SIZE - 240); z = 120 + rng2() * (C.SIZE - 240);
+        ok = true;
+        for (var i = 0; i < list.length; i++) {
+          var d = Math.hypot(x - list[i].x, z - list[i].z);
+          if (d < min) { ok = false; break; }
+        }
+      }
+      return { x: x, z: z };
+    }
+    var oases = [];
+    for (var i = 0; i < 5; i++) { var o = far(rng, 300, towns.concat(oases)); oases.push({ x: o.x, z: o.z, r: 30 }); }
+    var ruins = [];
+    for (i = 0; i < 6; i++) { var r2 = far(rng, 240, towns.concat(oases, ruins)); ruins.push({ x: r2.x, z: r2.z, looted: false, loot: K.pick(rng, ['outils', 'vieilleries', 'tissu']) }); }
+    var camps = [];
+    for (i = 0; i < 3; i++) { var c2 = far(rng, 320, towns.concat(oases, ruins, camps)); camps.push({ x: c2.x, z: c2.z, n: 3 + Math.floor(rng() * 3), purged: false }); }
+    var rocks = [];
+    for (i = 0; i < 120; i++) rocks.push({ x: rng() * C.SIZE, z: rng() * C.SIZE, s: 0.5 + rng() * 1.6 });
+    return { seed: seedKey, towns: towns, oases: oases, ruins: ruins, camps: camps, rocks: rocks };
+  };
+
+  /* ══════════ ESCOUADE & CAMP ══════════ */
+  function makeMember(name, force, vitesse, endu, commerce, hpMax) {
+    return {
+      n: name, hp: hpMax, hpMax: hpMax, force: force, vitesse: vitesse, endu: endu, commerce: commerce,
+      faim: 90, eau: 90, st: 'debout', /* debout | ko */
+      hits: 0, km: 0, _kmNext: 0.5, trades: 0, x: 0, z: 0, tx: null, tz: null
+    };
+  }
+  C.makeMember = makeMember;
+
+  C.newCamp = function (seedKey) {
+    return {
+      v: 1, seed: seedKey || 'sel', day: 1, h: 7, or: 120,
+      inv: { eau: 6, pain: 4, viande: 0, tissu: 0, outils: 0, epices: 0, vieilleries: 0 },
+      members: [], chronicle: [], opinions: { villes: 0, guilde: 0, enclave: 0, pillards: -30 },
+      base: null, purges: 0, defeats: 0, trades: 0,
+      best: { or: 0, jour: 1, purges: 0, recrues: 0, base: 0 }, mute: false
+    };
+  };
+  C.saveCamp = function (camp) {
+    try { localStorage.setItem('car_save', K.saveGame(camp)); } catch (e) { }
+    try {
+      var b = null;
+      try { b = JSON.parse(localStorage.getItem('car_best') || 'null'); } catch (e2) { }
+      if (!b) b = { or: 0, jour: 1, purges: 0, recrues: 0, base: 0 };
+      ['or', 'jour', 'purges', 'recrues', 'base'].forEach(function (k) { if (camp.best[k] > b[k]) b[k] = camp.best[k]; });
+      localStorage.setItem('car_best', JSON.stringify(b));
+    } catch (e3) { }
+  };
+  C.loadCamp = function () {
+    try { var raw = localStorage.getItem('car_save'); return raw ? K.loadGame(raw) : null; } catch (e) { return null; }
+  };
+  C.records = function () {
+    try { return JSON.parse(localStorage.getItem('car_best') || 'null'); } catch (e) { return null; }
+  };
+  C.chron = function (camp, txt) {
+    camp.chronicle.unshift('Jour ' + camp.day + ' — ' + txt);
+    if (camp.chronicle.length > 30) camp.chronicle.pop();
+  };
+
+  /* ══════════ SESSION ══════════ */
+  C.startSession = function (camp) {
+    var W2 = C.genWorld(camp.seed);
+    var rng = K.makeRng('session-' + camp.seed + '-' + camp.day);
+    var G = {
+      camp: camp, W: W2, members: camp.members, enemies: [], time: { h: camp.h, day: camp.day },
+      msgs: [], over: '', ambushT: 0.4 + rng() * 0.5, raidT: 20 + rng() * 10, selected: 0
+    };
+    if (!G.members.length) {
+      var m0 = makeMember('Vous', 8, 1.0, 10, 5, 60);
+      m0.x = W2.towns[0].x + 20; m0.z = W2.towns[0].z + 20;
+      G.members.push(m0);
+    }
+    G.members.forEach(function (m) { if (m.st === 'ko') { m.st = 'debout'; m.hp = Math.max(m.hp, Math.round(m.hpMax * 0.5)); } });
+    /* taverne : 2 recrues par ville */
+    G.tavern = W2.towns.map(function (t2, i) {
+      var names = C.NAMES.slice();
+      return [0, 1].map(function (j) {
+        var nm = names.splice(Math.floor(rng() * names.length), 1)[0];
+        var f = 7 + Math.floor(rng() * 6), v = 0.9 + rng() * 0.4, e = 8 + Math.floor(rng() * 6), c = 4 + Math.floor(rng() * 8);
+        return { n: nm, ville: i, force: f, vitesse: v, endu: e, commerce: c, hpMax: 50 + f * 2, prix: Math.round(80 + f * 14 + c * 8 + e * 4) };
+      });
+    });
+    msg(G, 'Jour ' + camp.day + ' — ' + W2.towns[0].n + '. Vous êtes seul, fragile, et le désert est immense.');
+    return G;
+  };
+  function msg(G, txt) { G.msgs.push({ txt: txt, at: G.time.h }); }
+  C._msg = msg;
+
+  function nearestTown(G, x, z) {
+    var best = null, bd = 1e9;
+    G.W.towns.forEach(function (t2) {
+      var d = Math.hypot(x - t2.x, z - t2.z);
+      if (d < bd) { bd = d; best = t2; }
+    });
+    return { t2: best, d: bd };
+  }
+
+  /* ══════════ PAS DE SIMULATION ══════════ */
+  C.step = function (G, dt) {
+    if (G.over) return;
+    var camp = G.camp;
+    var gh = dt / C.HOUR; /* heures de jeu */
+    G.time.h += gh;
+    if (G.time.h >= 24) { G.time.h -= 24; G.time.day++; camp.day = G.time.day; camp.best.jour = Math.max(camp.best.jour, G.time.day); }
+    camp.h = G.time.h;
+
+    /* déplacement & jauges des membres */
+    G.members.forEach(function (m) {
+      var slow = 1;
+      if (m.faim < 25) slow *= 0.7;
+      if (m.eau < 25) slow *= 0.7;
+      if (m.st === 'debout' && m.tx !== null) {
+        var dx = m.tx - m.x, dz = m.tz - m.z, d = Math.hypot(dx, dz);
+        var spd = 9 * m.vitesse * slow; /* v27 : ×3 — la marche est enfin perceptible */
+        if (d < spd * dt) { m.x = m.tx; m.z = m.tz; m.tx = null; }
+        else { m.x += dx / d * spd * dt; m.z += dz / d * spd * dt; }
+        m.km += spd * dt / 1000;
+        if (m.km > m._kmNext) { m.endu++; m._kmNext = (m._kmNext || 0.5) + 0.5; msg(G, m.n + ' endurcit ses jambes (endurance ' + m.endu + ').'); }
+      }
+      /* consommation */
+      var march = (m.tx !== null) ? 1.3 : 1;
+      m.faim = Math.max(0, m.faim - gh * 0.55 * march);
+      m.eau = Math.max(0, m.eau - gh * 0.9 * march);
+      if (m.st === 'debout') {
+        if (m.eau <= 0) m.hp -= gh * 4;
+        else if (m.eau < 25) m.hp -= gh * 1;
+        if (m.faim > 50 && m.eau > 25 && m.hp < m.hpMax) m.hp = Math.min(m.hpMax, m.hp + gh * 2);
+        if (m.hp <= 0) { m.hp = 0; m.st = 'ko'; msg(G, m.n + ' s\u2019effondre…'); }
+      } else { /* ko : rétablissement lent */
+        m.hp = Math.min(m.hpMax * 0.35, m.hp + gh * 2.5);
+        if (m.hp >= m.hpMax * 0.3) { m.st = 'debout'; msg(G, m.n + ' se relève, sonné mais debout.'); }
+      }
+    });
+
+    /* combat : ennemis vs membres (auto) */
+    for (var i = G.enemies.length - 1; i >= 0; i--) {
+      var e = G.enemies[i];
+      e.cd = Math.max(0, (e.cd || 0) - dt);
+      var tgt = null, bd = 1e9;
+      G.members.forEach(function (m) {
+        if (m.st !== 'debout') return;
+        var d = Math.hypot(m.x - e.x, m.z - e.z);
+        if (d < bd) { bd = d; tgt = m; }
+      });
+      if (!tgt) continue;
+      if (bd > 1.4) {
+        e.x += (tgt.x - e.x) / bd * 2.6 * dt;
+        e.z += (tgt.z - e.z) / bd * 2.6 * dt;
+      } else if (e.cd <= 0) {
+        e.cd = 1.2;
+        var dmg = e.force * (0.7 + Math.random() * 0.6);
+        tgt.hp -= dmg;
+        if (tgt.hp <= 0) { tgt.hp = 0; tgt.st = 'ko'; msg(G, tgt.n + ' est à terre !'); }
+      }
+    }
+    /* riposte des membres */
+    G.members.forEach(function (m) {
+      if (m.st !== 'debout') return;
+      m.cd = Math.max(0, (m.cd || 0) - dt);
+      var e = null, bd = 9;
+      G.enemies.forEach(function (e2) {
+        var d = Math.hypot(e2.x - m.x, e2.z - m.z);
+        if (d < bd) { bd = d; e = e2; }
+      });
+      if (e && bd < 1.5 && m.cd <= 0) {
+        m.cd = 1.1;
+        var dmg2 = m.force * (0.8 + Math.random() * 0.5);
+        e.hp -= dmg2;
+        m.hits++;
+        if (m.hits >= 8) { m.hits = 0; m.force++; msg(G, m.n + ' affine son coup (force ' + m.force + ').'); }
+        if (e.hp <= 0) {
+          G.enemies.splice(G.enemies.indexOf(e), 1);
+          msg(G, e.n + ' ne se relèvera pas.');
+        }
+      }
+    });
+
+    /* embuscades : en zone sauvage, surtout près des territoires pillards */
+    G.ambushT -= gh;
+    if (G.ambushT <= 0) {
+      G.ambushT = 0.6 + Math.random() * 0.8;
+      var grp = G.members.filter(function (m) { return m.st === 'debout'; });
+      if (grp.length) {
+        var mx = 0, mz = 0;
+        grp.forEach(function (m) { mx += m.x; mz += m.z; });
+        mx /= grp.length; mz /= grp.length;
+        var nt = nearestTown(G, mx, mz);
+        var wild = nt.d > 260;
+        var nearCamp = G.W.camps.some(function (c2) { return !c2.purged && Math.hypot(mx - c2.x, mz - c2.z) < 380; });
+        if (wild) {
+          var p = 0.30 + (nearCamp ? 0.35 : 0) + (camp.opinions.pillards < -60 ? 0.15 : 0);
+          if (Math.random() < p) {
+            var n2 = 1 + Math.floor(Math.random() * 2);
+            for (var j = 0; j < n2; j++) {
+              G.enemies.push({ n: 'Pillard du Sable', hp: 26 + Math.random() * 10, force: 6 + Math.random() * 3, x: mx + (Math.random() * 60 - 30), z: mz + (Math.random() * 60 - 30) });
+            }
+            msg(G, 'EMBUSCADE — des Pillards du Sable surgissent des dunes !');
+          }
+        }
+      }
+    }
+
+    /* camps purgés ? */
+    G.W.camps.forEach(function (c2) {
+      if (c2.purged) return;
+      var hostiles = G.enemies.filter(function (e) { return e.camp === c2; });
+      if (hostiles.length === 0 && c2._engaged) {
+        c2.purged = true;
+        camp.purges++;
+        camp.best.purges = Math.max(camp.best.purges, camp.purges);
+        var butin = 80 + Math.floor(Math.random() * 80);
+        camp.or += butin;
+        camp.opinions.villes = Math.min(100, camp.opinions.villes + 8);
+        camp.opinions.enclave = Math.min(100, camp.opinions.enclave + 4);
+        camp.opinions.pillards = Math.max(-100, camp.opinions.pillards - 12);
+        C.chron(camp, 'Camp pillard purgé (+' + butin + ' or). Les Villes-Libres saluent.');
+        msg(G, 'Camp nettoyé ! Butin : +' + butin + ' or. Opinion Villes-Libres +8.');
+      }
+    });
+
+    /* garrisons de camps : engagent si proches */
+    G.W.camps.forEach(function (c2) {
+      if (c2.purged || c2._engaged) return;
+      var prox = G.members.some(function (m) { return m.st === 'debout' && Math.hypot(m.x - c2.x, m.z - c2.z) < 70; });
+      if (prox) {
+        c2._engaged = true;
+        for (var j = 0; j < c2.n; j++) {
+          G.enemies.push({ n: 'Pillard du camp', hp: 30, force: 7 + Math.random() * 3, x: c2.x + Math.cos(j * 2.1) * 8, z: c2.z + Math.sin(j * 2.1) * 8, camp: c2 });
+        }
+        msg(G, 'Le camp vous a repérés — ils chargent !');
+      }
+    });
+
+    /* défaite totale : toute l'escouade à terre */
+    if (G.members.length && G.members.every(function (m) { return m.st === 'ko'; })) {
+      camp.defeats++;
+      var perduOr = Math.floor(camp.or * 0.5);
+      camp.or -= perduOr;
+      camp.inv.epices = 0; camp.inv.vieilleries = 0;
+      var nt2 = nearestTown(G, G.members[0].x, G.members[0].z);
+      var wake = nt2.t2;
+      G.members.forEach(function (m) {
+        m.st = 'debout'; m.hp = Math.round(m.hpMax * 0.5); m.faim = Math.max(m.faim, 40); m.eau = Math.max(m.eau, 40);
+        m.x = wake.x + 15; m.z = wake.z + 15; m.tx = null;
+      });
+      camp.opinions.villes = Math.min(100, camp.opinions.villes + 2);
+      C.chron(camp, 'Escouade à terre. Réveillée à ' + wake.n + ', délestée de ' + perduOr + ' or.');
+      msg(G, 'TOUS À TERRE — des marchands vous traînent jusqu\u2019à ' + wake.n + '. Butin volé : −' + perduOr + ' or.');
+    }
+
+    /* raids sur la base */
+    if (camp.base && camp.base.done) {
+      G.raidT -= gh;
+      if (G.raidT <= 0) {
+        G.raidT = 18 + Math.random() * 12;
+        var atk = 2 + Math.floor(camp.purges / 3) + (camp.base.b.tour >= 1 ? -1 : 0);
+        if (atk < 1) atk = 1;
+        var defendeurs = G.members.filter(function (m) { return m.st === 'debout' && Math.hypot(m.x - camp.base.x, m.z - camp.base.z) < 220; });
+        var valeur = 40 + camp.base._value;
+        if (defendeurs.length) {
+          /* bataille résolue par forces cumulées + un peu de hasard */
+          var fDef = defendeurs.reduce(function (s2, m) { return s2 + m.force + m.hp / 40; }, 0) + (camp.base.b.tour >= 1 ? 4 : 0);
+          var fAtk = atk * 8;
+          if (fDef >= fAtk * (0.8 + Math.random() * 0.5)) {
+            camp.or += Math.round(valeur * 0.3);
+            camp.opinions.villes = Math.min(100, camp.opinions.villes + 6);
+            C.chron(camp, 'Raid de ' + atk + ' pillards repoussé à la base. Opinion Villes-Libres +6.');
+            msg(G, 'RAID repoussé ! Les pillards fuient, la base tient.');
+          } else {
+            camp.or = Math.max(0, camp.or - Math.round(valeur * 0.4));
+            C.chron(camp, 'Raid de ' + atk + ' pillards : la base pillée (or et récoltes perdus).');
+            msg(G, 'RAID — la base est mise à sac malgré vos défenseurs…');
+          }
+        } else {
+          camp.or = Math.max(0, camp.or - Math.round(valeur * 0.4));
+          camp.inv.pain = Math.max(0, camp.inv.pain - 2);
+          C.chron(camp, 'Base sans défense : les pillards emportent récoltes et or.');
+          msg(G, 'Votre base, sans défenseurs, a été pillée pendant votre absence.');
+        }
+      }
+    }
+
+    /* production de la base */
+    if (camp.base && camp.base.done) {
+      C.BUILD_KEYS.forEach(function (k) {
+        var b = camp.base.b[k];
+        if (b < 1) return;
+        var spec = C.BUILDS[k];
+        if (!spec.prod) return;
+        camp.base._prodAcc = camp.base._prodAcc || {};
+        camp.base._prodAcc[k] = (camp.base._prodAcc[k] || 0) + gh;
+        var per = spec.prod.per;
+        while (camp.base._prodAcc[k] >= per) {
+          camp.base._prodAcc[k] -= per;
+          camp.inv[spec.prod.bien] += spec.prod.qty;
+          camp.base._value = (camp.base._value || 40) + 5;
+        }
+      });
+    }
+
+    /* chantiers en cours (par bâtiment) */
+    if (camp.base) {
+      C.BUILD_KEYS.forEach(function (k) {
+        if (camp.base.b[k] > 0 && camp.base.b[k] < 1) {
+          camp.base.b[k] = Math.min(1, camp.base.b[k] + gh / C.BUILDS[k].h);
+          if (camp.base.b[k] >= 1) msg(G, C.BUILDS[k].n + ' terminé ! ' + (C.BUILDS[k].prod ? C.BUILDS[k].d : 'La base se défend mieux.'));
+        }
+      });
+    }
+  };
+
+  /* ══════════ COMMANDES ══════════ */
+  C.cmdMove = function (G, idxs, x, z) {
+    if (G.over) return;
+    idxs.forEach(function (i) {
+      var m = G.members[i];
+      if (m && m.st === 'debout') {
+        /* v28b : le premier membre va EXACTEMENT au clic, les autres se forment autour */
+        var OFF2 = [[0, 0], [2.6, 0], [-2.6, 2.6]];
+        var o2 = OFF2[i] || [0, 0];
+        m.tx = x + o2[0]; m.tz = z + o2[1];
+      }
+    });
+  };
+  C.cmdHalt = function (G) { G.members.forEach(function (m) { m.tx = null; }); };
+
+  C.cmdConsume = function (G, idx, bien) {
+    var camp = G.camp, m = G.members[idx];
+    if (!m || m.st !== 'debout') return false;
+    if ((camp.inv[bien] || 0) <= 0) return false;
+    if (bien === 'eau') { m.eau = Math.min(100, m.eau + 50); }
+    else if (bien === 'pain') { m.faim = Math.min(100, m.faim + 40); }
+    else if (bien === 'viande') { m.faim = Math.min(100, m.faim + 55); }
+    else return false;
+    camp.inv[bien]--;
+    return true;
+  };
+
+  C.foundBase = function (G) {
+    var camp = G.camp;
+    if (camp.base) return { err: 'existe' };
+    var grp = G.members.filter(function (m) { return m.st === 'debout'; });
+    if (!grp.length) return { err: 'ko' };
+    var mx = grp[0].x, mz = grp[0].z; /* le pionnier (1ᵉʳ debout) choisit le site */
+    var nearOasis = G.W.oases.some(function (o) { return Math.hypot(mx - o.x, mz - o.z) < 120; });
+    if (!nearOasis) return { err: 'oasis' };
+    var nt = nearestTown(G, mx, mz);
+    if (nt.d < 140) return { err: 'ville' };
+    camp.base = { x: Math.round(mx), z: Math.round(mz), b: { ferme: 0, puits: 0, atelier: 0, tour: 0 }, done: true, _value: 40 };
+    C.chron(camp, 'Première pierre de l\u2019avant-poste posée près d\u2019une oasis.');
+    msg(G, 'Chantier lancé ! La base se construit avec le temps qui passe.');
+    C.saveCamp(camp);
+    return { ok: true };
+  };
+
+  C.buildCost = function (key) { return C.BUILDS[key]; };
+  C.build = function (G, key) {
+    var camp = G.camp;
+    if (!camp.base || !camp.base.done) return { err: 'base' };
+    if (camp.base.b[key] >= 1) return { err: 'fait' };
+    if (camp.base.b[key] > 0) return { err: 'encours' };
+    var spec = C.BUILDS[key];
+    if (camp.or < spec.or || (camp.inv.outils || 0) < spec.outils) return { err: 'ressources' };
+    camp.or -= spec.or;
+    camp.inv.outils -= spec.outils;
+    camp.base.b[key] = 0.001;
+    C.chron(camp, spec.n + ' : le chantier démarre.');
+    C.saveCamp(camp);
+    return { ok: true };
+  };
+
+  /* ══════════ VILLES : marché, taverne ══════════ */
+  C.cityAt = function (G) {
+    var alive = G.members.filter(function (m) { return m.st === 'debout'; });
+    if (!alive.length) return null;
+    var m = alive[0];
+    for (var i = 0; i < G.W.towns.length; i++) {
+      var t2 = G.W.towns[i];
+      if (Math.hypot(m.x - t2.x, m.z - t2.z) < t2.r) return { idx: i, t2: t2 };
+    }
+    return null;
+  };
+  C.buyPrice = function (G, t2, bien) {
+    var camp = G.camp;
+    var op = camp.opinions[t2.fac] || 0;
+    var p = C.GOODS[bien] * (t2.mult[bien] || 1) * (1 - op / 450);
+    return Math.max(1, Math.round(p));
+  };
+  C.sellPrice = function (G, t2, bien) {
+    var camp = G.camp;
+    var op = camp.opinions[t2.fac] || 0;
+    var m = 0.55 + 0.06 * (G.members[0] ? Math.min(15, G.members[0].commerce) : 5) / 15;
+    var p = C.GOODS[bien] * (t2.mult[bien] || 1) * m * (1 + op / 500);
+    return Math.max(1, Math.round(p));
+  };
+  C.buy = function (G, bien, qty) {
+    var c = C.cityAt(G);
+    if (!c) return { err: 'ville' };
+    var camp = G.camp;
+    var p = C.buyPrice(G, c.t2, bien) * qty;
+    if (camp.or < p) return { err: 'or' };
+    camp.or -= p;
+    camp.inv[bien] = (camp.inv[bien] || 0) + qty;
+    camp.trades++;
+    camp.opinions[c.t2.fac] = Math.min(100, camp.opinions[c.t2.fac] + 0.5);
+    camp.opinions.guilde = Math.min(100, camp.opinions.guilde + 0.4);
+    skillTrade(G, 3);
+    C.saveCamp(camp);
+    return { ok: true, p: p };
+  };
+  C.sell = function (G, bien, qty) {
+    var c = C.cityAt(G);
+    if (!c) return { err: 'ville' };
+    var camp = G.camp;
+    qty = Math.min(qty, camp.inv[bien] || 0);
+    if (qty <= 0) return { err: 'vide' };
+    var p = C.sellPrice(G, c.t2, bien) * qty;
+    camp.or += p;
+    camp.inv[bien] -= qty;
+    camp.trades++;
+    camp.best.or = Math.max(camp.best.or, camp.or);
+    camp.opinions[c.t2.fac] = Math.min(100, camp.opinions[c.t2.fac] + 0.5);
+    camp.opinions.guilde = Math.min(100, camp.opinions.guilde + 0.4);
+    skillTrade(G, 3);
+    C.saveCamp(camp);
+    return { ok: true, p: p };
+  };
+  function skillTrade(G, per) {
+    var m = G.members.filter(function (x) { return x.st === 'debout'; })[0];
+    if (!m) return;
+    m.trades++;
+    if (m.trades >= per) { m.trades = 0; m.commerce++; msg(G, m.n + ' marchande mieux (commerce ' + m.commerce + ').'); }
+  }
+  C.recruit = function (G, ville, j) {
+    var camp = G.camp;
+    var c = C.cityAt(G);
+    if (!c || c.idx !== ville) return { err: 'ville' };
+    if (G.members.length >= 3) return { err: 'plein' };
+    var r = G.tavern[ville][j];
+    if (!r) return { err: 'vide' };
+    if (camp.or < r.prix) return { err: 'or' };
+    camp.or -= r.prix;
+    var m = makeMember(r.n, r.force, r.vitesse, r.endu, r.commerce, r.hpMax);
+    m.x = c.t2.x + 10; m.z = c.t2.z + 10;
+    G.members.push(m);
+    camp.members = G.members;
+    camp.best.recrues++;
+    C.chron(camp, r.n + ' rejoint la caravane (' + r.prix + ' or).');
+    msg(G, r.n + ' signe. L\u2019escouade compte ' + G.members.length + ' bras.');
+    C.saveCamp(camp);
+    return { ok: true };
+  };
+
+  /* ruines : fouiller */
+  C.lootRuine = function (G) {
+    var camp = G.camp;
+    var alive = G.members.filter(function (m) { return m.st === 'debout'; });
+    if (!alive.length) return null;
+    for (var i = 0; i < G.W.ruins.length; i++) {
+      var r2 = G.W.ruins[i];
+      if (r2.looted) continue;
+      if (Math.hypot(alive[0].x - r2.x, alive[0].z - r2.z) < 30) {
+        r2.looted = true;
+        var q2 = 1 + Math.floor(Math.random() * 2);
+        camp.inv[r2.loot] = (camp.inv[r2.loot] || 0) + q2;
+        msg(G, 'Ruine fouillée : +' + q2 + ' ' + r2.loot + '.');
+        return { ok: true, loot: r2.loot, q: q2 };
+      }
+    }
+    return null;
+  };
+  /* oasis : remplir les gourdes */
+  C.fillWater = function (G) {
+    var camp = G.camp;
+    var alive = G.members.filter(function (m) { return m.st === 'debout'; });
+    if (!alive.length) return false;
+    var near = G.W.oases.some(function (o) { return Math.hypot(alive[0].x - o.x, alive[0].z - o.z) < o.r + 15; });
+    if (!near) return false;
+    camp.inv.eau = Math.min(20, (camp.inv.eau || 0) + 4);
+    msg(G, 'Outres remplies à l\u2019oasis (+4 eau, max 20).');
+    return true;
+  };
+
+  root.CARAVANES = C;
+})(typeof window !== 'undefined' ? window : global);
+</script>
+<script>/* ============================================================
+   CARAVANES — interface v1 : iso canvas, escouade, marchés, base
+   Dépend de rpg-core.js + caravanes-engine.js. ES5, UMD.
+   Vue isométrique maison (comme Arkhantis — PixiJS écarté).
+   ============================================================ */
+(function (root) {
+  'use strict';
+  var C = root.CARAVANES;
+  if (!C) throw new Error('CARAVANES requis : chargez caravanes-engine.js avant caravanes-ui.js');
+
+  var d = document;
+  function $(id) { return d.getElementById(id); }
+
+  /* ══════════ AUDIO PROCÉDURAL (compact) ══════════ */
+  var AU = { ctx: null, master: null, mute: false };
+  function audio() {
+    if (AU.ctx) return AU.ctx;
+    var AC = root.AudioContext || root.webkitAudioContext;
+    if (!AC) return null;
+    try {
+      AU.ctx = new AC();
+      AU.master = AU.ctx.createGain();
+      AU.master.gain.value = AU.mute ? 0 : 0.4;
+      AU.master.connect(AU.ctx.destination);
+    } catch (e) { AU.ctx = null; }
+    return AU.ctx;
+  }
+  function setMute(m) { AU.mute = m; if (AU.master) AU.master.gain.value = m ? 0 : 0.4; }
+  function beep(f, dur, type, vol, slide) {
+    var c = audio(); if (!c) return;
+    var o = c.createOscillator(), g = c.createGain();
+    o.type = type || 'square';
+    o.frequency.setValueAtTime(f, c.currentTime);
+    if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(30, slide), c.currentTime + dur);
+    g.gain.setValueAtTime(vol || 0.1, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + dur);
+    o.connect(g); g.connect(AU.master);
+    o.start(); o.stop(c.currentTime + dur + 0.02);
+  }
+  function noise(dur, freq, vol) {
+    var c = audio(); if (!c) return;
+    var b = c.createBuffer(1, c.sampleRate * dur, c.sampleRate), ch = b.getChannelData(0);
+    for (var i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+    var src = c.createBufferSource(); src.buffer = b;
+    var f = c.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = freq;
+    var g = c.createGain();
+    g.gain.setValueAtTime(vol || 0.25, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + dur);
+    src.connect(f); f.connect(g); g.connect(AU.master);
+    src.start();
+  }
+  var SFX = {
+    ui: function () { beep(600, 0.05, 'square', 0.06); },
+    coin: function () { beep(880, 0.06, 'triangle', 0.1); setTimeout(function () { beep(1320, 0.09, 'triangle', 0.1); }, 60); },
+    hit: function () { noise(0.1, 900, 0.3); },
+    ko: function () { beep(200, 0.3, 'sawtooth', 0.15, 60); },
+    build: function () { beep(220, 0.08, 'square', 0.1); setTimeout(function () { beep(180, 0.1, 'square', 0.1); }, 120); },
+    alarm: function () { beep(500, 0.5, 'sawtooth', 0.13, 900); }
+  };
+  function sfx(n) { if (AU.mute) return; var f = SFX[n]; if (f) try { f(); } catch (e) { } }
+
+  /* ══════════ ÉTAT ══════════ */
+  var camp = null, G = null, ST = 'menu';
+  var camX = 0, camZ = 0, paused = false, fast = false;
+  var lastFrame = 0, hudT = 0, logN = 0, saveT = 0, msgAlarm = 0;
+  var cv = $('caCanvas'), ctx = cv.getContext('2d');
+  var TW = 46, TH = 23;
+  function w2s(x, z) { return [(x - z) * (TW / 2) + cv.width / 2 - camX, (x + z) * (TH / 2) + cv.height * 0.55 - camZ]; } /* v28 : escouade centrée (55 % de hauteur) */
+  function s2w(sx, sy) {
+    var px = sx - cv.width / 2 + camX, py = sy - cv.height * 0.55 + camZ;
+    return [(px / (TW / 2) + py / (TH / 2)) / 2, (py / (TH / 2) - px / (TW / 2)) / 2];
+  }
+
+  function show(el, on, mode) { el.style.display = on ? (mode || 'flex') : 'none'; }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  /* ══════════ ÉCRANS ══════════ */
+  function toMenu() {
+    ST = 'menu';
+    show($('caMenu'), true); show($('caHud'), false); show($('caCity'), false); show($('caBase'), false); show($('caAide'), false);
+    var rec = C.records();
+    $('caRecords').textContent = rec
+      ? 'Records — ' + rec.or + ' or · jour ' + rec.jour + ' · ' + rec.purges + ' camps purgés · ' + rec.recrues + ' recrues' + (rec.base ? ' · avant-poste ✔' : '')
+      : 'Aucune caravane n\u2019a encore survécu à ses rêves.';
+    $('caContinue').style.display = C.loadCamp() ? '' : 'none';
+  }
+  function startGame(c) {
+    camp = c;
+    AU.mute = !!camp.mute;
+    G = C.startSession(camp);
+    var m0 = G.members[0];
+    camX = (m0.x - m0.z) * (TW / 2); camZ = (m0.x + m0.z) * (TH / 2); /* v28 : pas de décalage — l'escouade démarre centrée */
+    ST = 'jeu'; paused = false; fast = false; logN = 0;
+    G.tuto = true; /* v27 : tuteur jusqu'au 1er clic-sol */
+    show($('caMenu'), false); show($('caHud'), true); show($('caCity'), false); show($('caBase'), false); show($('caAide'), false);
+    C.saveCamp(camp);
+    logPump(); updateHud();
+  }
+
+  /* ══════════ HUD ══════════ */
+  function logPump() {
+    var lg = $('caLog');
+    while (logN < G.msgs.length) {
+      var m = G.msgs[logN++];
+      var txt = m.txt;
+      if (G.time.h - (msgAlarm || 0) > 0 && (txt.indexOf('EMBUSCADE') >= 0 || txt.indexOf('RAID') >= 0 || txt.indexOf('à terre') >= 0)) { sfx('alarm'); sfx('ko'); }
+      var div = d.createElement('div');
+      div.textContent = txt;
+      lg.insertBefore(div, lg.firstChild);
+    }
+    while (lg.children.length > 9) lg.removeChild(lg.lastChild);
+  }
+  function bar(el, v, max, col) {
+    el.firstElementChild.style.width = Math.max(0, Math.min(1, v / max)) * 100 + '%';
+    if (col) el.firstElementChild.style.background = col;
+  }
+  function updateHud() {
+    $('caTemps').textContent = 'Jour ' + G.time.day + ' — ' + ('0' + Math.floor(G.time.h)).slice(-2) + ' h' + (paused ? ' · ⏸' : (fast ? ' · ×3' : ''));
+    $('caOr').textContent = camp.or + ' or';
+    var inv = camp.inv;
+    $('caInv').textContent = 'eau ' + (inv.eau || 0) + ' · pain ' + (inv.pain || 0) + ' · viande ' + (inv.viande || 0) +
+      ' · tissu ' + (inv.tissu || 0) + ' · outils ' + (inv.outils || 0) + ' · épices ' + (inv.epices || 0) + ' · vieilleries ' + (inv.vieilleries || 0);
+    /* escouade */
+    var sh = '';
+    G.members.forEach(function (m, i) {
+      sh += '<button class="ca-mbr' + (i === G.selected ? ' sel' : '') + (m.st === 'ko' ? ' ko' : '') + '" data-mbr="' + i + '">' +
+        '<b>' + esc(m.n) + '</b><small>' + (m.st === 'ko' ? 'à terre' : 'F' + m.force + ' · V' + m.vitesse.toFixed(2) + ' · E' + m.endu + ' · C' + m.commerce) + '</small></button>';
+    });
+    $('caSquad').innerHTML = sh;
+    var m = G.members[G.selected] || G.members[0];
+    if (m) {
+      bar($('caBarHp'), m.hp, m.hpMax, m.hp < m.hpMax * 0.3 ? '#c0392b' : '#4a8f3c');
+      bar($('caBarFaim'), m.faim, 100, '#d8893a');
+      bar($('caBarEau'), m.eau, 100, '#4a8fd8');
+      $('caMbrInfo').textContent = m.n + ' — force ' + m.force + ' · vitesse ×' + m.vitesse.toFixed(2) + ' · endurance ' + m.endu + ' · commerce ' + m.commerce;
+      $('caEat').textContent = 'Manger pain ×' + (camp.inv.pain || 0);
+      $('caMeat').textContent = 'Viande ×' + (camp.inv.viande || 0);
+      $('caDrink').textContent = 'Boire eau ×' + (camp.inv.eau || 0);
+      $('caEat').disabled = !(camp.inv.pain > 0) || m.st !== 'debout';
+      $('caMeat').disabled = !(camp.inv.viande > 0) || m.st !== 'debout';
+      $('caDrink').disabled = !(camp.inv.eau > 0) || m.st !== 'debout';
+    }
+    $('caBaseTag').textContent = camp.base ? 'Avant-poste : ' + C.BUILD_KEYS.filter(function (k) { return camp.base.b[k] >= 1; }).length + '/4 bâtiments' : 'Aucun avant-poste';
+    /* prompt */
+    var pr = '';
+    if (C.cityAt(G)) pr = C.cityAt(G).t2.n + ' — [E] marché & taverne';
+    else if (camp.base && Math.hypot((G.members[0] || {}).x - camp.base.x, (G.members[0] || {}).z - camp.base.z) < 80) pr = 'Avant-poste — [E] chantiers';
+    else if (nearRuine()) pr = 'Ruine — [E] fouiller';
+    else if (nearOasis()) pr = 'Oasis — [E] remplir les outres';
+    if (!pr) pr = 'Clic gauche : marcher jusqu\u2019au point · [E] agir · [Espace] pause';
+    $('caPrompt').textContent = pr;
+  }
+  function nearRuine() {
+    var m = G.members[0];
+    return G.W.ruins.some(function (r) { return !r.looted && Math.hypot(m.x - r.x, m.z - r.z) < 30; });
+  }
+  function nearOasis() {
+    var m = G.members[0];
+    return G.W.oases.some(function (o) { return Math.hypot(m.x - o.x, m.z - o.z) < o.r + 15; });
+  }
+
+  /* ══════════ PANNEAUX VILLE & BASE ══════════ */
+  var cityIdx = -1;
+  function openCity(idx) {
+    cityIdx = idx;
+    var t2 = G.W.towns[idx];
+    $('caCityTitle').textContent = t2.n + ' — ' + C.FACTIONS[t2.fac].n;
+    var op = Math.round(camp.opinions[t2.fac]);
+    $('caCityOp').innerHTML = 'Opinion : <b>' + (op > 0 ? '+' : '') + op + '</b> <small>(achats ' +
+      Math.round((1 - op / 450) * 100) + ' % · ventes +' + Math.round(op / 5) + ' %)</small>';
+    var h = '<table class="ca-mkt"><tr><th>Marchandise</th><th>Acheter</th><th>Vendre</th><th>Stock</th></tr>';
+    C.GOOD_KEYS.concat(['vieilleries']).forEach(function (g) {
+      var bp = C.buyPrice(G, t2, g), sp = C.sellPrice(G, t2, g);
+      h += '<tr><td>' + g + '</td>' +
+        '<td><button data-buy="' + g + '" data-q="1"' + (camp.or >= bp ? '' : ' disabled') + '>1 → ' + bp + '</button>' +
+        '<button data-buy="' + g + '" data-q="5"' + (camp.or >= bp * 5 ? '' : ' disabled') + '>5 → ' + bp * 5 + '</button></td>' +
+        '<td><button data-sell="' + g + '"' + ((camp.inv[g] || 0) > 0 ? '' : ' disabled') + '>' + sp + '</button></td>' +
+        '<td>' + (camp.inv[g] || 0) + '</td></tr>';
+    });
+    h += '</table><h4>Taverne</h4><div class="ca-tav">';
+    G.tavern[idx].forEach(function (r, j) {
+      h += '<div class="ca-tavR"><b>' + esc(r.n) + '</b><small>force ' + r.force + ' · vitesse ×' + r.vitesse.toFixed(2) +
+        ' · endurance ' + r.endu + ' · commerce ' + r.commerce + '</small>' +
+        '<button data-rec="' + j + '"' + (camp.or >= r.prix && G.members.length < 3 ? '' : ' disabled') + '>Engager — ' + r.prix + ' or</button></div>';
+    });
+    h += '</div><p class="ca-mut">Escouade : ' + G.members.length + ' / 3 (MVP — jusqu\u2019à 12 en V1).</p>';
+    $('caCityBody').innerHTML = h;
+    show($('caCity'), true);
+  }
+  $('caCityBody').addEventListener('click', function (e) {
+    var t2 = e.target.closest('[data-buy],[data-sell],[data-rec]');
+    if (!t2) return;
+    if (t2.dataset.buy) { var rB = C.buy(G, t2.dataset.buy, +t2.dataset.q); sfx(rB.ok ? 'coin' : 'ui'); }
+    else if (t2.dataset.sell) { var rS = C.sell(G, t2.dataset.sell, camp.inv[t2.dataset.sell] || 0); sfx(rS.ok ? 'coin' : 'ui'); }
+    else if (t2.dataset.rec !== undefined) { var rR = C.recruit(G, cityIdx, +t2.dataset.rec); sfx(rR.ok ? 'coin' : 'ui'); if (rR.ok) { openCity(cityIdx); return; } }
+    updateHud();
+    openCity(cityIdx);
+  });
+  $('caCityClose').addEventListener('click', function () { show($('caCity'), false); });
+
+  function openBase() {
+    var b = camp.base;
+    var h = '';
+    if (!b) {
+      h += '<p>Personne ne veille ici. Pour fonder un avant-poste : placez-vous <b>près d\u2019une oasis</b> (et loin des villes), puis confirmez.</p>';
+      h += '<button class="ca-go" id="caFound">Fonder l\u2019avant-poste ici</button>';
+    } else {
+      h += '<p>Avant-poste au point ' + b.x + ' · ' + b.z + '. ' + (b.done ? '' : 'En construction…') + '</p><div class="ca-blds">';
+      C.BUILD_KEYS.forEach(function (k) {
+        var spec = C.BUILDS[k], st = b.b[k];
+        var label = st >= 1 ? '✔ ' + spec.d : (st > 0 ? 'Chantier : ' + Math.round(st * 100) + ' %' : 'Construire — ' + spec.or + ' or + ' + spec.outils + ' outils');
+        h += '<div class="ca-bld"><b>' + spec.n + '</b><small>' + label + '</small>' +
+          (st === 0 ? '<button data-bld="' + k + '"' + (camp.or >= spec.or && (camp.inv.outils || 0) >= spec.outils ? '' : ' disabled') + '>Lancer</button>' : '') + '</div>';
+      });
+      h += '</div><p class="ca-mut">Les raids tombent toutes les 18-30 h : gardez des bras à la base, ou une tour.</p>';
+    }
+    $('caBaseBody').innerHTML = h;
+    var f = $('caFound');
+    if (f) f.addEventListener('click', function () {
+      var r = C.foundBase(G);
+      sfx(r.ok ? 'build' : 'ui');
+      updateHud();
+      openBase();
+    });
+    show($('caBase'), true);
+  }
+  $('caBaseBody').addEventListener('click', function (e) {
+    var t2 = e.target.closest('[data-bld]');
+    if (!t2) return;
+    var r = C.build(G, t2.dataset.bld);
+    sfx(r.ok ? 'build' : 'ui');
+    updateHud();
+    openBase();
+  });
+  $('caBaseClose').addEventListener('click', function () { show($('caBase'), false); });
+
+  /* ══════════ INTERACTION ══════════ */
+  function interact() {
+    var c = C.cityAt(G);
+    if (c) { openCity(c.idx); return; }
+    if (camp.base && Math.hypot(G.members[0].x - camp.base.x, G.members[0].z - camp.base.z) < 80) { openBase(); return; }
+    if (nearRuine()) { sfx(C.lootRuine(G) ? 'coin' : 'ui'); updateHud(); return; }
+    if (nearOasis()) {
+      if (!camp.base) { openBase(); return; } /* E à une oasis sans base : fondation d'abord */
+      sfx(C.fillWater(G) ? 'coin' : 'ui');
+      updateHud();
+      return;
+    }
+  }
+
+  /* ══════════ RENDU ISO ══════════ */
+  /* v26c : palette par graine — les 3 zones ne partagent plus le même sable */
+  var SANDS = {
+    sel:    ['#d8b878', '#d2b070', '#cdaa6a', '#c9a86a', '#a8845a'],
+    verre:  ['#c2d2c6', '#b6c8bc', '#acc0b4', '#b1c3b9', '#8aa094'],
+    cendre: ['#b4aca8', '#aaa29c', '#a09890', '#a89e98', '#8a8078']
+  };
+  function sandPal() { var s2 = (G && G.W && G.W.seed) || (camp && camp.seed); return SANDS[s2] || SANDS.sel; }
+  function render(now) {
+    var w = cv.width, h = cv.height;
+    /* centre caméra : escouade */
+    var cx = 0, cz = 0, n = 0;
+    G.members.forEach(function (m) { cx += m.x; cz += m.z; n++; });
+    if (n) { cx /= n; cz /= n; }
+    camX += ((cx - cz) * (TW / 2) - camX) * 0.08;
+    camZ += ((cx + cz) * (TH / 2) - camZ) * 0.08;
+    /* fond */
+    var PAL = sandPal();
+    ctx.fillStyle = PAL[3];
+    ctx.fillRect(0, 0, w, h);
+    /* dalles de dunes */
+    var step = 60;
+    for (var gx = -step; gx < w + step; gx += step) {
+      for (var gy = -step; gy < h + step; gy += step) {
+        var wx = (gx - cv.width / 2 + camX) , wy = (gy - cv.height * 0.55 + camZ);
+        var ti = Math.abs(((wx * 7 + wy * 13) / 500) | 0) % 3;
+        ctx.fillStyle = PAL[ti];
+        ctx.fillRect(gx + ((wy / step | 0) % 2) * step / 2, gy, step, step);
+      }
+    }
+    /* v27 : crêtes de dunes — grandes ombres douces ancrées au monde */
+    var dstep = 300;
+    for (var dx2 = -dstep; dx2 < w + dstep; dx2 += dstep) {
+      for (var dy2 = -dstep; dy2 < h + dstep; dy2 += dstep) {
+        var wx2 = (dx2 - cv.width / 2 + camX), wy3 = (dy2 - 40 + camZ);
+        var hsh2 = Math.abs(((wx2 * 7 + wy3 * 13) / 900) | 0);
+        if (hsh2 % 2) continue;
+        var px2 = dx2 + (hsh2 % 137), py2 = dy2 + (hsh2 % 91);
+        ctx.fillStyle = (hsh2 % 3) ? 'rgba(120,90,50,0.10)' : 'rgba(255,240,200,0.08)';
+        ctx.beginPath();
+        ctx.ellipse(px2, py2, 110 + (hsh2 % 60), 34 + (hsh2 % 22), (hsh2 % 7) * 0.45, 0, 7);
+        ctx.fill();
+      }
+    }
+    /* limites du monde */
+    [[0, 0, C.SIZE, 0], [C.SIZE, 0, C.SIZE, C.SIZE], [C.SIZE, C.SIZE, 0, C.SIZE], [0, C.SIZE, 0, 0]].forEach(function (l) {
+      ctx.strokeStyle = PAL[4];
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      var p1 = w2s(l[0], l[1]), p2 = w2s(l[2], l[3]);
+      ctx.moveTo(p1[0], p1[1]);
+      ctx.lineTo(p2[0], p2[1]);
+      ctx.stroke();
+    });
+    /* rochers */
+    G.W.rocks.forEach(function (r) {
+      var p = w2s(r.x, r.z);
+      if (p[0] < -30 || p[0] > w + 30 || p[1] < -30 || p[1] > h + 30) return;
+      ctx.fillStyle = '#9a8a70';
+      ctx.beginPath();
+      ctx.ellipse(p[0], p[1], 4 * r.s, 2 * r.s, 0, 0, 7);
+      ctx.fill();
+    });
+    /* oasis */
+    G.W.oases.forEach(function (o) {
+      var p = w2s(o.x, o.z);
+      if (p[0] < -80 || p[0] > w + 80 || p[1] < -60 || p[1] > h + 60) return;
+      ctx.fillStyle = '#7aa85a';
+      ctx.beginPath();
+      ctx.ellipse(p[0], p[1], o.r * (TW / 2) / 1.42, o.r * (TH / 2) / 1.42, 0, 0, 7);
+      ctx.fill();
+      ctx.fillStyle = '#4a8fc0';
+      ctx.beginPath();
+      ctx.ellipse(p[0], p[1] + 2, o.r * 0.45 * (TW / 2) / 1.42, o.r * 0.45 * (TH / 2) / 1.42, 0, 0, 7);
+      ctx.fill();
+      /* v27 : palmiers */
+      for (var pi = 0; pi < 4; pi++) {
+        var ha = (o.x * 3 + o.z * 7 + pi * 131) % 628 / 100;
+        var pr = o.r * 0.55;
+        var px3 = p[0] + Math.cos(ha) * pr, py3 = p[1] + Math.sin(ha) * pr * 0.5;
+        ctx.strokeStyle = '#7a5c30'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(px3, py3); ctx.lineTo(px3, py3 - 16); ctx.stroke();
+        ctx.strokeStyle = '#5a9a4a'; ctx.lineWidth = 2;
+        for (var fl = 0; fl < 5; fl++) {
+          var fa = fl * Math.PI * 2 / 5;
+          ctx.beginPath(); ctx.moveTo(px3, py3 - 16);
+          ctx.quadraticCurveTo(px3 + Math.cos(fa) * 8, py3 - 22, px3 + Math.cos(fa) * 13, py3 - 14);
+          ctx.stroke();
+        }
+      }
+    });
+    /* ruines */
+    G.W.ruins.forEach(function (r) {
+      var p = w2s(r.x, r.z);
+      if (p[0] < -40 || p[0] > w + 40 || p[1] < -40 || p[1] > h + 40) return;
+      ctx.strokeStyle = r.looted ? '#8a7a60' : '#6a5a44';
+      ctx.lineWidth = 3;
+      for (var i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(p[0] - 8 + i * 8, p[1]);
+        ctx.lineTo(p[0] - 8 + i * 8, p[1] - 10 - (i % 2) * 4);
+        ctx.stroke();
+      }
+    });
+    /* camps pillards */
+    G.W.camps.forEach(function (c2) {
+      var p = w2s(c2.x, c2.z);
+      if (p[0] < -50 || p[0] > w + 50 || p[1] < -50 || p[1] > h + 50) return;
+      ctx.fillStyle = c2.purged ? '#7a6a58' : '#8a4a3a';
+      for (var i = 0; i < 3; i++) {
+        ctx.beginPath();
+        ctx.moveTo(p[0] - 10 + i * 9, p[1]);
+        ctx.lineTo(p[0] - 6 + i * 9, p[1] - 9);
+        ctx.lineTo(p[0] - 2 + i * 9, p[1]);
+        ctx.fill();
+      }
+    });
+    /* villes */
+    G.W.towns.forEach(function (t2) {
+      var p = w2s(t2.x, t2.z);
+      if (p[0] < -140 || p[0] > w + 140 || p[1] < -120 || p[1] > h + 120) return;
+      var R = t2.r * (TW / 2) / 1.42;
+      ctx.fillStyle = '#b09468';
+      ctx.beginPath();
+      ctx.ellipse(p[0], p[1], R, R * 0.5, 0, 0, 7);
+      ctx.fill();
+      ctx.strokeStyle = C.FACTIONS[t2.fac].col;
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.fillStyle = '#7a6048';
+      for (var i = 0; i < 4; i++) {
+        ctx.fillRect(p[0] - 18 + i * 10, p[1] - 8 - (i % 2) * 5, 8, 12 + (i % 2) * 5);
+      }
+      ctx.fillStyle = '#2a241c';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(t2.n, p[0], p[1] - R * 0.5 - 8);
+    });
+    /* base */
+    if (camp.base) {
+      var bp = w2s(camp.base.x, camp.base.z);
+      ctx.fillStyle = '#c9a04a';
+      ctx.fillRect(bp[0] - 10, bp[1] - 8, 20, 12);
+      ctx.strokeStyle = '#7a5c28';
+      ctx.strokeRect(bp[0] - 10, bp[1] - 8, 20, 12);
+      if (camp.base.b.tour >= 1) { ctx.fillRect(bp[0] + 8, bp[1] - 20, 6, 16); }
+      var buildKeys = C.BUILD_KEYS;
+      for (var bi = 0; bi < buildKeys.length; bi++) {
+        var st = camp.base.b[buildKeys[bi]];
+        if (st > 0 && st < 1) {
+          ctx.fillStyle = '#e8d8a0';
+          ctx.fillRect(bp[0] - 12, bp[1] + 8, 24 * st, 3);
+        }
+      }
+    }
+    /* ennemis */
+    G.enemies.forEach(function (e) {
+      var p = w2s(e.x, e.z);
+      ctx.fillStyle = 'rgba(40,25,10,0.28)';
+      ctx.beginPath(); ctx.ellipse(p[0], p[1] + 1, 8, 3.4, 0, 0, 7); ctx.fill();
+      ctx.fillStyle = '#a83a2a';
+      ctx.beginPath();
+      ctx.moveTo(p[0], p[1] - 12);
+      ctx.lineTo(p[0] - 6, p[1]);
+      ctx.lineTo(p[0] + 6, p[1]);
+      ctx.fill();
+      ctx.fillStyle = '#300';
+      ctx.fillRect(p[0] - 7, p[1] - 17, 14, 3);
+      ctx.fillStyle = '#c0392b';
+      ctx.fillRect(p[0] - 7, p[1] - 17, 14 * Math.max(0, e.hp / 36), 3);
+    });
+    /* escouade */
+    var MBR_COL = ['#3a4a5a', '#5a3a4a', '#3a5a44'];
+    G.members.forEach(function (m, i) {
+      var p = w2s(m.x, m.z);
+      /* v27 : ombre portée */
+      ctx.fillStyle = 'rgba(40,25,10,0.28)';
+      ctx.beginPath(); ctx.ellipse(p[0], p[1] + 1, 8, 3.6, 0, 0, 7); ctx.fill();
+      var bob = m.tx !== null && m.st === 'debout' ? Math.sin(now * 0.012 + i * 2) * 1.5 : 0;
+      ctx.fillStyle = m.st === 'ko' ? '#8a8078' : MBR_COL[i % 3];
+      ctx.beginPath();
+      ctx.ellipse(p[0], p[1] - 9 + bob, 6.5, 11.5, 0, 0, 7);
+      ctx.fill();
+      /* v27 : ceinture claire — lisibilité de la silhouette */
+      ctx.fillStyle = 'rgba(230,200,140,0.8)';
+      ctx.fillRect(p[0] - 5.5, p[1] - 9 + bob, 11, 2.4);
+      ctx.fillStyle = '#d8b090';
+      ctx.beginPath();
+      ctx.arc(p[0], p[1] - 24 + bob, 4.6, 0, 7);
+      ctx.fill();
+      /* v27 : turban de couleur du membre */
+      ctx.fillStyle = MBR_COL[i % 3];
+      ctx.beginPath(); ctx.arc(p[0], p[1] - 26.5 + bob, 4.2, Math.PI, 0); ctx.fill();
+      /* santé */
+      ctx.fillStyle = '#222';
+      ctx.fillRect(p[0] - 8, p[1] - 26 + bob, 16, 3);
+      ctx.fillStyle = m.hp < m.hpMax * 0.3 ? '#c0392b' : '#4a8f3c';
+      ctx.fillRect(p[0] - 8, p[1] - 26 + bob, 16 * Math.max(0, m.hp / m.hpMax), 3);
+      if (i === G.selected) {
+        ctx.strokeStyle = '#ffe08a';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(p[0], p[1] + 1, 11, 5.5, 0, 0, 7);
+        ctx.stroke();
+      }
+    });
+    /* v27 : repère de destination pulsé (retour visuel de l'ordre de marche) */
+    var someWalking = false;
+    G.members.forEach(function (m) { if (m.tx != null) someWalking = true; });
+    if (G.destMark && someWalking) {
+      var dp = w2s(G.destMark[0], G.destMark[1]);
+      var pulse = 10 + Math.sin(now / 120) * 4;
+      ctx.strokeStyle = '#ffd76a'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.ellipse(dp[0], dp[1], pulse * 1.4, pulse * 0.7, 0, 0, 7); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(dp[0] - 8, dp[1]); ctx.lineTo(dp[0] + 8, dp[1]);
+      ctx.moveTo(dp[0], dp[1] - 6); ctx.lineTo(dp[0], dp[1] + 6); ctx.stroke();
+    } else if (G.destMark) { G.destMark = null; }
+    /* v27 : tuteur de premier déplacement (pulsé jusqu'au 1er clic-sol) */
+    if (G.tuto) {
+      var tp2 = w2s(cx, cz);
+      var pulse2 = 26 + Math.sin(now / 150) * 8;
+      ctx.strokeStyle = '#7ddcff'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.ellipse(tp2[0], tp2[1], pulse2 * 1.5, pulse2 * 0.75, 0, 0, 7); ctx.stroke();
+      ctx.fillStyle = 'rgba(10,14,20,.85)';
+      var bx2 = tp2[0] - 158, by2 = tp2[1] - 78;
+      ctx.fillRect(bx2, by2, 316, 30);
+      ctx.fillStyle = '#bfe8ff'; ctx.font = 'bold 15px system-ui, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('Cliquez le sol : la troupe marche jusqu\u2019au repère', tp2[0], by2 + 21);
+      ctx.textAlign = 'left';
+    }
+    /* v27 : nuit — la lumière tombe entre 19 h et 6 h */
+    var hr = (G.time && G.time.h) || 12;
+    var night = hr >= 19 || hr < 6 ? Math.min(0.42, hr >= 19 ? (hr - 19) * 0.1 + 0.18 : 0.42) : (hr >= 17 ? (hr - 17) * 0.09 : 0);
+    if (night > 0.01) {
+      ctx.fillStyle = 'rgba(18,24,52,' + night + ')';
+      ctx.fillRect(0, 0, w, h);
+    }
+    /* mini-carte */
+    drawMini();
+  }
+  function drawMini() {
+    var mc = $('caMini'), mx = mc.getContext('2d');
+    var S = mc.width, k = S / C.SIZE;
+    mx.fillStyle = sandPal()[3];
+    mx.fillRect(0, 0, S, S);
+    G.W.oases.forEach(function (o) { mx.fillStyle = '#5a9a5a'; mx.fillRect(o.x * k - 2, o.z * k - 2, 4, 4); });
+    G.W.ruins.forEach(function (r) { mx.fillStyle = r.looted ? '#8a7a60' : '#6a5a44'; mx.fillRect(r.x * k - 1, r.z * k - 1, 3, 3); });
+    G.W.camps.forEach(function (c2) { mx.fillStyle = c2.purged ? '#8a7a68' : '#c0563c'; mx.fillRect(c2.x * k - 2, c2.z * k - 2, 4, 4); });
+    G.W.towns.forEach(function (t2) {
+      mx.fillStyle = C.FACTIONS[t2.fac].col;
+      mx.fillRect(t2.x * k - 4, t2.z * k - 4, 8, 8);
+    });
+    if (camp.base) { mx.fillStyle = '#e8c04a'; mx.fillRect(camp.base.x * k - 3, camp.base.z * k - 3, 6, 6); }
+    G.members.forEach(function (m) {
+      mx.fillStyle = '#fff';
+      mx.beginPath();
+      mx.arc(m.x * k, m.z * k, 2.4, 0, 7);
+      mx.fill();
+    });
+  }
+
+  /* ══════════ ENTRÉES ══════════ */
+  cv.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  cv.addEventListener('mousedown', function (e) {
+    if (ST !== 'jeu') return;
+    var rect = cv.getBoundingClientRect();
+    var sx = (e.clientX - rect.left) * (cv.width / rect.width);
+    var sy = (e.clientY - rect.top) * (cv.height / rect.height);
+    if (e.button === 2) {
+      var wz = s2w(sx, sy);
+      C.cmdMove(G, G.members.map(function (m, i) { return i; }), wz[0], wz[1]);
+      sfx('ui');
+      return;
+    }
+    /* sélection : membre le plus proche du clic */
+    var best = -1, bd = 20;
+    G.members.forEach(function (m, i) {
+      var p = w2s(m.x, m.z);
+      var dd = Math.hypot(p[0] - sx, p[1] - sy);
+      if (dd < bd) { bd = dd; best = i; }
+    });
+    if (best >= 0) { G.selected = best; sfx('ui'); updateHud(); }
+    else { /* v26 : clic gauche sur le sol = tout le monde marche vers le point (fini le clic droit caché) */
+      var wz2 = s2w(sx, sy);
+      C.cmdMove(G, G.members.map(function (m, i) { return i; }), wz2[0], wz2[1]);
+      G.destMark = wz2; /* marqueur visuel de destination */
+      G.tuto = false;
+      sfx('ui');
+    }
+  });
+  d.addEventListener('keydown', function (e) {
+    if (ST !== 'jeu') return;
+    if (e.code === 'KeyE') { interact(); }
+    else if (e.code === 'Space') { paused = !paused; sfx('ui'); e.preventDefault(); }
+    else if (e.code === 'KeyT') { fast = !fast; sfx('ui'); }
+    else if (e.code === 'Digit1') { G.selected = 0; updateHud(); }
+    else if (e.code === 'Digit2') { G.selected = Math.min(1, G.members.length - 1); updateHud(); }
+    else if (e.code === 'Digit3') { G.selected = Math.min(2, G.members.length - 1); updateHud(); }
+    else if (e.code === 'KeyH') { show($('caAide'), $('caAide').style.display === 'none', 'block'); }
+    else if (e.code === 'Escape') { show($('caCity'), false); show($('caBase'), false); show($('caAide'), false); }
+  });
+
+  /* boutons rapides */
+  $('caEat').addEventListener('click', function () { C.cmdConsume(G, G.selected, 'pain') && sfx('ui'); updateHud(); });
+  $('caMeat').addEventListener('click', function () { C.cmdConsume(G, G.selected, 'viande') && sfx('ui'); updateHud(); });
+  $('caDrink').addEventListener('click', function () { C.cmdConsume(G, G.selected, 'eau') && sfx('ui'); updateHud(); });
+  $('caPause').addEventListener('click', function () { paused = !paused; sfx('ui'); });
+  $('caFast').addEventListener('click', function () { fast = !fast; sfx('ui'); });
+  $('caMute2').addEventListener('click', function () { setMute(!AU.mute); camp.mute = AU.mute; C.saveCamp(camp); $('caMute2').textContent = AU.mute ? '🔇 Son coupé' : '🔊 Son'; });
+  $('caQuit').addEventListener('click', function () { C.saveCamp(camp); toMenu(); });
+  $('caQuitX').addEventListener('click', function () { C.saveCamp(camp); toMenu(); });
+  $('caAideBtn').addEventListener('click', function () { show($('caAide'), true, 'block'); });
+  $('caAideClose').addEventListener('click', function () { show($('caAide'), false); });
+  $('caAideCloseMenu').addEventListener('click', function () { show($('caAide'), false); });
+  $('caMute').addEventListener('click', function () { setMute(!AU.mute); $('caMute').textContent = AU.mute ? '🔇 Son coupé' : '🔊 Son'; });
+
+  /* ══════════ MENU ══════════ */
+  Array.prototype.forEach.call(d.querySelectorAll('[data-seed]'), function (b) {
+    b.addEventListener('click', function () {
+      startGame(C.newCamp(b.dataset.seed));
+      sfx('ui');
+    });
+  });
+  $('caContinue').addEventListener('click', function () {
+    var c = C.loadCamp();
+    if (c) { startGame(c); sfx('ui'); }
+  });
+
+  /* ══════════ BOUCLE ══════════ */
+  function loop(now) {
+    root.requestAnimationFrame(loop);
+    var dt = Math.max(0, Math.min(0.1, (now - lastFrame) / 1000));
+    lastFrame = now;
+    if (ST !== 'jeu' || !G) return;
+    if (!paused) C.step(G, dt * (fast ? 3 : 1));
+    render(now);
+    logPump();
+    hudT -= dt;
+    if (hudT <= 0) { hudT = 0.25; updateHud(); }
+    saveT -= dt;
+    if (saveT <= 0) { saveT = 8; C.saveCamp(camp); } /* autosave agressive */
+  }
+
+  /* hook de debug/test (smoke jsdom) */
+  root.CARAVANES_DEBUG = { getG: function () { return G; }, getC: function () { return camp; } };
+
+  /* boot */
+  setMute(false);
+  toMenu();
+  root.requestAnimationFrame(function (t2) { lastFrame = t2; root.requestAnimationFrame(loop); });
+})(typeof window !== 'undefined' ? window : global);
+</script>
+
+<script>
+/* ═══ v23 — CIMFS : chaque jeu démarre en plein écran ═══
+   Plein écran natif si le navigateur l'autorise ; sinon plein écran
+   « simulé » (l'aire de jeu remplit tout l'écran). Bouton ⛶ dans le jeu. */
+(function () {
+  'use strict';
+  var CFG = {
+    stage: '.ca-stage',
+    starts: ["caContinue"],
+    quits: ["caQuit"],
+    seed: true,
+    cls: false
+  };
+  var sim = false, stage = null;
+  function el(id) { return document.getElementById(id); }
+  function isFs() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function resize() { setTimeout(function () { try { window.dispatchEvent(new Event('resize')); } catch (e) {} }, 90); }
+  function simOn() {
+    if (!stage) return;
+    sim = true;
+    try { if (getComputedStyle(stage).position === 'static') stage.style.position = 'relative'; } catch (e) {}
+    stage.classList.add('cim-fs');
+    resize();
+  }
+  function enter(st) {
+    stage = st || stage;
+    if (!stage || sim || isFs()) { resize(); return; }
+    var done = false;
+    function fallback() { if (!done && !isFs()) { done = true; simOn(); } }
+    try {
+      var p = null;
+      if (stage.requestFullscreen) p = stage.requestFullscreen();
+      else if (stage.webkitRequestFullscreen) p = stage.webkitRequestFullscreen();
+      if (p && p.then) p.then(function () { done = true; resize(); }, fallback);
+      else if (p) { /* ancien webkit : pas de promesse */ }
+      else fallback();
+    } catch (e) { fallback(); }
+    setTimeout(fallback, 400);
+  }
+  function exit() {
+    if (sim) { sim = false; stage.classList.remove('cim-fs'); resize(); return; }
+    try {
+      if (isFs()) {
+        var d = document.exitFullscreen || document.webkitExitFullscreen;
+        if (d) d.call(document);
+      }
+    } catch (e) {}
+  }
+  function toggle() { (sim || isFs()) ? exit() : enter(); }
+  window.CIMFS = { enter: enter, exit: exit, toggle: toggle, on: function () { return sim || isFs(); }, sim: function () { return sim; } };
+
+  function target() {
+    if (stage) return stage;
+    return stage = (CFG.stage.charAt(0) === '#' ? el(CFG.stage.slice(1)) : document.querySelector(CFG.stage));
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== document) {
+      var id = t.id || '';
+      if (id && CFG.quits.indexOf(id) >= 0) { exit(); return; }
+      if (id && CFG.starts.indexOf(id) >= 0) { enter(target()); return; }
+      if (CFG.seed && t.getAttribute && t.getAttribute('data-seed')) { enter(target()); return; }
+      if (CFG.cls && t.getAttribute && t.getAttribute('data-cls')) { enter(target()); return; }
+      t = t.parentNode;
+    }
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.code === 'Escape' && sim) { e.preventDefault(); exit(); }
+  }, true);
+  /* bouton ⛶ */
+  function mount() {
+    var st = target();
+    if (!st) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '\u26F6 Plein écran';
+    b.title = 'Plein écran (Échap pour sortir)';
+    b.setAttribute('style', 'position:absolute;top:8px;right:8px;z-index:99000;padding:6px 13px;border-radius:9px;border:1px solid rgba(255,255,255,.28);background:rgba(8,12,18,.72);color:#fff;font-size:.86rem;cursor:pointer');
+    b.addEventListener('click', function (ev) { ev.stopPropagation(); toggle(); });
+    try { if (getComputedStyle(st).position === 'static') st.style.position = 'relative'; } catch (e) {}
+    st.appendChild(b);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
+</script>
+
+<script>
+/* ═══ v25 — Échap = sauver & revenir au menu (partout, tout le temps) + commandes auto ═══ */
+(function () {
+  function el(id) { return document.getElementById(id); }
+  function visible(id) { var e2 = el(id); return e2 && e2.style.display !== 'none'; }
+  /* v26c : PAS d'auto-ouverture de l'aide (elle bloquait le jeu au lancement) ;
+     l'aide reste accessible via le bouton « ? Commandes » et la touche H, fermable par Échap. */
+  document.addEventListener('keydown', function (e) {
+    if (e.code !== 'Escape') return;
+    if (visible('caMenu')) return;                                     /* déjà au menu */
+    if (visible('caCity') || visible('caBase')) return;                /* ces boîtes se ferment d'elles-mêmes */
+    if (visible('caAide')) { var c = el('caAideClose'); if (c) c.click(); return; } /* 1er Échap : fermer l'aide */
+    var q = el('caQuit');
+    if (q) q.click(); /* sauvegarde + menu (+ sortie du plein écran) */
+  }, true);
+})();
+</script>

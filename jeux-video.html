@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>Jeux contre l'IA — Morpion parfait, Puissance 4, Othello, 2048, Mastermind, Snake | Hub IA C.I.M.</title>
+<meta name="description" content="Six jeux jouables contre de vraies IA : Morpion imbattable (minimax), Puissance 4 qui anticipe 6 coups, Othello express, 2048 piloté par une IA, Mastermind déduit par élimination et Snake autonome.">
+<meta name="keywords" content="jeux contre l'IA, intelligence artificielle dans les jeux vidéo, minimax expliqué, morpion parfait, puissance 4 IA, Othello, 2048, Mastermind, Snake autonome, jeux gratuits dans le navigateur, pédagogie par le jeu">
+<meta name="author" content="C.I.M. — Club Informatique & Multimédia, Montpellier">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0c87a8">
+<meta name="geo.region" content="FR-34">
+<meta name="geo.placename" content="Montpellier">
+<meta name="ICBM" content="43.6108, 3.8767">
+<link rel="canonical" href="https://cim.alwaysdata.net/jeux-video.html">
+<link rel="alternate" hreflang="fr" href="https://cim.alwaysdata.net/jeux-video.html">
+<link rel="alternate" hreflang="x-default" href="https://cim.alwaysdata.net/jeux-video.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hub IA C.I.M. — Montpellier">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://cim.alwaysdata.net/jeux-video.html">
+<meta property="og:title" content="Jeux contre l'IA — Morpion parfait, Puissance 4, Othello, 2048, Mastermind, Snake | Hub IA C.I.M.">
+<meta property="og:description" content="Six jeux jouables contre de vraies IA : Morpion imbattable (minimax), Puissance 4 qui anticipe 6 coups, Othello express, 2048 piloté par une IA, Mastermind déduit par élimination et Snake autonome.">
+<meta property="og:image" content="https://cim.alwaysdata.net/img/arcade2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="654">
+<meta property="og:image:alt" content="Jeux contre l'IA — Morpion parfait, Puissance 4, Othello, 2048, Mastermind, Snake">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jeux contre l'IA — Morpion parfait, Puissance 4, Othello, 2048, Mastermind, Snake | Hub IA C.I.M.">
+<meta name="twitter:description" content="Six jeux jouables contre de vraies IA : Morpion imbattable (minimax), Puissance 4 qui anticipe 6 coups, Othello express, 2048 piloté par une IA, Mastermind déduit par élimination et Snake autonome.">
+<meta name="twitter:image" content="https://cim.alwaysdata.net/img/arcade2.jpg">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://cim.alwaysdata.net/#org", "name": "Hub IA du C.I.M. — Club Informatique & Multimédia", "url": "https://cim.alwaysdata.net/", "foundingDate": "2015-08-12", "description": "Hub IA & FabLab associatif (ESS) à Montpellier : IA souveraine, agents autonomes, machine éditoriale, open source, robotique, jeux vidéo.", "areaServed": ["Montpellier", "La Grande-Motte", "Pérols", "Lattes", "Hérault", "Occitanie", "France"], "address": {"@type": "PostalAddress", "addressLocality": "Montpellier", "addressRegion": "Occitanie", "postalCode": "34000", "addressCountry": "FR"}, "sameAs": ["https://www.youtube.com/@nexus-horizon-ai", "https://www.youtube.com/@melodyz2026", "https://www.youtube.com/@essentiel2026", "https://www.youtube.com/@k-antiques1823", "https://www.youtube.com/@sfr2026"]}, {"@type": "WebSite", "@id": "https://cim.alwaysdata.net/#website", "url": "https://cim.alwaysdata.net/", "name": "Hub IA C.I.M.", "inLanguage": "fr-FR", "publisher": {"@id": "https://cim.alwaysdata.net/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cim.alwaysdata.net/"}, {"@type": "ListItem", "position": 2, "name": "Jeux contre l'IA", "item": "https://cim.alwaysdata.net/jeux-video.html"}]}, {"@type": "WebPage", "@id": "https://cim.alwaysdata.net/jeux-video.html#page", "url": "https://cim.alwaysdata.net/jeux-video.html", "name": "Jeux contre l'IA", "description": "Six jeux jouables contre de vraies IA : Morpion imbattable (minimax), Puissance 4 qui anticipe 6 coups, Othello express, 2048 piloté par une IA, Mastermind déduit par élimination et Snake autonome.", "inLanguage": "fr-FR", "image": "https://cim.alwaysdata.net/img/arcade2.jpg", "keywords": "jeux contre l'IA, intelligence artificielle dans les jeux vidéo, minimax expliqué, morpion parfait, puissance 4 IA, Othello, 2048, Mastermind, Snake autonome, jeux gratuits dans le navigateur, pédagogie par le jeu", "isPartOf": {"@id": "https://cim.alwaysdata.net/#website"}, "about": {"@id": "https://cim.alwaysdata.net/#org"}}]}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="top">
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="logo" href="index.html"><svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="11" fill="#0c87a8"/><circle cx="14" cy="15" r="3.2" fill="#fff"/><circle cx="26" cy="15" r="3.2" fill="#a5e3f4"/><circle cx="20" cy="26" r="3.2" fill="#fff"/><path d="M14 15 L26 15 M14 15 L20 26 M26 15 L20 26" stroke="#fff" stroke-width="1.6" stroke-opacity=".7"/></svg><span>C.I.M.<small>HUB IA · FABLAB</small></span></a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-list" id="navList"><li><a href="index.html">Accueil</a></li><li><a href="demo-ia.html">Chat IA</a></li><li><a href="demo-image.html">Images IA</a></li><li><a href="agents-ia.html">Agents IA</a></li><li><a href="machine-editoriale.html">Éditoriale</a></li><li><a href="ia-souveraine.html">Souveraine</a></li><li><a href="open-source.html">Open source</a></li><li><a href="jeux-video.html" class="active">Jeux IA</a></li><li><a href="actualites.html">Actus</a></li><li><a href="medias.html">Médias</a></li><li><a href="realisations.html">Réalisations</a></li><li><a href="services.html">Services</a></li><li><a class="btn btn-primary btn-sm nav-cta" href="contact.html">Nous écrire</a></li></ul>
+  </nav>
+</header>
+<section class="page-hero">
+  <div class="wrap page-hero-img">
+    <div>
+      <span class="kicker">Univers · Jeux & IA</span>
+      <h1>Six jeux contre de vraies intelligences artificielles.</h1>
+      <p class="lead">Morpion parfait, Puissance 4 qui anticipe 6 coups, Othello express, 2048 piloté par une IA, Mastermind déduit par élimination, Snake autonome : six façons de <b>voir raisonner</b> les algorithmes qui ont façonné l'IA du jeu — exploration d'arbre, élagage, heuristiques, déduction, planification. À vous de trouver leurs failles.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#arcade">🕹️ Choisir mon jeu</a>
+        <a class="btn btn-outline" href="#coulisses">Comment c'est fait ?</a>
+      </div>
+    </div>
+    <div class="hero-img-card">
+      <img src="img/jeux.jpg" alt="Borne d'arcade et manettes dans un salon lumineux">
+      <div class="float-note">🕹️ Les algorithmes des IA de jeu, en vrai</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:26px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#e8f4f7,#fdeee4)">
+    <span style="font-size:2rem">♟️</span>
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">Nouveau : les échecs complets contre notre IA</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">8 niveaux, annulation de coup, indices, vue 3D — et la fenêtre qui montre ce que le moteur calcule en direct.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="echecs.html">Jouer →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/fps-hero.jpg" alt="Endosquelette aux yeux rouges dans une rue en ruine" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">🔥 Hub of Duty — le FPS « 2029 » contre les machines de Skynet</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Vagues d'endosquelettes, infiltrateurs mimétiques et chasseurs HK : lasers, explosions et une IA traqueuse — dans votre navigateur.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="hub-of-duty.html">Jouer au FPS →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/cendres-hero.jpg" alt="Explorateur à la lanterne dans des cryptes éclairées de torches" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">🔥 CENDRES — le roguelike des cryptes, 100 % navigateur</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">4 classes, 8 profondeurs générées à chaque partie, potions mystérieuses, autels et un boss final — avec l'IA des monstres expliquée (FOV, BFS, énergie).</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="cendres.html">Jouer au roguelike →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/gris-hero.jpg" alt="Mercenaires gris dans une lande brumeuse" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">🔥 La Confrérie du Gris — tactique au tour par tour sur hexagones</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Déployez votre escouade, gérez initiative et fatigue, percez les armures — 3 contrats, recrues, butin, et l'IA ennemie disséquée sous le jeu.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="confrerie.html">Jouer à la tactique →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/logres-hero.jpg" alt="Chevaliers et saxons sur hexagones 3D dans la brume" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">👑 LOGRES — La Table Ronde : le wargame 3D léger du site</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Batailles hexagonales en Three.js (tournez la caméra, zoomez), héros aux traits uniques, artefacts, événements Légitime/Tyran : cinq provinces, une légende.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="logres.html">Jouer à LOGRES →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/arkhantis-hero.jpg" alt="Berserker et gardien de pierre dans les ruines isométriques d'Arkhantis" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">🔥 Les Ruines d'Arkhantis — le hack &amp; slash du site</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Temps réel au clic, loot aux affixes procéduraux, arbre de maîtrise et Faille du jour : le purgatoire du butin, expliqué sous le jeu.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="arkhantis.html">Jouer au hack &amp; slash →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/zone-hero.jpg" alt="La Zone : prospectionneur, ruines et anomalie" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">☢️ La Zone — le survival FPS du site</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Préparez votre ceinture d'artefacts au Hangar, écoutez le geiger, jetez des boulons — et rentrez avant la sirène. Le raycasting expliqué sous le jeu.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="zone.html">Jouer à La Zone →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/nordheim-hero.jpg" alt="Nordheim : vallée nordique procédurale en 3D" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">🏔️ Nordheim — l'open world 3D du site</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Trois vallées au choix (loup, ourse, corbeau), PNJ à agendas, guildes et boss régional. La génération procédurale expliquée sous le jeu.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="nordheim.html">Jouer à Nordheim →</a>
+  </div>
+</div></section>
+
+<section style="padding:18px 0 0"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="img/caravanes-hero.jpg" alt="Caravanes : sandbox d'escouade dans le désert" style="width:300px;border-radius:14px" loading="lazy">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:0 0 4px">🐫 Caravanes — le sandbox d'escouade du site</h3>
+      <p style="margin:0;font-size:.92rem;color:var(--muted)">Achetez bas, vendez haut, recrutez, bâtissez près d'une oasis : l'isométrie maison et l'économie à quatre marchés expliquées sous le jeu.</p>
+    </div>
+    <a class="btn btn-primary btn-sm" href="caravanes.html">Jouer à Caravanes →</a>
+  </div>
+</div></section>
+
+<!-- ARCADE -->
+<section id="arcade" style="padding-top:50px">
+  <div class="wrap">
+    <div class="arcade-tabs" id="gameTabs">
+      <button class="chip active" data-g="ttt">❌⭕ Morpion</button>
+      <button class="chip" data-g="p4">🔴🟡 Puissance 4</button>
+      <button class="chip" data-g="oth">⚫⚪ Othello</button>
+      <button class="chip" data-g="g2048">🔢 2048</button>
+      <button class="chip" data-g="mm">🎯 Mastermind</button>
+      <button class="chip" data-g="snake">🐍 Snake</button>
+    </div>
+
+    <!-- ═══ MORPION ═══ -->
+    <div class="game-panel show" id="gp-ttt">
+      <div class="sim-panel">
+        <div class="sim-head"><span class="sim-title">❌⭕ Morpion</span><span class="sim-badge">IA minimax — analyse tous les coups</span></div>
+        <div class="sim-body">
+          <div class="chip-row" style="justify-content:center;margin-bottom:20px" id="tttDiff">
+            <button class="chip" data-d="easy">😊 Facile</button>
+            <button class="chip" data-d="medium">🤔 Moyen</button>
+            <button class="chip active" data-d="hard">😈 Impossible — imbattable</button>
+          </div>
+          <div class="ttt-grid" id="tttGrid"></div>
+          <div class="game-msg" id="tttMsg">À vous ! Vous jouez ✕ — cliquez une case.</div>
+          <div class="score-row"><span class="s-you">Vous <span id="tttYou">0</span></span><span>🤝 Nuls <span id="tttDraw">0</span></span><span class="s-ia">IA <span id="tttIa">0</span></span></div>
+          <div style="text-align:center;margin-top:14px"><button class="btn btn-outline btn-sm" id="tttReset">🔄 Nouvelle manche</button></div>
+          <svg class="schema-svg reveal" id="schema-ttt" viewBox="0 0 760 170" role="img" aria-label="Schéma de l'arbre de jeu minimax">
+        <defs><marker id="arwJ" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0c87a8"/></marker></defs>
+        <g font-size="11.5" font-weight="700" fill="#0f1f33" text-anchor="middle">
+          <circle cx="380" cy="34" r="24" fill="#e3f3f9" stroke="#0c87a8" stroke-width="2"/><text x="380" y="39"> plateau</text>
+          <circle cx="190" cy="105" r="21" fill="#fff" stroke="#c6d8e4"/><text x="190" y="110">coup A</text>
+          <circle cx="380" cy="105" r="21" fill="#fff" stroke="#c6d8e4"/><text x="380" y="110">coup B</text>
+          <circle cx="570" cy="105" r="21" fill="#fff" stroke="#c6d8e4"/><text x="570" y="110">coup C</text>
+          <text x="96" y="163" fill="#b45309">je perd</text>
+          <text x="190" y="163" fill="#15803d">nul</text>
+          <text x="284" y="163" fill="#b45309">je perd</text>
+          <text x="380" y="163" fill="#b45309">je perd</text>
+          <text x="474" y="163" fill="#b45309">je perd</text>
+          <text x="570" y="163" fill="#15803d">je gagne ✓</text>
+          <text x="664" y="163" fill="#b45309">je perd</text>
+          <line x1="362" y1="52" x2="205" y2="88" stroke="#0c87a8" stroke-width="1.6" marker-end="url(#arwJ)"/>
+          <line x1="380" y1="58" x2="380" y2="82" stroke="#0c87a8" stroke-width="1.6" marker-end="url(#arwJ)"/>
+          <line x1="398" y1="52" x2="555" y2="88" stroke="#0c87a8" stroke-width="1.6" marker-end="url(#arwJ)"/>
+          <g font-size="10" font-weight="600" fill="#5a6c84">
+            <text x="66" y="113">…et ainsi de suite</text><text x="118" y="127">pour CHAQUE branche :</text><text x="120" y="141">tout l'arbre est exploré</text>
+            <text x="652" y="113">l'IA choisit</text><text x="648" y="127">la branche gagnante</text>
+          </g>
+        </g>
+      </svg>
+      <div class="ai-note">🧠 <b>L'IA derrière :</b> l'algorithme <b>minimax</b>. L'ordinateur joue chaque coup possible « dans sa tête », suppose que vous répondrez par votre meilleur coup, et ainsi de suite jusqu'à la fin de la partie. En mode « Impossible », il explore l'arbre complet (255 168 parties existent !) : le meilleur que vous puissiez obtenir est le nul. C'est le même principe — à échelle gigantesque — des programmes d'échecs comme Deep Blue.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PUISSANCE 4 ═══ -->
+    <div class="game-panel" id="gp-p4">
+      <div class="sim-panel">
+        <div class="sim-head"><span class="sim-title">🔴🟡 Puissance 4</span><span class="sim-badge">Minimax + élagage — anticipe 6 coups</span></div>
+        <div class="sim-body">
+          <div class="game-msg" id="p4Msg" style="margin-top:0">À vous ! Cliquez une colonne — vous jouez 🔴.</div>
+          <div class="p4-wrap"><div class="p4-board" id="p4Board"></div></div>
+          <div class="score-row"><span class="s-you">Vous <span id="p4You">0</span></span><span class="s-ia">IA <span id="p4Ia">0</span></span><span style="color:var(--muted);font-weight:600;font-size:.8rem" id="p4Think"></span></div>
+          <div style="text-align:center;margin-top:14px"><button class="btn btn-outline btn-sm" id="p4Reset">🔄 Nouvelle partie</button></div>
+          <div class="ai-note">🧠 <b>L'IA derrière :</b> minimax + <b>élagage alpha-bêta</b> sur 6 coups d'avance, avec une fonction d'évaluation qui compte les alignements menaçants. L'élagage est l'astuce géniale : si un coup s'avère déjà pire qu'un autre exploré, on abandonne toute la branche sans la visiter. Des millions de positions explorées en une fraction de seconde — c'est la technique des bots d'échecs et de Go modernes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ OTHELLO ═══ -->
+    <div class="game-panel" id="gp-oth">
+      <div class="sim-panel">
+        <div class="sim-head"><span class="sim-title">⚫⚪ Othello express (6×6)</span><span class="sim-badge">Minimax α-β — stratégie de position</span></div>
+        <div class="sim-body">
+          <div class="game-msg" id="othMsg" style="margin-top:0">À vous ! Vous êtes ⚫ — les cases où vous pouvez jouer sont marquées d'un point.</div>
+          <div class="p4-wrap"><div class="oth-grid" id="othBoard"></div></div>
+          <div class="score-row"><span class="s-you">⚫ Vous <span id="othYou">2</span></span><span class="s-ia">⚪ IA <span id="othIa">2</span></span></div>
+          <div style="text-align:center;margin-top:14px"><button class="btn btn-outline btn-sm" id="othReset">🔄 Nouvelle partie</button></div>
+          <div class="ai-note">🧠 <b>L'IA derrière :</b> minimax alpha-bêta (5 coups d'avance) avec une <b>heuristique de position</b> : les coins valent de l'or, les cases à côté des coins sont des pièges, et la <b>mobilité</b> (nombre de coups disponibles) compte plus que le nombre de pions. Comme au poker, prendre trop de pions tôt est souvent une mauvaise nouvelle : l'IA le sait. Version 6×6 pour des parties rapides — les grands championnats se jouent en 8×8.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ 2048 ═══ -->
+    <div class="game-panel" id="gp-g2048">
+      <div class="sim-panel">
+        <div class="sim-head"><span class="sim-title">🔢 2048</span><span class="sim-badge">Mode IA : heuristique + anticipation</span></div>
+        <div class="sim-body">
+          <div class="snake-hud">
+            <div class="chip-row" id="g2048Mode">
+              <button class="chip active" data-m="you">🧑 Jouer (flèches)</button>
+              <button class="chip" data-m="ia">🤖 Regarder l'IA jouer</button>
+            </div>
+            <span class="sc">Score : <span id="g2048Score">0</span></span>
+            <span style="color:var(--muted)">🏆 Record : <span id="g2048Best">0</span></span>
+            <button class="btn btn-primary btn-sm" id="g2048Start">▶️ Nouvelle partie</button>
+          </div>
+          <div class="g2048-wrap"><div class="g2048-board" id="g2048Board"></div></div>
+          <div class="game-msg" id="g2048Msg">Fusionnez les tuiles égales pour atteindre 2048 !</div>
+          <div class="ai-note">🧠 <b>L'IA derrière :</b> une <b>heuristique</b> maison (cases vides, tuiles ordonnées en « serpent », plus grande tuile dans le coin) combinée à une recherche <b>expectimax</b> : l'IA simule ses coups <i>et</i> les apparitions aléatoires de tuiles (c'est le « expect » de expectimax — jouer avec l'incertitude). Deux clés de compréhension des IA qui jouent à des jeux stochastiques comme Backgammon ou Scopone.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ MASTERMIND ═══ -->
+    <div class="game-panel" id="gp-mm">
+      <div class="sim-panel">
+        <div class="sim-head"><span class="sim-title">🎯 Mastermind</span><span class="sim-badge">IA déductive — élimination de candidats</span></div>
+        <div class="sim-body">
+          <p style="font-size:.9rem;color:var(--muted);margin-top:0">Composez un code secret de 4 couleurs (répétitions autorisées), puis regardez l'IA le déduire par pur raisonnement logique.</p>
+          <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:14px 0">
+            <div style="display:flex;gap:8px;align-items:center"><b style="font-size:.85rem">Votre code :</b><span id="mmSecret" class="mm-row"></span></div>
+            <div class="chip-row" style="margin:0" id="mmPalette"></div>
+            <button class="btn btn-outline btn-sm" id="mmRandom">🎲 Code aléatoire</button>
+            <button class="btn btn-primary btn-sm" id="mmRun">🤖 Laisser l'IA deviner</button>
+          </div>
+          <div class="mm-log" id="mmLog"></div>
+          <div class="game-msg" id="mmMsg">Choisissez 4 couleurs, puis lancez l'IA.</div>
+          <div class="ai-note">🧠 <b>L'IA derrière :</b> la <b>déduction par élimination</b> (méthode de Donald Knuth, 1977). L'IA part de tous les codes possibles (6⁴ = 1 296), propose une combinaison, puis <b>supprime tous les codes incompatibles</b> avec la réponse obtenue. Chaque essai rétrécit l'ensemble — c'est le principe du gain d'information, le même raisonnement que les médecins face à un diagnostic différentiel. Regardez le compteur « candidats restants » fondre : c'est l'IA en train de penser.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SNAKE ═══ -->
+    <div class="game-panel" id="gp-snake">
+      <div class="sim-panel">
+        <div class="sim-head"><span class="sim-title">🐍 Snake</span><span class="sim-badge">Mode IA : le serpent joue seul</span></div>
+        <div class="sim-body">
+          <div class="snake-hud">
+            <div class="chip-row" id="snakeMode">
+              <button class="chip active" data-m="ia">🤖 Regarder l'IA jouer</button>
+              <button class="chip" data-m="you">🧑 Jouer moi-même (flèches)</button>
+            </div>
+            <span class="sc">🍎 Score : <span id="snakeScore">0</span></span>
+            <span style="color:var(--muted)">🏆 Record IA : <span id="snakeBest">0</span></span>
+            <div class="speed-ctl"><span>Vitesse</span><input type="range" id="snakeSpeed" min="1" max="10" value="6"></div>
+            <button class="btn btn-primary btn-sm" id="snakeStart">▶️ Lancer</button>
+          </div>
+          <div class="canvas-wrap" style="background:var(--navy);border-radius:14px;padding:10px;display:flex;justify-content:center">
+            <canvas id="snakeCv" width="624" height="416" style="max-width:100%;border-radius:10px"></canvas>
+          </div>
+          <div class="game-msg" id="snakeMsg">Lancez la partie, et admirez (ou prenez les commandes).</div>
+          <div class="ai-note">🧠 <b>L'IA derrière :</b> une recherche <b>BFS (parcours en largeur)</b> : le serpent calcule le plus court chemin vers la pomme en évitant son propre corps. Malin, mais pas suffisant : s'il se fige dans un cul-de-sac, il perd. L'astuce des serpents champions : quand aucun chemin n'existe, suivre sa propre queue pour rester en vie et attendre une ouverture. C'est un aperçu de la <b>planification</b> — la famille d'algorithmes qui fait tourner robots et véhicules autonomes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COULISSES -->
+<section class="section-alt" id="coulisses">
+  <div class="wrap">
+    <span class="kicker reveal">Le lien avec le reste du Hub</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Des jeux aux agents : la même famille d'idées.</h2>
+    <div class="grid-3" style="margin-top:32px">
+      <div class="card pad reveal"><img src="img/gen-explorer-possibilites.jpg" alt="Arbre aux branches lumineuses multicolores, personne hésitant à la fourche centrale" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:10px" loading="lazy"><h3 style="margin:10px 0 6px">Explorer des possibilités</h3><p style="font-size:.86rem;color:var(--muted)">Minimax (Morpion, P4, Othello) explore des coups possibles ; nos agents d'appels d'offres explorent des plans de mémoire. Même mécanique : simuler, évaluer, choisir le meilleur chemin.</p></div>
+      <div class="card pad reveal"><img src="img/gen-decider-incertitude.jpg" alt="Planche de logique aux pions colorés, main hésitant entre deux pions sous lumière rasante" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:10px" loading="lazy"><h3 style="margin:10px 0 6px">Décider sous incertitude</h3><p style="font-size:.86rem;color:var(--muted)">L'IA du 2048 joue avec des tuiles aléatoires (expectimax) ; le Mastermind élimine l'invraisemblable comme un diagnostic. Décider sans toute l'information, c'est le quotidien d'une IA.</p></div>
+      <div class="card pad reveal"><img src="img/gen-planifier-trajet.jpg" alt="Petit robot rond suivant une ligne de trajet lumineuse projetée au sol jusqu à sa station" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:10px" loading="lazy"><h3 style="margin:10px 0 6px">Planifier un trajet</h3><p style="font-size:.86rem;color:var(--muted)">Le BFS du serpent planifie sa route ; la robotique du <a href="open-source.html#robotique">FabLab</a> planifie celle de ses robots. Le jeu d'enfant, littéralement.</p></div>
+    </div>
+    <div style="display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)">
+        <img src="img/arcade2.jpg" alt="Bornes d'arcade rétro colorées dans une salle lumineuse" style="flex:1;min-width:250px;height:190px;object-fit:cover;border-radius:14px">
+        <p style="flex:1.3;min-width:250px;font-size:.9rem;color:var(--muted);margin:0"><b style="color:var(--ink)">L'esprit du club, depuis toujours.</b> Rétrogaming, créations de jeux et concours ont forgé le C.I.M. Aujourd'hui nous y ajoutons la fabrication assistée par IA : décors et sprites générés, et des adversaires IA qui vous apprennent vraiment à jouer — essayez nos six jeux ci-dessus, puis découvrez <a href="realisations.html#jeux">les 15+ jeux issus de nos romans</a>.</p>
+      </div>
+      <div class="pledge reveal" style="margin-top:26px"><span class="ic">🏆</span><div><b>L'esprit du club, depuis toujours.</b> Rétrogaming, créations de jeux et concours ont forgé le C.I.M. Aujourd'hui nous y ajoutons la fabrication assistée par IA : décors et sprites générés (<a href="demo-image.html">essayez « personnage de plateforme rétro, pixel art »</a>), et des adversaires IA qui vous apprennent vraiment à jouer.</div></div>
+  </div>
+</section>
+
+<script>
+/* ═══════════ ONGLETS ═══════════ */
+document.getElementById('gameTabs').addEventListener('click',e=>{
+  const b=e.target.closest('[data-g]');if(!b)return;
+  document.querySelectorAll('#gameTabs .chip').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('show'));
+  document.getElementById('gp-'+b.dataset.g).classList.add('show');
+});
+
+/* ═══════════ 1. MORPION — minimax ═══════════ */
+(function(){
+  const WINS=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const grid=document.getElementById('tttGrid'),msg=document.getElementById('tttMsg');
+  let b,over,diff='hard',sc={you:0,ia:0,draw:0},lock=false;
+  function win(p){return WINS.find(l=>l.every(i=>b[i]===p))}
+  function full(){return b.every(v=>v)}
+  function mini(bd,isMax,d){
+    if(win('O'))return 10-d;if(win('X'))return d-10;if(full())return 0;
+    let best=isMax?-Infinity:Infinity;
+    for(let i=0;i<9;i++)if(!bd[i]){bd[i]=isMax?'O':'X';const s=mini(bd,!isMax,d+1);bd[i]='';best=isMax?Math.max(best,s):Math.min(best,s)}
+    return best}
+  function bestMove(){
+    let best=-Infinity,mv=-1;
+    for(let i=0;i<9;i++)if(!b[i]){b[i]='O';const s=mini(b,false,0);b[i]='';if(s>best){best=s;mv=i}}
+    return mv}
+  function draw(){
+    grid.innerHTML='';
+    for(let i=0;i<9;i++){const c=document.createElement('button');c.className='ttt-cell'+(b[i]==='O'?' o':'');c.textContent=b[i]||'';c.disabled=!!b[i]||over;c.addEventListener('click',()=>play(i));grid.appendChild(c)}
+  }
+  function end(wl,p){
+    over=true;lock=false;
+    if(wl){wl.forEach(i=>grid.children[i].classList.add('winline'));
+      if(p==='X'){sc.you++;msg.textContent='🏆 Vous avez battu l\'IA ! (En mode Impossible, c\'est exceptionnel…)'}
+      else{sc.ia++;msg.textContent='🤖 L\'IA gagne. Regardez son coup décisif — il anticipait votre riposte.'}}
+    else{sc.draw++;msg.textContent='🤝 Nul — en mode Impossible, c\'est le résultat parfait !'}
+    document.getElementById('tttYou').textContent=sc.you;document.getElementById('tttIa').textContent=sc.ia;document.getElementById('tttDraw').textContent=sc.draw;
+  }
+  function after(){
+    const wx=win('X');if(wx)return end(wx,'X');
+    const wo=win('O');if(wo)return end(wo,'O');
+    if(full())return end(null);
+  }
+  function play(i){
+    if(over||lock||b[i])return;
+    b[i]='X';draw();after();if(over)return;
+    lock=true;msg.textContent='🤖 L\'IA réfléchit…';
+    setTimeout(()=>{
+      let mv;const r=Math.random();
+      if(diff!=='hard'&&r<(diff==='easy'?0.5:0.25)){const free=b.map((v,j)=>v?null:j).filter(v=>v!==null);mv=free[Math.floor(Math.random()*free.length)]}
+      else mv=bestMove();
+      b[mv]='O';draw();lock=false;msg.textContent='À vous !';after();
+    },320);
+  }
+  function reset(){b=Array(9).fill('');over=false;lock=false;msg.textContent='À vous ! Vous jouez ✕.';draw()}
+  document.getElementById('tttDiff').addEventListener('click',e=>{
+    const c=e.target.closest('[data-d]');if(!c)return;
+    document.querySelectorAll('#tttDiff .chip').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');diff=c.dataset.d;reset();
+  });
+  document.getElementById('tttReset').addEventListener('click',reset);
+  reset();
+})();
+
+/* ═══════════ 2. PUISSANCE 4 — minimax alpha-bêta (v5 : rendu immédiat du coup IA) ═══════════ */
+(function(){
+  const board=document.getElementById('p4Board'),msg=document.getElementById('p4Msg'),think=document.getElementById('p4Think');
+  let bd,over,sc={you:0,ia:0},lock=false;
+  function idx(r,c){return r*7+c}
+  function dropRow(c){for(let r=5;r>=0;r--)if(bd[idx(r,c)]===0)return r;return -1}
+  function winLine(p){
+    for(let r=0;r<6;r++)for(let c=0;c<7;c++){
+      if(c<4&&bd[idx(r,c)]===p&&bd[idx(r,c+1)]===p&&bd[idx(r,c+2)]===p&&bd[idx(r,c+3)]===p)return[[r,c],[r,c+1],[r,c+2],[r,c+3]];
+      if(r<3&&bd[idx(r,c)]===p&&bd[idx(r+1,c)]===p&&bd[idx(r+2,c)]===p&&bd[idx(r+3,c)]===p)return[[r,c],[r+1,c],[r+2,c],[r+3,c]];
+      if(r<3&&c<4&&bd[idx(r,c)]===p&&bd[idx(r+1,c+1)]===p&&bd[idx(r+2,c+2)]===p&&bd[idx(r+3,c+3)]===p)return[[r,c],[r+1,c+1],[r+2,c+2],[r+3,c+3]];
+      if(r<3&&c>=3&&bd[idx(r,c)]===p&&bd[idx(r+1,c-1)]===p&&bd[idx(r+2,c-2)]===p&&bd[idx(r+3,c-3)]===p)return[[r,c],[r+1,c-1],[r+2,c-2],[r+3,c-3]];
+    }return null}
+  function evalBoard(p){
+    const o=p===1?2:1;let s=0;
+    const line=(a,b,c,d)=>{let cp=0,co=0;[a,b,c,d].forEach(v=>{if(v===p)cp++;else if(v===o)co++});
+      if(co===0){s+=cp===4?100000:cp===3?50:cp===2?4:0}
+      if(cp===0){s-=co===4?100000:co===3?60:co===2?5:0}};
+    for(let r=0;r<6;r++)for(let c=0;c<7;c++){
+      if(c<4)line(bd[idx(r,c)],bd[idx(r,c+1)],bd[idx(r,c+2)],bd[idx(r,c+3)]);
+      if(r<3)line(bd[idx(r,c)],bd[idx(r+1,c)],bd[idx(r+2,c)],bd[idx(r+3,c)]);
+      if(r<3&&c<4)line(bd[idx(r,c)],bd[idx(r+1,c+1)],bd[idx(r+2,c+2)],bd[idx(r+3,c+3)]);
+      if(r<3&&c>=3)line(bd[idx(r,c)],bd[idx(r+1,c-1)],bd[idx(r+2,c-2)],bd[idx(r+3,c-3)])}
+    for(let r=0;r<6;r++)if(bd[idx(r,3)]===p)s+=5;
+    return s}
+  function mm(depth,alpha,beta,maxi){
+    if(winLine(2))return 1000000-depth*1000;
+    if(winLine(1))return -1000000+depth*1000;
+    let full=true;for(let c=0;c<7;c++)if(bd[idx(0,c)]===0)full=false;
+    if(full||depth===0)return evalBoard(2);
+    const order=[3,2,4,1,5,0,6];let bv=maxi?-Infinity:Infinity;
+    for(const c of order){
+      const r=dropRow(c);if(r<0)continue;
+      bd[idx(r,c)]=maxi?2:1;
+      const v=mm(depth-1,alpha,beta,!maxi);
+      bd[idx(r,c)]=0;
+      if(maxi){if(v>bv)bv=v;alpha=Math.max(alpha,bv)}
+      else{if(v<bv)bv=v;beta=Math.min(beta,bv)}
+      if(alpha>=beta)break;
+    }
+    return bv}
+  function aiMove(){
+    const t0=performance.now();
+    const order=[3,2,4,1,5,0,6];let best=-Infinity,bm=3;
+    for(const c of order){
+      const r=dropRow(c);if(r<0)continue;
+      bd[idx(r,c)]=2;const v=mm(5,-Infinity,Infinity,false);bd[idx(r,c)]=0;
+      if(v>best){best=v;bm=c}}
+    think.textContent='coup calculé en '+Math.round(performance.now()-t0)+' ms';
+    return bm}
+  function draw(winCells){
+    board.innerHTML='';
+    for(let c=0;c<7;c++){
+      const col=document.createElement('div');col.className='p4-col-h';
+      for(let r=0;r<6;r++){
+        const cell=document.createElement('button');
+        const v=bd[idx(r,c)];cell.className='p4-cell'+(v===1?' p1':v===2?' p2':'')+(winCells&&winCells.some(w=>w[0]===r&&w[1]===c)?' win':'');
+        cell.setAttribute('aria-label','colonne '+(c+1));
+        cell.addEventListener('click',()=>play(c));
+        col.appendChild(cell)}
+      board.appendChild(col)}
+  }
+  function drop(r,c){
+    draw();
+    const el=board.children[c].children[r];
+    if(el)el.classList.add('drop');
+  }
+  function end(wl,p){
+    over=true;lock=false;draw(wl);
+    if(p===1){sc.you++;msg.textContent='🏆 Bravo, vous avez gagné ! L\'IA a pourtant anticipé 6 coups…'}
+    else if(p===2){sc.ia++;msg.textContent='🤖 L\'IA gagne — ses alignements se sont construits en silence.'}
+    else msg.textContent='🤝 Partie nulle — plateau plein !';
+    document.getElementById('p4You').textContent=sc.you;document.getElementById('p4Ia').textContent=sc.ia;
+  }
+  function after(){
+    const w1=winLine(1);if(w1)return end(w1,1);
+    const w2=winLine(2);if(w2)return end(w2,2);
+    let full=true;for(let c=0;c<7;c++)if(bd[idx(0,c)]===0)full=false;
+    if(full)return end(null,0);
+  }
+  function play(c){
+    if(over||lock)return;
+    const r=dropRow(c);if(r<0)return;
+    bd[idx(r,c)]=1;drop(r,c);after();if(over)return;
+    lock=true;msg.textContent='🤖 L\'IA explore les scénarios…';
+    setTimeout(()=>{
+      const c2=aiMove();const r2=dropRow(c2);
+      bd[idx(r2,c2)]=2;drop(r2,c2);           /* v5 : le pion de l'IA apparaît tout de suite */
+      lock=false;msg.textContent='À vous !';after();
+    },90);
+  }
+  document.getElementById('p4Reset').addEventListener('click',()=>{bd=Array(42).fill(0);over=false;lock=false;think.textContent='';msg.textContent='À vous ! Cliquez une colonne — vous jouez 🔴.';draw()});
+  bd=Array(42).fill(0);draw();
+})();
+
+/* ═══════════ 3. OTHELLO 6×6 — negamax alpha-bêta ═══════════ */
+(function(){
+  const N=6,board=document.getElementById('othBoard'),msg=document.getElementById('othMsg');
+  const D=[[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]];
+  const W=[120,-20,10,10,-20,120, -20,-40,-2,-2,-40,-20, 10,-2,3,3,-2,10, 10,-2,3,3,-2,10, -20,-40,-2,-2,-40,-20, 120,-20,10,10,-20,120];
+  let bd,over,lock=false;
+  function inside(r,c){return r>=0&&c>=0&&r<N&&c<N}
+  function flipsFor(b,p,i){ // p joue sur case vide i → liste des cases à retourner, ou null
+    if(b[i]!==0)return null;
+    const r0=Math.floor(i/N),c0=i%N,out=[];
+    for(const[dr,dc]of D){
+      const line=[];let r=r0+dr,c=c0+dc,found=false;
+      while(inside(r,c)){
+        const v=b[r*N+c];
+        if(v===0){found=false;break}
+        if(v===p){found=line.length>0;break}
+        line.push(r*N+c);r+=dr;c+=dc;
+      }
+      if(!inside(r,c))found=false; // bord atteint sans rencontrer p
+      if(found)out.push(...line);
+    }
+    return out.length?out:null}
+  function moves(b,p){const m=[];for(let i=0;i<36;i++){if(b[i]!==0)continue;const f=flipsFor(b,p,i);if(f)m.push([i,f])}return m}
+  function apply(b,p,i,f){b[i]=p;f.forEach(j=>b[j]=p)}
+  function counts(b){let d=0,l=0;b.forEach(v=>{if(v===1)d++;else if(v===2)l++});return[d,l]}
+  function evalBoard(b,p){
+    const o=p===1?2:1;let s=0;
+    for(let i=0;i<36;i++){if(b[i]===p)s+=W[i];else if(b[i]===o)s-=W[i]}
+    s+=2*(moves(b,p).length-moves(b,o).length);
+    return s}
+  function negamax(b,p,depth,al,be){
+    if(depth===0)return evalBoard(b,p);
+    const mvs=moves(b,p);
+    if(!mvs.length){
+      if(!moves(b,p===1?2:1).length){const[d,l]=counts(b);const me=p===1?d:l,op=p===1?l:d;return me>op?99999:me<op?-99999:0}
+      return -negamax(b,p===1?2:1,depth-1,-be,-al)}
+    let best=-Infinity;
+    for(const[i,f]of mvs){
+      const nb=b.slice();apply(nb,p,i,f);
+      const v=-negamax(nb,p===1?2:1,depth-1,-be,-al);
+      if(v>best)best=v;al=Math.max(al,best);
+      if(al>=be)break;
+    }
+    return best}
+  function aiPlay(){
+    const mvs=moves(bd,2);if(!mvs.length)return -1;
+    let best=-Infinity,bm=mvs[0][0];
+    for(const[i,f]of mvs){
+      const nb=bd.slice();apply(nb,2,i,f);
+      const v=-negamax(nb,1,5,-Infinity,Infinity);
+      if(v>best){best=v;bm=i}}
+    return bm}
+  function draw(){
+    board.innerHTML='';
+    for(let i=0;i<36;i++){
+      const c=document.createElement('button');
+      c.className='oth-cell'+(bd[i]===1?' p1':bd[i]===2?' p2':'');
+      c.addEventListener('click',()=>play(i));
+      board.appendChild(c)}
+  }
+  function markLegal(){
+    board.querySelectorAll('.oth-cell').forEach((el,i)=>{
+      el.classList.toggle('legal',!over&&bd[i]===0&&!!flipsFor(bd,1,i))});
+    const[d,l]=counts(bd);
+    document.getElementById('othYou').textContent=d;document.getElementById('othIa').textContent=l;
+  }
+  function finished(){
+    const[d,l]=counts(bd);
+    return d===0||l===0||(!moves(bd,1).length&&!moves(bd,2).length)}
+  function end(){
+    over=true;markLegal();
+    const[d,l]=counts(bd);
+    msg.textContent=d>l?'🏆 Vous gagnez '+d+' à '+l+' ! (Jouer les coins a payé.)':d<l?'🤖 L\'IA gagne '+l+' à '+d+' — observez comme elle a verrouillé les bords.':'🤝 Égalité parfaite '+d+' à '+l+' !';
+  }
+  function aiTurn(){
+    if(finished()){end();lock=false;return}
+    if(!moves(bd,2).length){msg.textContent='⚪ L\'IA passe — à vous !';markLegal();lock=false;return}
+    const m=aiPlay();
+    const f2=moves(bd,2).find(x=>x[0]===m)[1];
+    apply(bd,2,m,f2);draw();
+    if(finished()){end();lock=false;return}
+    if(!moves(bd,1).length){msg.textContent='Vous passez (aucun coup légal) — l\'IA enchaîne…';setTimeout(aiTurn,460);return}
+    msg.textContent='À vous !';markLegal();lock=false;
+  }
+  function play(i){
+    if(over||lock||bd[i]!==0)return;
+    const f=flipsFor(bd,1,i);if(!f)return;
+    apply(bd,1,i,f);draw();markLegal();
+    if(finished()){end();return}
+    if(!moves(bd,2).length){msg.textContent='⚪ L\'IA passe — rejouez !';return} // lock reste levé : vous rejouez
+    lock=true;msg.textContent='🤖 L\'IA réfléchit…';
+    setTimeout(aiTurn,420);
+  }
+  document.getElementById('othReset').addEventListener('click',()=>{bd=Array(36).fill(0);bd[21]=bd[14]=2;bd[15]=bd[20]=1;over=false;lock=false;msg.textContent='À vous ! Vous êtes ⚫.';draw();markLegal()});
+  bd=Array(36).fill(0);bd[21]=bd[14]=2;bd[15]=bd[20]=1;draw();markLegal();
+})();
+
+/* ═══════════ 4. 2048 — heuristique + expectimax ═══════════ */
+(function(){
+  const boardEl=document.getElementById('g2048Board');
+  let bd,score=0,best=0,mode='you',timer=null,running=false;
+  function spawn(b){const e=[];b.forEach((v,i)=>{if(!v)e.push(i)});
+    if(!e.length)return false;
+    const i=e[Math.floor(Math.random()*e.length)];b[i]=Math.random()<0.9?2:4;return true}
+  function slideRow(r){ // fusionne vers la gauche, renvoie [nouvelle ligne, points]
+    const a=r.filter(v=>v);let pts=0;
+    for(let i=0;i<a.length-1;i++)if(a[i]===a[i+1]){a[i]*=2;pts+=a[i];a.splice(i+1,1)}
+    while(a.length<4)a.push(0);
+    return[a,pts]}
+  function move(b,dir){ // dir: 0 gauche 1 droite 2 haut 3 bas ; renvoie [nouveau tableau, points, bougé?]
+    const nb=b.slice();let pts=0,moved=false;
+    for(let j=0;j<4;j++){
+      let line=[];
+      for(let i=0;i<4;i++){const id=dir<2?j*4+i:i*4+j;line.push(nb[id])}
+      if(dir===1||dir===3)line.reverse();
+      const[sl,p]=slideRow(line);pts+=p;
+      if(dir===1||dir===3)sl.reverse();
+      for(let i=0;i<4;i++){const id=dir<2?j*4+i:i*4+j;if(nb[id]!==sl[i])moved=true;nb[id]=sl[i]}
+    }
+    return[nb,pts,moved]}
+  function evalB(b){ // heuristique : vides + « serpent » monotone + coin
+    let empty=0,mono=0,mx=0,mxi=0;
+    b.forEach((v,i)=>{if(!v)empty++;if(v>mx){mx=v;mxi=i}});
+    const rows=[],cols=[];
+    for(let j=0;j<4;j++){let r=[],c=[];for(let i=0;i<4;i++){r.push(b[j*4+i]);c.push(b[i*4+j])}rows.push(r);cols.push(c)}
+    const monLine=l=>{let inc=0,dec=0;for(let i=0;i<3;i++){if(l[i]&&l[i+1]&&l[i]>l[i+1])inc+=l[i]-l[i+1];if(l[i]&&l[i+1]&&l[i]<l[i+1])dec+=l[i+1]-l[i]}return-Math.min(inc,dec)};
+    rows.forEach(r=>mono+=monLine(r));cols.forEach(c=>mono+=monLine(c));
+    const corner=(mxi===0||mxi===3||mxi===12||mxi===15)?mx:0;
+    return empty*180+mono+corner*2}
+  function expecti(b,depth){ // renvoie meilleur score espéré depuis b
+    let best=-Infinity;
+    for(let d=0;d<4;d++){
+      const[nb,,mvd]=move(b,d);if(!mvd)continue;
+      const e=[];nb.forEach((v,i)=>{if(!v)e.push(i)});
+      let exp=0;
+      if(!e.length||depth===0)exp=evalB(nb);
+      else{e.forEach(i=>{const b2=nb.slice();b2[i]=2;exp+=0.9*expecti(b2,depth-1);
+        const b4=nb.slice();b4[i]=4;exp+=0.1*evalB(b4)});exp/=e.length}
+      if(exp>best)best=exp;
+    }
+    return best===-Infinity?evalB(b):best}
+  function aiDir(){
+    let best=-Infinity,bd2=1;
+    for(let d=0;d<4;d++){const[nb,,mvd]=move(bd,d);if(!mvd)continue;
+      const e=[];nb.forEach((v,i)=>{if(!v)e.push(i)});
+      let exp=0;
+      if(!e.length)exp=evalB(nb);
+      else{e.forEach(i=>{const b2=nb.slice();b2[i]=2;exp+=0.9*expecti(b2,2);
+        const b4=nb.slice();b4[i]=4;exp+=0.1*evalB(b4)});exp/=e.length}
+      if(exp>best){best=exp;bd2=d}}
+    return bd2}
+  const CLS={2:'t2',4:'t4',8:'t8',16:'t16',32:'t32',64:'t64',128:'t128',256:'t256',512:'t512',1024:'t1024',2048:'t2048'};
+  function draw(){
+    boardEl.innerHTML='';
+    for(let i=0;i<16;i++){const v=bd[i];const d=document.createElement('div');
+      d.className='g2048-tile'+(v?' '+CLS[v]:'');d.textContent=v||'';boardEl.appendChild(d)}
+    document.getElementById('g2048Score').textContent=score;
+  }
+  function dead(){for(let d=0;d<4;d++){if(move(bd,d)[2])return false}return true}
+  function end(){
+    running=false;clearInterval(timer);
+    if(score>best){best=score;document.getElementById('g2048Best').textContent=best}
+    document.getElementById('g2048Msg').textContent='💀 Partie terminée — score '+score+'. '+(mode==='ia'?'L\'IA maximise une heuristique : elle ne voit pas tout, comme toute IA.':'Retentez ! Astuce : gardez votre plus grande tuile dans un coin.')}
+  function step(){
+    if(mode==='ia'){const d=aiDir();const[nb,p,mvd]=move(bd,d);
+      if(!mvd)return end();
+      bd=nb;score+=p;if(!spawn(bd))return end();draw();
+      if(dead())return end();
+      return}
+    if(dead())return end()}
+  function start(){clearInterval(timer);bd=Array(16).fill(0);score=0;spawn(bd);spawn(bd);draw();
+    document.getElementById('g2048Msg').textContent=mode==='ia'?'🤖 L\'IA anticipe coups et tuiles aléatoires (expectimax)…':'Flèches du clavier (ou glissez le doigt) — fusionnez pour faire 2048 !'}
+  document.getElementById('g2048Start').addEventListener('click',()=>{
+    start();if(mode==='ia'){running=true;timer=setInterval(step,140)}});
+  document.getElementById('g2048Mode').addEventListener('click',e=>{
+    const b=e.target.closest('[data-m]');if(!b)return;
+    document.querySelectorAll('#g2048Mode .chip').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');mode=b.dataset.m;clearInterval(timer);
+    document.getElementById('g2048Msg').textContent='Mode '+b.textContent.replace(/^[^\s]+\s/,'')+' — cliquez Nouvelle partie.'});
+  document.addEventListener('keydown',e=>{
+    if(mode!=='you'||!bd)return;
+    const d={ArrowLeft:0,ArrowRight:1,ArrowUp:2,ArrowDown:3}[e.key];
+    if(d===undefined)return;
+    if(!running)running=true;
+    const[nb,p,mvd]=move(bd,d);
+    if(!mvd)return;
+    bd=nb;score+=p;spawn(bd);draw();
+    if(dead())end();
+    e.preventDefault()});
+  let ts=null;
+  boardEl.addEventListener('touchstart',e=>ts=e.touches[0],{passive:true});
+  boardEl.addEventListener('touchend',e=>{
+    if(mode!=='you'||!ts)return;const t=e.changedTouches[0];
+    const dx=t.clientX-ts.clientX,dy=t.clientY-ts.clientY;
+    if(Math.abs(dx)<18&&Math.abs(dy)<18)return;
+    const d=Math.abs(dx)>Math.abs(dy)?(dx>0?1:0):(dy>0?3:2);
+    const[nb,p,mvd]=move(bd,d);if(!mvd)return;
+    bd=nb;score+=p;spawn(bd);draw();if(dead())end()},{passive:true});
+  bd=Array(16).fill(0);draw();
+})();
+
+/* ═══════════ 5. MASTERMIND — solveur déductif (élimination de Knuth) ═══════════ */
+(function(){
+  const NC=6,LEN=4;
+  const NAMES=['rouge','bleu','vert','jaune','violet','orange'];
+  const palEl=document.getElementById('mmPalette'),secEl=document.getElementById('mmSecret'),
+        logEl=document.getElementById('mmLog'),msgEl=document.getElementById('mmMsg');
+  let secret=[0,1,2,3],pick=[];
+  // palette
+  for(let c=0;c<NC;c++){const b=document.createElement('button');b.className='mm-peg c'+c;b.title=NAMES[c];
+    b.addEventListener('click',()=>{if(pick.length>=LEN)return;pick.push(c);renderSecret()});palEl.appendChild(b)}
+  const undo=document.createElement('button');undo.className='btn btn-outline btn-sm';undo.textContent='↩️ Effacer';
+  undo.addEventListener('click',()=>{pick=[];renderSecret()});palEl.appendChild(undo);
+  function renderSecret(){
+    secEl.innerHTML='';
+    for(let i=0;i<LEN;i++){const d=document.createElement('span');
+      d.className='mm-peg '+(pick[i]!==undefined?'c'+pick[i]:'empty');secEl.appendChild(d)}
+  }
+  function feedback(code,guess){
+    let ex=0,pa=0;
+    const cc=code.slice(),gg=[];
+    for(let i=0;i<LEN;i++){if(guess[i]===code[i])ex++;else gg.push(guess[i])}
+    gg.forEach(v=>{const k=cc.indexOf(v);if(k>-1){pa++;cc[k]=-9}});
+    return[ex,pa]}
+  // tous les codes
+  const ALL=[];
+  (function build(pfx){if(pfx.length===LEN){ALL.push(pfx.slice());return}
+    for(let c=0;c<NC;c++){pfx.push(c);build(pfx);pfx.pop()}})([]);
+  document.getElementById('mmRandom').addEventListener('click',()=>{
+    secret=Array.from({length:LEN},()=>Math.floor(Math.random()*NC));pick=[];renderSecret();
+    msgEl.textContent='Code secret posé (caché). Lancez l\'IA !'});
+  document.getElementById('mmRun').addEventListener('click',()=>{
+    if(pick.length===LEN)secret=pick.slice();
+    logEl.innerHTML='';runSolver()});
+  function pegRow(code){
+    const d=document.createElement('span');d.className='mm-row';
+    code.forEach(c=>{const p=document.createElement('span');p.className='mm-peg c'+c;d.appendChild(p)});
+    return d}
+  function fbDots(fb){
+    const d=document.createElement('span');d.className='mm-fb';
+    for(let i=0;i<fb[0];i++){const s=document.createElement('i');s.className='ex';d.appendChild(s)}
+    for(let i=0;i<fb[1];i++){const s=document.createElement('i');s.className='pa';d.appendChild(s)}
+    return d}
+  function runSolver(){
+    document.getElementById('mmRun').disabled=true;
+    let cands=ALL.slice();const hist=[];
+    let guess=[0,0,1,1];let n=0;
+    (function stepFn(){
+      n++;
+      const fb=feedback(secret,guess);
+      // affichage
+      const row=document.createElement('div');row.className='mm-row-line';
+      const t=document.createElement('b');t.textContent='Essai '+n+' — ';
+      row.appendChild(t);row.appendChild(pegRow(guess));
+      const lab=document.createElement('small');lab.textContent=' '+fb[0]+' bien placée(s), '+fb[1]+' mal placée(s)';
+      row.appendChild(lab);row.appendChild(fbDots(fb));
+      const rem=document.createElement('small');rem.className='mm-rem';rem.textContent='candidats restants : '+cands.length;
+      row.appendChild(rem);
+      logEl.appendChild(row);logEl.scrollTop=logEl.scrollHeight;
+      if(fb[0]===LEN){msgEl.textContent='💡 L\'IA a trouvé votre code en '+n+' essai(s) — sans jamais le « voir », uniquement par élimination logique.';
+        document.getElementById('mmRun').disabled=false;return}
+      // élimination : garder les codes compatibles avec TOUS les essais
+      hist.push([guess,fb]);
+      cands=cands.filter(c=>hist.every(([g,f])=>{const f2=feedback(c,g);return f2[0]===f[0]&&f2[1]===f[1]}));
+      if(!cands.length){msgEl.textContent='Incohérence — vérifiez le code saisi.';document.getElementById('mmRun').disabled=false;return}
+      guess=cands[Math.floor(Math.random()*cands.length)];
+      setTimeout(stepFn,750);
+    })();
+  }
+  renderSecret();
+})();
+
+/* ═══════════ 6. SNAKE — BFS + suivi de queue ═══════════ */
+(function(){
+  const cv=document.getElementById('snakeCv'),ctx=cv.getContext('2d');
+  const CELL=26,COLS=24,ROWS=16;
+  let snake,dir,food,score=0,best=0,mode='ia',timer=null,alive=false,speed=6;
+  function placeFood(){while(true){const f={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)};if(!snake.some(s=>s.x===f.x&&s.y===f.y))return f}}
+  function reset(){snake=[{x:12,y:8},{x:11,y:8},{x:10,y:8}];dir={x:1,y:0};food=placeFood();score=0;document.getElementById('snakeScore').textContent='0'}
+  function bfs(){
+    const blocked=new Set();snake.slice(0,-1).forEach(s=>blocked.add(s.x+','+s.y));
+    const seen=new Set([snake[0].x+','+snake[0].y]);
+    const q=[[snake[0].x,snake[0].y,[]]];
+    while(q.length){
+      const[x,y,path]=q.shift();
+      for(const[dx,dy]of[[1,0],[-1,0],[0,1],[0,-1]]){
+        const nx=x+dx,ny=y+dy,k=nx+','+ny;
+        if(nx<0||ny<0||nx>=COLS||ny>=ROWS||seen.has(k))continue;
+        if(blocked.has(k)&&!(nx===food.x&&ny===food.y))continue;
+        seen.add(k);const np=path.concat([[dx,dy]]);
+        if(nx===food.x&&ny===food.y)return np;
+        q.push([nx,ny,np])}}
+    return null}
+  function freeNeighbors(){const head=snake[0],out=[];
+    for(const[dx,dy]of[[1,0],[-1,0],[0,1],[0,-1]]){
+      const nx=head.x+dx,ny=head.y+dy;
+      if(nx<0||ny<0||nx>=COLS||ny>=ROWS)continue;
+      if(snake.slice(0,-1).some(s=>s.x===nx&&s.y===ny))continue;
+      out.push({x:dx,y:dy})}
+    return out}
+  function aiDir(){
+    const path=bfs();
+    if(path&&path.length)return{x:path[0][0],y:path[0][1]};
+    const tail=snake[snake.length-1],head=snake[0];
+    const opts=freeNeighbors();
+    if(!opts.length)return dir;
+    opts.sort((a,b)=>(Math.abs(head.x+a.x-tail.x)+Math.abs(head.y+a.y-tail.y))-(Math.abs(head.x+b.x-tail.x)+Math.abs(head.y+b.y-tail.y)));
+    return opts[0];
+  }
+  function draw(){
+    ctx.fillStyle='#0f1f33';ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.fillStyle='rgba(255,255,255,.04)';
+    for(let x=0;x<COLS;x++)for(let y=0;y<ROWS;y++)if((x+y)%2)ctx.fillRect(x*CELL,y*CELL,CELL,CELL);
+    ctx.fillStyle='#f87171';ctx.beginPath();ctx.arc(food.x*CELL+CELL/2,food.y*CELL+CELL/2,CELL/2-3,0,7);ctx.fill();
+    snake.forEach((s,i)=>{ctx.fillStyle=i===0?'#5eead4':'#0c87a8';
+      const pad=i===0?2:3;ctx.beginPath();ctx.roundRect(s.x*CELL+pad,s.y*CELL+pad,CELL-2*pad,CELL-2*pad,6);ctx.fill()});
+    const h=snake[0];ctx.fillStyle='#0f1f33';ctx.beginPath();ctx.arc(h.x*CELL+CELL/2,h.y*CELL+CELL/2,3,0,7);ctx.fill();
+  }
+  function die(){alive=false;clearInterval(timer);
+    if(mode==='ia'&&score>best){best=score;document.getElementById('snakeBest').textContent=best}
+    document.getElementById('snakeMsg').textContent=mode==='ia'
+      ?('💀 Le serpent IA a fini à '+score+' pommes. Relancez — sa planification échouera parfois, comme toute IA.')
+      :('💀 Score : '+score+'. Retentez votre chance !');
+    document.getElementById('snakeStart').textContent='▶️ Relancer'}
+  function step(){
+    if(mode==='ia')dir=aiDir();
+    const h={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+    if(h.x<0||h.y<0||h.x>=COLS||h.y>=ROWS||snake.some(s=>s.x===h.x&&s.y===h.y))return die();
+    snake.unshift(h);
+    if(h.x===food.x&&h.y===food.y){score++;document.getElementById('snakeScore').textContent=score;food=placeFood()}
+    else snake.pop();
+    draw()}
+  function start(){clearInterval(timer);reset();alive=true;draw();
+    const ms=560-speed*46;
+    timer=setInterval(step,Math.max(60,ms));
+    document.getElementById('snakeMsg').textContent=mode==='ia'?'🤖 Le serpent calcule son plus court chemin à chaque pas…':'À vous — flèches du clavier !'}
+  document.getElementById('snakeStart').addEventListener('click',start);
+  document.getElementById('snakeMode').addEventListener('click',e=>{
+    const b=e.target.closest('[data-m]');if(!b)return;
+    document.querySelectorAll('#snakeMode .chip').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');mode=b.dataset.m;clearInterval(timer);alive=false;
+    document.getElementById('snakeMsg').textContent='Mode '+b.textContent+' — cliquez Lancer.';draw()});
+  document.getElementById('snakeSpeed').addEventListener('input',e=>{speed=+e.target.value;if(alive)start()});
+  document.addEventListener('keydown',e=>{
+    const m={ArrowLeft:{x:-1,y:0},ArrowRight:{x:1,y:0},ArrowUp:{x:0,y:-1},ArrowDown:{x:0,y:1}}[e.key];
+    if(m&&mode==='you'){if(!alive)start();const cur=dir;if(m.x!==-cur.x||m.y!==-cur.y)dir=m;e.preventDefault()}});
+  let ts=null;
+  cv.addEventListener('touchstart',e=>ts=e.touches[0],{passive:true});
+  cv.addEventListener('touchend',e=>{
+    if(mode!=='you'||!ts)return;const t=e.changedTouches[0];
+    const dx=t.clientX-ts.clientX,dy=t.clientY-ts.clientY;
+    if(Math.abs(dx)<12&&Math.abs(dy)<12)return;
+    dir=Math.abs(dx)>Math.abs(dy)?{x:Math.sign(dx),y:0}:{x:0,y:Math.sign(dy)}},{passive:true});
+  reset();draw();
+})();
+</script>
+<section style="padding:10px 0 64px"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+    <img src="img/gen-jeux-ia.jpg" alt="Un plateau d’échecs lumineux entouré de médaillons : vaisseau d’arcade, dé géant, manette rétro, reliés à un cerveau-circuit" style="width:300px;border-radius:14px;flex:0 0 auto" loading="lazy">
+    <div style="flex:1;min-width:260px">
+      <span class="kicker">Le saviez-vous ?</span>
+      <h3 style="margin:10px 0 8px">L’IA est votre adversaire, votre comparse… et votre metteur en scène</h3>
+      <p style="color:var(--muted);font-size:.95rem;margin:0 0 14px">Échecs, arcade, jeux de plateau, mondes ouverts : les trois visages de l’IA dans vos jeux — l’adversaire qui calcule, le compagnon qui improvise, et le directeur de jeu qui règle la tension sans que vous le remarquiez. Nos 9 jeux vous font toucher les trois.</p>
+      <a class="btn btn-primary btn-sm" href="actualites.html#art52">Comment on les programme →</a>
+    </div>
+  </div>
+  <div class="card pad reveal" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+    <img src="img/robots2.jpg" alt="Un robot humanoïde élégant enchaîne une figure de gymnastique sur un terrain lumineux" style="width:300px;border-radius:14px;flex:0 0 auto" loading="lazy">
+    <div style="flex:1;min-width:260px">
+      <span class="kicker">Aller plus loin</span>
+      <h3 style="margin:10px 0 8px">L'Unitree « Superman » court plus vite que Bolt (en théorie)</h3>
+      <p style="color:var(--muted);font-size:.95rem;margin:0 0 14px">12,66 m/s en pointe annoncée, 2 056 humanoïdes aux Jeux mondiaux de Pékin, Gemini Robotics 2 côté logiciel : l'état du robot humanoïde, raconté par le sport.</p>
+      <a class="btn btn-primary btn-sm" href="actualites.html#art4">Lire l'enquête →</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <b style="color:#fff;font-size:1.05rem">C.I.M. — Hub IA & FabLab</b>
+      <p style="margin-top:10px">Le hub d'intelligence artificielle du Club Informatique & Multimédia — association loi 1901, champ ESS.<br>Montpellier · La Grande-Motte · Pérols · Lattes — et à distance partout en France.</p>
+    </div>
+    <div>
+      <h4>Démonstrations</h4>
+      <ul>
+        <li><a href="demo-ia.html">💬 Chat IA local</a></li>
+        <li><a href="demo-image.html">🎨 Générateur d'images</a></li>
+        <li><a href="jeux-video.html">🕹️ Jeux contre l'IA</a></li>
+        <li><a href="agents-ia.html">🤖 Équipe d'agents</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Expertises</h4>
+      <ul>
+        <li><a href="ia-souveraine.html">IA souveraine & RAG</a></li>
+        <li><a href="agents-ia.html">Agents autonomes</a></li>
+        <li><a href="machine-editoriale.html">Machine éditoriale</a></li>
+        <li><a href="open-source.html">Open source & robotique</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explorer</h4>
+      <ul>
+        <li><a href="actualites.html">Fil d'actualité IA</a></li>
+        <li><a href="medias.html">Nos médias</a></li>
+        <li><a href="services.html">Solutions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom"><div class="foot-bottom-in">
+    <span>© <span data-year></span> Hub IA C.I.M. — association loi 1901 · ESS · hébergé en France sur alwaysdata.</span>
+    <span>Fait en Occitanie, avec des agents IA et beaucoup de café ☕</span>
+  </div></div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
