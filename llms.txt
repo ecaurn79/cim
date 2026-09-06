@@ -1,0 +1,31 @@
+# Hub IA C.I.M. — Montpellier (Hub IA & FabLab associatif, ESS)
+
+> Le hub d'intelligence artificielle du Club Informatique & Multimédia (Montpellier, France) :
+> IA souveraine, agents autonomes, machine éditoriale, démos gratuites jouables dans le navigateur,
+> actualité IA enquêtée (51 articles), médias et réalisations produits avec l'IA. Association loi 1901.
+
+## Pages
+
+- [C.I.M. — Hub IA & FabLab · Montpellier](https://cim.alwaysdata.net/): Accueil : présentation du Hub, démos gratuites, statistiques
+- [Démo IA gratuite — un chatbot qui tourne sur votre ordinateur](https://cim.alwaysdata.net/demo-ia.html): Chat IA gratuit dans le navigateur (WebLLM), sans inscription, 100 % local
+- [Générateur d'images IA gratuit — texte vers image](https://cim.alwaysdata.net/demo-image.html): Générateur d'images IA gratuit (texte vers image), sans inscription
+- [Agents IA autonomes — une équipe numérique pour vos tâches répétitives](https://cim.alwaysdata.net/agents-ia.html): Équipe d'agents IA autonomes : démonstration interactive d'orchestration
+- [Machine éditoriale — livres, BD et podcasts avec IA + relecture humaine](https://cim.alwaysdata.net/machine-editoriale.html): Machine éditoriale : livre, BD, podcast avec IA + validation humaine (7 étapes)
+- [IA souveraine — un assistant sur vos documents, sans cloud public](https://cim.alwaysdata.net/ia-souveraine.html): IA souveraine & RAG : assistant sur vos documents, hébergé en France
+- [Open source, LLM & agentique — Mistral, Qwen, Hermes, OpenClaw, outils de code](https://cim.alwaysdata.net/open-source.html): Open source : LLM (Mistral, Qwen, DeepSeek), outils de code, robotique
+- [Jeux contre l'IA — Morpion parfait, Puissance 4, Othello, 2048, Mastermind, Snake](https://cim.alwaysdata.net/jeux-video.html): Six jeux jouables contre de vraies IA (minimax, Puissance 4, Othello…)
+- [La Bibliothèque des Mondes en 3D — 40 romans, 40 fenêtres-mondes](https://cim.alwaysdata.net/bibliotheque-3d.html): La Bibliothèque des Mondes en 3D : rotonde WebGL des 40 romans — chaque couverture est une fenêtre-monde, clic = fiche + liseuse
+- [Échecs contre l'IA — 8 niveaux, vue 3D, indices](https://cim.alwaysdata.net/echecs.html): Échecs contre l'IA : 8 niveaux, vue 3D, indices, moteur maison
+- [Hub of Duty — FPS 3D gratuit dans le navigateur : vagues de machines de Skynet](https://cim.alwaysdata.net/hub-of-duty.html): Hub of Duty : FPS 3D hommage à Terminator — vagues de machines de Skynet, lasers, IA traqueuse
+- [CENDRES — roguelike gratuit dans le navigateur : 4 classes, 8 profondeurs, IA expliquée](https://cim.alwaysdata.net/cendres.html): CENDRES : roguelike français jouable dans le navigateur — donjons générés, 4 classes, potions à identifier, Défi du jour, IA des monstres expliquée
+- [La Confrérie du Gris — RPG tactique gratuit au tour par tour](https://cim.alwaysdata.net/confrerie.html): La Confrérie du Gris : RPG tactique mercenaire au tour par tour — hexagones, initiative, ripostes, 3 contrats, IA expliquée
+- [LOGRES — La Table Ronde : wargame 3D léger, 14 provinces, Légitime ou Tyran](https://cim.alwaysdata.net/logres.html): LOGRES — La Table Ronde : wargame tactique 3D léger (Three.js) — chevaliers, hexagones, jauge Légitime/Tyran, IA expliquée
+- [Les Ruines d’Arkhantis — hack & slash isométrique gratuit dans le navigateur](https://cim.alwaysdata.net/arkhantis.html): Les Ruines d'Arkhantis : hack & slash isométrique — Berserker, 40 affixes, 3 gardiens, Faille du jour, loot expliqué
+- [La Zone — jeu de survie FPS en raycasting, gratuit dans le navigateur](https://cim.alwaysdata.net/zone.html): La Zone : survie FPS par raycasting — 6 anomalies, 10 artefacts à double tranchant, geiger, détecteur et Redout expliqués
+- [Nordheim — open world viking 3D procédural, gratuit dans le navigateur](https://cim.alwaysdata.net/nordheim.html): Nordheim : open world viking 3D procédural — heightmap, InstancedMesh, guildes, chasse, forge et Troll expliqués
+- [Caravanes — sandbox d’escouade et de commerce dans le désert, gratuit](https://cim.alwaysdata.net/caravanes.html): Caravanes : sandbox d’escouade — commerce entre quatre villes, compétences par l’usage, avant-poste et factions expliqués
+- [Actus IA — 51 articles d'investigation : agents, modèles, robots, outils, jeux, livres](https://cim.alwaysdata.net/actualites.html): Actus IA : 51 articles d'investigation en français
+- [Nos médias — Nexus Horizon AI, ouvrages KDP, BD, musique](https://cim.alwaysdata.net/medias.html): Nos médias : podcasts, livres, BD, musique produits par nos pipelines IA
+- [Nos réalisations — 160 podcasts, 40 romans, jeux, BD et musique faits avec l'IA](https://cim.alwaysdata.net/realisations.html): Réalisations : chaînes YouTube, K-pop virtuelle, romans, jeux, BD
+- [Solutions IA sur mesure — entreprises, créateurs, makers](https://cim.alwaysdata.net/services.html): Solutions IA sur mesure : entreprises, créateurs, enseignants (ESS)
+- [Contact — parlons de votre projet IA](https://cim.alwaysdata.net/contact.html): Contact : premier échange offert, réponse sous 48 h

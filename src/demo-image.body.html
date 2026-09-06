@@ -1,0 +1,130 @@
+<section class="page-hero">
+  <div class="wrap page-hero-img">
+    <span class="kicker">⚡ Démonstration · 100 % gratuite · sans inscription</span>
+    <h1>Décrivez une image. <span style="color:var(--teal)">Regardez-la naître.</span></h1>
+    <p class="lead">Le « texte vers image » est l'usage le plus spectaculaire de l'IA générative : vous écrivez une description, le modèle peint. Cette démonstration s'appuie sur <b>Pollinations.ai</b>, un service de génération open source et gratuit. Idéal pour tester des idées d'illustrations, de couvertures, de planches de BD…</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap"><a class="btn btn-primary" href="#studio">🎨 Ouvrir le studio</a><a class="btn btn-outline" href="realisations.html">Voir nos BD illustrées</a></div>
+    <div class="hero-img-card">
+      <img src="img/imagination.jpg" alt="Un pinceau transforme des pixels en paysage coloré">
+      <div class="float-note">✨ 6 styles, 3 formats, gratuit et sans inscription</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="sim-panel">
+      <div class="sim-head"><span class="sim-title">🎨 Générateur d'images</span><span class="sim-badge">Propulsé par pollinations.ai</span></div>
+      <div class="sim-body imggen">
+        <div class="imggen-form">
+          <label>Ce que vous imaginez</label>
+          <textarea id="pPrompt" rows="3" placeholder="ex : un chat astronaute qui fait de la planche à voile près de La Grande-Motte">Un phare au coucher du soleil en Méditerranée, style aquarelle</textarea>
+          <label>Style</label>
+          <div class="chip-row" id="pStyle">
+            <button class="chip active" data-s="aquarelle">🖼️ Aquarelle</button>
+            <button class="chip" data-s="photo">📷 Photo</button>
+            <button class="chip" data-s="bd">💥 BD</button>
+            <button class="chip" data-s="anime">🌸 Anime</button>
+            <button class="chip" data-s="pixel">👾 Pixel art</button>
+            <button class="chip" data-s="3d">🧸 3D</button>
+          </div>
+          <label>Format</label>
+          <select id="pSize">
+            <option value="1024x576">Paysage (1024 × 576)</option>
+            <option value="768x768">Carré (768 × 768)</option>
+            <option value="576x1024">Portrait (576 × 1024)</option>
+          </select>
+          <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
+            <button class="btn btn-primary" id="pGo" style="flex:1;justify-content:center">✨ Générer mon image</button>
+            <button class="btn btn-outline" id="pAgain" title="Même description, nouvelle variante">🎲 Variante</button>
+          </div>
+          <label style="margin-top:18px">Essayez un exemple</label>
+          <div class="chip-row" id="pExamples">
+            <button class="chip" data-e="Un dragon fait de circuits imprimés veillant sur une bibliothèque">🐉 Dragon-circuit</button>
+            <button class="chip" data-e="Un marché provençal lumineux peint à la manière des impressionnistes">🍅 Marché provençal</button>
+            <button class="chip" data-e="Une fusée en papier découpé qui décolle depuis un livre ouvert">🚀 Fusée-livre</button>
+          </div>
+        </div>
+        <div>
+          <div class="img-view" id="pView">
+            <div class="ph">Votre image apparaîtra ici ✨<br><small>Décrivez-la à gauche, choisissez un style, cliquez sur Générer.</small></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap" id="pActions">
+            <a class="btn btn-outline btn-sm" id="pOpen" href="#" target="_blank" rel="noopener" style="display:none">🔎 Ouvrir en grand</a>
+            <a class="btn btn-outline btn-sm" id="pDl" href="#" download style="display:none">⬇️ Enregistrer</a>
+          </div>
+        </div>
+      </div>
+      <div class="grid-3 reveal" style="margin-top:26px;gap:14px">
+        <div class="card pad" style="padding:14px"><img src="img/bd.jpg" alt="Exemple de style bande dessinée" style="width:100%;height:110px;object-fit:cover;border-radius:10px"><p style="font-size:.8rem;margin:8px 0 0"><b>Style BD</b> — « planche de bande dessinée, encres et couleurs vives »</p></div>
+        <div class="card pad" style="padding:14px"><img src="img/jeux.jpg" alt="Exemple de style jeu vidéo et pixel art" style="width:100%;height:110px;object-fit:cover;border-radius:10px"><p style="font-size:.8rem;margin:8px 0 0"><b>Style jeu vidéo</b> — « personnage de plateforme rétro, pixel art »</p></div>
+        <div class="card pad" style="padding:14px"><img src="img/editorial.jpg" alt="Exemple de style photo éditoriale" style="width:100%;height:110px;object-fit:cover;border-radius:10px"><p style="font-size:.8rem;margin:8px 0 0"><b>Style photo</b> — « atelier d'écrivain, lumière du matin, photographie »</p></div>
+      </div>
+      <p class="reveal" style="font-size:.84rem;color:var(--muted);margin-top:14px">💡 Astuce : les meilleurs résultats combinent <b>sujet + ambiance + style</b>. « Un chat » est faible ; « un chat roux endormi sur des livres, lumière dorée, aquarelle » est fort.</p>
+      <div class="sim-note" id="pNote">La génération prend 5 à 30 secondes selon l'affluence. Service gratuit rendu possible par <b>pollinations.ai</b> (open source) — votre description est envoyée à leur serveur pour être « peinte ». À la différence du chat IA, cette démo n'a donc pas lieu sur votre machine.</div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGES -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="kicker reveal">À quoi ça sert, concrètement ?</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Quand les mots deviennent des images, tout accélère.</h2>
+    <div class="grid-4" style="margin-top:32px">
+      <div class="card pad reveal"><span style="font-size:1.5rem">📚</span><h3 style="margin:10px 0 4px">Livres & couvertures</h3><p style="font-size:.83rem;color:var(--muted)">Tester 10 pistes de couverture en une heure, explorer l'ambiance d'un roman avant d'illustrer.</p></div>
+      <div class="card pad reveal"><span style="font-size:1.5rem">🎨</span><h3 style="margin:10px 0 4px">Bandes dessinées</h3><p style="font-size:.83rem;color:var(--muted)">Créer des planches, décliner un personnage, essayer des styles graphiques — notre machine éditoriale le fait à l'échelle.</p></div>
+      <div class="card pad reveal"><span style="font-size:1.5rem">🎓</span><h3 style="margin:10px 0 4px">Cours & présentations</h3><p style="font-size:.83rem;color:var(--muted)">Illustrer un support de formation en minutes : schémas vivants, scènes d'époque, métaphores visuelles.</p></div>
+      <div class="card pad reveal"><span style="font-size:1.5rem">📣</span><h3 style="margin:10px 0 4px">Communication</h3><p style="font-size:.83rem;color:var(--muted)">Visuels de posts, affiches d'événements associatifs, maquettes express — sans banque d'images.</p></div>
+    </div>
+    <div class="pledge reveal" style="margin-top:30px"><span class="ic">🚀</span><div><b>Vous voulez aller plus loin ?</b> Notre <a href="machine-editoriale.html">machine éditoriale</a> industrialise ce principe : illustrations cohérentes de bout en bout, personnages récurrents, planches de BD complètes — avec relecture humaine.</div></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const STYLE={
+    aquarelle:'peinture aquarelle, coups de pinceau visibles, couleurs douces et lumineuses',
+    photo:'photographie réaliste, lumière naturelle, haute qualité',
+    bd:'planche de bande dessinée, encrage marqué, couleurs vives',
+    anime:'illustration style anime, couleurs éclatantes, arrière-plan détaillé',
+    pixel:'pixel art rétro 16 bits, palette limitée',
+    '3d':'rendu 3D mignon, éclairage studio doux, matériaux mats'
+  };
+  let style='aquarelle',busy=false,timer=null;
+  function setNote(html,cls){const n=$('pNote');n.innerHTML=html;n.style.color=cls==='ko'?'#b45309':''}
+  function showShimmer(){
+    $('pView').innerHTML='<div class="shimmer"><div class="sk"></div><div class="st" id="pSt">Envoi de votre description à pollinations.ai…</div></div>';
+    const t0=Date.now();clearInterval(timer);
+    timer=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);const el=$('pSt');if(el)el.textContent='L\'image se peint… ('+s+' s). Elle apparaîtra dès qu\'elle sera prête.'},1000);
+  }
+  function show(url){
+    clearInterval(timer);
+    $('pView').innerHTML='<img id="pImg" alt="Image générée par IA à partir de votre description">';
+    const im=$('pImg');im.src=url;
+    im.onerror=()=>{setNote('⚠️ La génération n\'a pas abouti : le service pollinations.ai est peut-être surchargé, ou cette page est consultée dans un aperçu sans accès à Internet. Réessayez — une fois le site en ligne, tout fonctionnera normalement.','ko');
+      $('pView').innerHTML='<div class="ph">La génération a échoué 😕<br><small>Réessayez dans quelques instants.</small></div>';$('pActions').style.display='none'};
+    im.onload=()=>{setNote('✨ Image générée avec succès via pollinations.ai — gratuit et open source. Le même principe, industrialisé avec cohérence de personnages, équipe notre <a href="machine-editoriale.html">machine éditoriale</a>.');
+      const open=$('pOpen'),dl=$('pDl');open.href=url;open.style.display='inline-flex';dl.href=url;dl.style.display='inline-flex';$('pActions').style.display='flex'};
+  }
+  function gen(){
+    if(busy)return;
+    const desc=$('pPrompt').value.trim();
+    if(!desc){setNote('Décrivez d\'abord votre image — une phrase suffit !','ko');return}
+    busy=true;$('pGo').disabled=true;$('pGo').textContent='⏳ Génération…';
+    const [w,h]=$('pSize').value.split('x');
+    const seed=Math.floor(Math.random()*1000000);
+    const full=desc+', '+STYLE[style];
+    const url='https://image.pollinations.ai/prompt/'+encodeURIComponent(full)+'?width='+w+'&height='+h+'&seed='+seed+'&model=flux&nologo=true';
+    showShimmer();show(url);
+    busy=false;$('pGo').disabled=false;$('pGo').textContent='✨ Générer mon image';
+  }
+  $('pGo').addEventListener('click',gen);
+  $('pAgain').addEventListener('click',gen);
+  $('pPrompt').addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey))gen()});
+  $('pStyle').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;
+    $('pStyle').querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');style=b.dataset.s});
+  $('pExamples').addEventListener('click',e=>{const b=e.target.closest('[data-e]');if(!b)return;$('pPrompt').value=b.dataset.e;gen()});
+})();
+</script>

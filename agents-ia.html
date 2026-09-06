@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>Agents IA autonomes — une équipe numérique pour vos tâches répétitives | Hub IA C.I.M.</title>
+<meta name="description" content="Une équipe d'agents IA (chef d'équipe, chercheur, rédacteur, vérificateur) pour vos appels d'offres, veille et tri. Démonstration interactive.">
+<meta name="keywords" content="agents IA autonomes, équipe d'agents IA, automatisation des tâches répétitives, CrewAI, LangGraph, différence agent et chatbot, appels d'offres automatisés, veille automatisée, orchestration multi-agents, Hermes Agent, OpenClaw, agence d'agents">
+<meta name="author" content="C.I.M. — Club Informatique & Multimédia, Montpellier">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0c87a8">
+<meta name="geo.region" content="FR-34">
+<meta name="geo.placename" content="Montpellier">
+<meta name="ICBM" content="43.6108, 3.8767">
+<link rel="canonical" href="https://cim.alwaysdata.net/agents-ia.html">
+<link rel="alternate" hreflang="fr" href="https://cim.alwaysdata.net/agents-ia.html">
+<link rel="alternate" hreflang="x-default" href="https://cim.alwaysdata.net/agents-ia.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hub IA C.I.M. — Montpellier">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://cim.alwaysdata.net/agents-ia.html">
+<meta property="og:title" content="Agents IA autonomes — une équipe numérique pour vos tâches répétitives | Hub IA C.I.M.">
+<meta property="og:description" content="Une équipe d'agents IA (chef d'équipe, chercheur, rédacteur, vérificateur) pour vos appels d'offres, veille et tri. Démonstration interactive.">
+<meta property="og:image" content="https://cim.alwaysdata.net/img/agents-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="654">
+<meta property="og:image:alt" content="Agents IA autonomes — une équipe numérique pour vos tâches répétitives">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agents IA autonomes — une équipe numérique pour vos tâches répétitives | Hub IA C.I.M.">
+<meta name="twitter:description" content="Une équipe d'agents IA (chef d'équipe, chercheur, rédacteur, vérificateur) pour vos appels d'offres, veille et tri. Démonstration interactive.">
+<meta name="twitter:image" content="https://cim.alwaysdata.net/img/agents-hero.jpg">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://cim.alwaysdata.net/#org", "name": "Hub IA du C.I.M. — Club Informatique & Multimédia", "url": "https://cim.alwaysdata.net/", "foundingDate": "2015-08-12", "description": "Hub IA & FabLab associatif (ESS) à Montpellier : IA souveraine, agents autonomes, machine éditoriale, open source, robotique, jeux vidéo.", "areaServed": ["Montpellier", "La Grande-Motte", "Pérols", "Lattes", "Hérault", "Occitanie", "France"], "address": {"@type": "PostalAddress", "addressLocality": "Montpellier", "addressRegion": "Occitanie", "postalCode": "34000", "addressCountry": "FR"}, "sameAs": ["https://www.youtube.com/@nexus-horizon-ai", "https://www.youtube.com/@melodyz2026", "https://www.youtube.com/@essentiel2026", "https://www.youtube.com/@k-antiques1823", "https://www.youtube.com/@sfr2026"]}, {"@type": "WebSite", "@id": "https://cim.alwaysdata.net/#website", "url": "https://cim.alwaysdata.net/", "name": "Hub IA C.I.M.", "inLanguage": "fr-FR", "publisher": {"@id": "https://cim.alwaysdata.net/#org"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cim.alwaysdata.net/"}, {"@type": "ListItem", "position": 2, "name": "Agents IA autonomes", "item": "https://cim.alwaysdata.net/agents-ia.html"}]}, {"@type": "WebPage", "@id": "https://cim.alwaysdata.net/agents-ia.html#page", "url": "https://cim.alwaysdata.net/agents-ia.html", "name": "Agents IA autonomes", "description": "Une équipe d'agents IA (chef d'équipe, chercheur, rédacteur, vérificateur) pour vos appels d'offres, veille et tri. Démonstration interactive.", "inLanguage": "fr-FR", "image": "https://cim.alwaysdata.net/img/agents-hero.jpg", "keywords": "agents IA autonomes, équipe d'agents IA, automatisation des tâches répétitives, CrewAI, LangGraph, différence agent et chatbot, appels d'offres automatisés, veille automatisée, orchestration multi-agents, Hermes Agent, OpenClaw, agence d'agents", "isPartOf": {"@id": "https://cim.alwaysdata.net/#website"}, "about": {"@id": "https://cim.alwaysdata.net/#org"}}]}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="top">
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="logo" href="index.html"><svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="11" fill="#0c87a8"/><circle cx="14" cy="15" r="3.2" fill="#fff"/><circle cx="26" cy="15" r="3.2" fill="#a5e3f4"/><circle cx="20" cy="26" r="3.2" fill="#fff"/><path d="M14 15 L26 15 M14 15 L20 26 M26 15 L20 26" stroke="#fff" stroke-width="1.6" stroke-opacity=".7"/></svg><span>C.I.M.<small>HUB IA · FABLAB</small></span></a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+    <ul class="nav-list" id="navList"><li><a href="index.html">Accueil</a></li><li><a href="demo-ia.html">Chat IA</a></li><li><a href="demo-image.html">Images IA</a></li><li><a href="agents-ia.html" class="active">Agents IA</a></li><li><a href="machine-editoriale.html">Éditoriale</a></li><li><a href="ia-souveraine.html">Souveraine</a></li><li><a href="open-source.html">Open source</a></li><li><a href="jeux-video.html">Jeux IA</a></li><li><a href="actualites.html">Actus</a></li><li><a href="medias.html">Médias</a></li><li><a href="realisations.html">Réalisations</a></li><li><a href="services.html">Services</a></li><li><a class="btn btn-primary btn-sm nav-cta" href="contact.html">Nous écrire</a></li></ul>
+  </nav>
+</header>
+<section class="page-hero">
+  <div class="wrap page-hero-img">
+    <div>
+      <span class="kicker">Expertise · Agence d'agents autonomes</span>
+      <h1>Une équipe d'agents qui travaille pendant que vous dormez.</h1>
+      <p class="lead">Imaginez des collègues numériques spécialisés — un chercheur, un rédacteur, un vérificateur — coordonnés par un chef d'équipe. Ensemble, ils traitent vos tâches répétitives (appels d'offres, veille, tri de candidatures) et vous rendent un <b>travail vérifié au petit matin</b>.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#demo">▶️ Voir l'équipe en action</a>
+        <a class="btn btn-outline" href="open-source.html">Les technologies derrière →</a>
+      </div>
+    </div>
+    <div class="hero-img-card">
+      <img src="img/agents-hero.jpg" alt="Une équipe de robots assistants collabore autour d'une table couverte de documents et d'écrans">
+      <div class="float-note">🤝 Chaque agent a un rôle précis — comme dans une vraie équipe</div>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE DIDACTIQUE -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="kicker reveal">Comprendre en une image</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Une équipe de spécialistes, pas un cerveau unique.</h2>
+    <p class="reveal" style="max-width:800px;color:var(--muted)">Le secret des systèmes agentiques qui marchent : un <b>orchestrateur</b> qui distribue le travail, et des agents limités mais excellents sur UN rôle — chercher, rédiger, vérifier, brancher. C’est la différence entre un stagiaire débordé et une vraie rédaction.</p>
+    <figure style="margin:14px 0"><img src="img/gen-agents-equipe.jpg" alt="Un robot chef d’orchestre relie quatre petits agents spécialisés (loupe, stylo, bouclier, clé) à un tableau de tâches coché" style="width:100%;border-radius:14px" loading="lazy"><figcaption style="font-size:.82rem;color:var(--muted);margin-top:6px">L’orchestrateur distribue, les spécialistes exécutent : chercher, rédiger, vérifier, brancher.</figcaption></figure>
+    <figure style="margin:14px 0"><img src="img/gen-agence-agents.jpg" alt="Dans un open space futuriste, six robots-collaborateurs travaillent pendant qu’un humain calme supervise depuis un fauteuil central" style="width:100%;border-radius:14px" loading="lazy"><figcaption style="font-size:.82rem;color:var(--muted);margin-top:6px">La cible à viser : les agents produisent, l’humain supervise et tranche.</figcaption></figure>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="kicker reveal">Le concept en 30 secondes</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Quatre collègues numériques, une méthode éprouvée.</h2>
+    <p class="lead reveal">Pas un robot magique : une équipe structurée, avec un chef, des spécialistes et un contrôleur qualité.</p>
+    <div class="grid-4" style="margin-top:32px">
+      <div class="card pad reveal" style="text-align:center"><img src="img/gen-chef-equipe.jpg" alt="Robot coordinateur organisant des cartes de tâches sur un tableau holographique" style="width:100%;height:170px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 4px">Le chef d'équipe</h3><p style="font-size:.84rem;color:var(--muted)">Découpe votre mission en étapes, distribue le travail, vérifie que tout est rendu à l'heure.</p></div>
+      <div class="card pad reveal" style="text-align:center"><img src="img/gen-chercheur.jpg" alt="Robot chercheur examinant des documents en hologramme dans des archives" style="width:100%;height:170px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 4px">Le chercheur</h3><p style="font-size:.84rem;color:var(--muted)">Trouve l'information dans vos documents, vos bases internes ou sur le web — sans vous espionner.</p></div>
+      <div class="card pad reveal" style="text-align:center"><img src="img/gen-redacteur.jpg" alt="Robot rédacteur écrivant à la lampe sur son bureau en bois" style="width:100%;height:170px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 4px">Le rédacteur</h3><p style="font-size:.84rem;color:var(--muted)">Produit le livrable : courrier, mémoire, rapport, synthèse — dans votre style et vos formats.</p></div>
+      <div class="card pad reveal" style="text-align:center"><img src="img/gen-verificateur.jpg" alt="Robot vérificateur auditant des contrats à la loupe lumineuse" style="width:100%;height:170px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 4px">Le vérificateur</h3><p style="font-size:.84rem;color:var(--muted)">Contrôle chaque affirmation, signale les doutes. Rien ne vous est livré sans sa validation.</p></div>
+    </div>
+    <div class="notice reveal" style="margin-top:26px"><span>🧑</span><div><b>L'humain garde toujours le dernier mot.</b> Chaque livrable passe par une validation humaine avant de vous parvenir. Les agents proposent, vous disposez.</div></div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo">
+  <div class="wrap">
+    <span class="kicker reveal">Démonstration</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Une vraie orchestration : parallèle, boucle d'amélioration, arbitrage.</h2>
+    <p class="reveal" style="max-width:800px;color:var(--muted)">Mission confiée à l'équipe : <b>« Préparez-moi un rapport sur le marché des robots de tonte. »</b> Regardez bien : trois agents partent <b>en parallèle</b>, un critique renvoie le travail <b>en boucle</b> jusqu'à satisfaction, le chef d'orchestre <b>arbitre</b> puis fusionne. C'est exactement ainsi que fonctionnent CrewAI et LangGraph sur nos projets.</p>
+    <div class="sim-panel reveal" style="margin-top:26px">
+      <div class="sim-head"><span class="sim-title">🎛️ Orchestration multi-agents</span><span class="sim-badge">Simulation pédagogique</span></div>
+      <div class="orch-stage">
+        <svg id="orchSvg" viewBox="0 0 720 400" aria-hidden="true">
+          <line x1="330" y1="76" x2="140" y2="146" class="oe"/>
+          <line x1="360" y1="76" x2="360" y2="146" class="oe"/>
+          <line x1="390" y1="76" x2="580" y2="146" class="oe"/>
+          <polyline points="445,52 690,52 690,368 445,368" class="oe ofill"/>
+          <line x1="320" y1="76" x2="150" y2="264" class="oe"/>
+          <line x1="200" y1="290" x2="288" y2="193" class="oe"/>
+          <g id="gChef" class="node"><rect x="275" y="28" width="170" height="48" rx="14"/><text x="360" y="48">🎯 Chef d'orchestre</text><text x="360" y="66" class="role">découpe, arbitre, fusionne</text></g>
+          <g id="gAnal" class="node"><rect x="55" y="146" width="170" height="48" rx="14"/><text x="140" y="166">🔎 Analyste marché</text><text x="140" y="184" class="role">sources & chiffres</text></g>
+          <g id="gRedac" class="node"><rect x="275" y="146" width="170" height="48" rx="14"/><text x="360" y="166">✍️ Rédacteur</text><text x="360" y="184" class="role">écrit le rapport</text></g>
+          <g id="gRag" class="node"><rect x="495" y="146" width="170" height="48" rx="14"/><text x="580" y="166">🗂️ Vérificateur RAG</text><text x="580" y="184" class="role">contrôle les sources</text></g>
+          <g id="gCritic" class="node"><rect x="55" y="264" width="170" height="48" rx="14"/><text x="140" y="284">🧐 Critique qualité</text><text x="140" y="302" class="role">renvoie en boucle</text></g>
+          <g id="gFusion" class="node"><rect x="275" y="344" width="170" height="48" rx="14"/><text x="360" y="364">📦 Fusion & livraison</text><text x="360" y="382" class="role">livrable final</text></g>
+        </svg>
+      </div>
+      <div class="orch-bar">
+        <button class="btn btn-primary btn-sm" id="orchPlay">▶️ Lancer la mission</button>
+        <span class="chip" id="orchLoop">🔁 Boucle d'amélioration : 0/2</span>
+        <span id="orchPhase" style="font-size:.8rem;color:var(--muted)">Prêt. Lancez la mission !</span>
+      </div>
+      <div class="journal" id="orchJournal" style="margin:0 20px 18px"><div class="ln"><span class="t">--:--</span><span>Le journal affichera chaque échange entre agents — parallèle, critiques, allers-retours.</span></div></div>
+      <div class="deliver-card" id="orchDeliver" style="margin:0 20px 20px"></div>
+    </div>
+    <p class="reveal" style="margin-top:16px;font-size:.84rem;color:var(--muted)">🧠 <b>Ce que montre cette démo :</b> ① le <b>parallélisme</b> (3 agents travaillent en même temps, pas l'un après l'autre), ② la <b>boucle d'amélioration</b> (le critique renvoie le brouillon jusqu'à ce qu'il soit bon), ③ l'<b>arbitrage</b> (le chef d'orchestre décide qui fait quoi et quand c'est terminé), ④ la <b>fusion</b> des contributions en un livrable unique. Aucun pipeline linéaire : c'est un vrai graphe, comme nos déploiements <a href="machine-editoriale.html">LangGraph/CrewAI</a>.</p>
+  </div>
+</section>
+
+<!-- CAS D'USAGE -->
+<section class="section-alt">
+  <div class="wrap">
+    <span class="kicker reveal">Dans la vraie vie</span>
+    <h2 class="reveal" style="margin:14px 0 8px">Ce que votre équipe d'agents peut prendre en charge.</h2>
+    <div class="grid-3" style="margin-top:32px">
+      <div class="card pad reveal"><img src="img/gen-appels-offres.jpg" alt="Équipe préparant une réponse à appel d'offres dans une salle de réunion nocturne" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Réponses aux appels d'offres</h3><p style="font-size:.86rem;color:var(--muted)">Analyse du cahier des charges, collecte des pièces, premier jet du mémoire technique, vérification de conformité. Des jours gagnés à chaque réponse.</p></div>
+      <div class="card pad reveal"><img src="img/gen-rh-prequalification.jpg" alt="Chargée de recrutement comparant des profils de candidats à l'écran" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Préqualification RH</h3><p style="font-size:.86rem;color:var(--muted)">Lecture des candidatures, synthèse par profil, shortlist argumentée — toujours revue par un humain (obligation légale AI Act pour le recrutement).</p></div>
+      <div class="card pad reveal"><img src="img/gen-veille-syntheses.jpg" alt="Mur de flux d'actualités et synthèse hebdomadaire annotée à l'aube" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Veille & synthèses</h3><p style="font-size:.86rem;color:var(--muted)">Chaque semaine, un brief clair : ce qui a changé chez vos concurrents, dans votre réglementation, votre secteur — sources citées.</p></div>
+      <div class="card pad reveal"><img src="img/gen-triage-courrier.jpg" alt="Bras robotique triant des lettres dans des bacs par priorité" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Triage du courrier & des e-mails</h3><p style="font-size:.86rem;color:var(--muted)">Classement, priorisation, projets de réponse pour les demandes récurrentes. Vous ne traitez que l'exception.</p></div>
+      <div class="card pad reveal"><img src="img/gen-traitement-documents.jpg" alt="Factures scannées et transformées en tableau de données contrôlé" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Traitement de documents</h3><p style="font-size:.86rem;color:var(--muted)">Factures, devis, contrats : extraction des données clés vers vos outils, contrôles de cohérence, alertes sur les anomalies.</p></div>
+      <div class="card pad reveal"><img src="img/gen-sur-mesure.jpg" alt="Tailleur high-tech ajustant une solution sur mesure pour son client" style="width:100%;height:150px;object-fit:cover;border-radius:12px;margin-bottom:12px" loading="lazy"><h3 style="margin:10px 0 6px">Sur mesure</h3><p style="font-size:.86rem;color:var(--muted)">Votre processus répétitif n'est pas dans la liste ? C'est très probablement automatisable. Parlons-en — le premier échange est offert.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn btn-primary btn-lg" href="contact.html">Décrire mon processus répétitif →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const stage=document.querySelector('.orch-stage');
+  const g={chef:$('gChef'),anal:$('gAnal'),redac:$('gRedac'),rag:$('gRag'),critic:$('gCritic'),fusion:$('gFusion')};
+  const J=$('orchJournal'),loopEl=$('orchLoop'),phaseEl=$('orchPhase'),deliv=$('orchDeliver');
+  let clock=9*60; // minutes depuis minuit (09:00)
+  function hh(){clock+=Math.floor(3+Math.random()*14);const h=(clock/60|0)%24,m=clock%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')}
+  function log(txt,cls){const ln=document.createElement('div');ln.className='ln'+(cls?' '+cls:'');
+    ln.innerHTML='<span class="t">'+hh()+'</span><span>'+txt+'</span>';J.appendChild(ln);J.scrollTop=J.scrollHeight}
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const P={chef:[360,52],anal:[140,170],redac:[360,170],rag:[580,170],critic:[140,288],fusion:[360,368]};
+  const ROUTES={
+    'chef-anal':[[330,76],[140,146]],
+    'chef-redac':[[360,76],[360,146]],
+    'chef-rag':[[390,76],[580,146]],
+    'chef-critic':[[320,76],[150,264]],
+    'critic-redac':[[200,290],[288,193]],
+    'redac-chef':[[390,193],[400,76]],
+    'critic-chef':[[170,264],[300,76]],
+    'chef-fusion':[[445,52],[690,52],[690,368],[445,368]]
+  };
+  function state(n,st){Object.entries(g).forEach(([k,el])=>{el.classList.remove('run','done');if(k===n&&st)el.classList.add(st)})}
+  function clear(){Object.values(g).forEach(el=>el.classList.remove('run','done'))}
+  function packet(route,rev,dur,color){
+    return new Promise(res=>{
+      let pts=ROUTES[route].slice();if(rev)pts.reverse();
+      const sc=stage.clientWidth/720;
+      const el=document.createElement('div');el.className='packet'+(color?' '+color:'');
+      stage.appendChild(el);
+      const t0=performance.now();
+      (function f(t){
+        let k=Math.min(1,(t-t0)/dur);k=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+        const seg=Math.min(pts.length-2,Math.floor(k*(pts.length-1)));
+        const lk=k*(pts.length-1)-seg;
+        const x=(pts[seg][0]+(pts[seg+1][0]-pts[seg][0])*lk)*sc;
+        const y=(pts[seg][1]+(pts[seg+1][1]-pts[seg][1])*lk)*sc;
+        el.style.left=x+'px';el.style.top=y+'px';
+        if(k<1)requestAnimationFrame(f);else{el.remove();res()}
+      })(t0);
+    });
+  }
+  let busy=false;
+  async function run(){
+    if(busy)return;busy=true;
+    deliv.innerHTML='';J.innerHTML='';clear();loopEl.textContent='🔁 Boucle d\'amélioration : 0/2';
+    log('🎯 Mission reçue : « Rapport sur le marché des robots de tonte » — le chef d\'orchestre la découpe.');
+    state('chef','run');phaseEl.textContent='Phase 1 · Découpe et lancement parallèle…';
+    await sleep(900);
+    log('🚀 <b>Trois agents partent EN PARALLÈLE</b> : analyse de marché, rédaction, vérification des sources.');
+    const p1=[packet('chef-anal',false,950),packet('chef-redac',false,950),packet('chef-rag',false,950)];
+    state('anal','run');state('redac','run');state('rag','run');state('chef','done');
+    await Promise.all(p1);
+    phaseEl.textContent='Phase 2 · Les trois agents travaillent en même temps…';
+    await sleep(1500);
+    log('🔎 Analyste : 42 sources collectées, chiffres 2025-2026 extraits. <b>Terminé.</b>');
+    state('anal','done');packet('chef-anal',true,800);
+    await sleep(500);
+    log('🗂️ Vérificateur RAG : 3 chiffres douteux corrigés, sources citées. <b>Terminé.</b>');
+    state('rag','done');packet('chef-rag',true,800);
+    await sleep(500);
+    log('✍️ Rédacteur : premier jet de 12 pages assemblé avec les contributions. <b>V1 prête.</b>');
+    state('redac','done');packet('redac-chef',true,800);
+    await sleep(900);
+    state('chef','run');phaseEl.textContent='Phase 3 · Contrôle qualité — et boucle de correction…';
+    log('🧑‍⚖️ Le chef refuse de livrer tout de suite : la V1 part au <b>critique qualité</b>.');
+    await packet('chef-critic',false,900);
+    state('critic','run');state('chef','done');
+    await sleep(1300);
+    loopEl.textContent='🔁 Boucle d\'amélioration : 1/2';
+    log('🧐 Critique : « 2 faiblesses — prix Unitree absents, une source non confirmée. <b>Je renvoie au rédacteur.</b> »');
+    state('critic','done');
+    await packet('critic-redac',false,850);
+    state('redac','run');phaseEl.textContent='Phase 4 · Le rédacteur corrige (2ᵉ passage)…';
+    await sleep(1500);
+    log('✍️ Rédacteur : prix ajoutés, source remplacée par une référence vérifiée. <b>V2 envoyée.</b>');
+    await packet('critic-chef',true,850);
+    state('chef','run');state('redac','done');
+    await sleep(700);
+    log('🧑‍⚖️ Second passage au critique…');
+    await packet('chef-critic',false,850);
+    state('critic','run');
+    await sleep(1100);
+    loopEl.textContent='🔁 Boucle d\'amélioration : 2/2 — validé ✓';
+    log('✅ Critique : « Plus aucune réserve. Validé. » — la boucle est fermée.');
+    state('critic','done');
+    await packet('critic-chef',true,850);
+    state('chef','run');phaseEl.textContent='Phase 5 · Fusion des contributions et livraison…';
+    await sleep(600);
+    log('📦 Le chef fusionne les contributions, met en page, signe le livrable.');
+    await packet('chef-fusion',false,1400);
+    state('fusion','run');state('chef','done');
+    await sleep(900);
+    state('fusion','done');
+    deliv.classList.add('show');deliv.innerHTML='<div class="dc-in"><b>📥 Rapport_marche_robots_tonte.pdf</b><span>18 pages · chiffres vérifiés · 42 sources citées · validé par le critique après 2 passages</span></div>';
+    log('✅ <b>Livrable déposé.</b> Temps total simulé : ~1 h 20 au lieu d\'une semaine humaine — et zéro étape sautée.');
+    phaseEl.textContent='Mission accomplie. Relancez pour rejouer !';
+    busy=false;
+  }
+  $('orchPlay').addEventListener('click',run);
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.disconnect();setTimeout(run,400)}}),{threshold:.35});
+  io.observe(document.getElementById('demo'));
+})();
+</script>
+<section style="padding:10px 0 64px"><div class="wrap">
+  <div class="card pad reveal" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+    <img src="img/skills.jpg" alt="Un petit robot bibliothécaire range des cartes de compétences lumineuses dans un meuble à tiroirs" style="width:300px;border-radius:14px;flex:0 0 auto" loading="lazy">
+    <div style="flex:1;min-width:260px">
+      <span class="kicker">Aller plus loin</span>
+      <h3 style="margin:10px 0 8px">Hermes, l'agent qui écrit ses propres compétences</h3>
+      <p style="color:var(--muted);font-size:.95rem;margin:0 0 14px">229 000 étoiles GitHub, une boucle d'apprentissage fermée, OpenClaw bloqué par Anthropic : notre enquête sur la nouvelle génération d'agents personnels — et comment les dresser sans danger.</p>
+      <a class="btn btn-primary btn-sm" href="actualites.html#art1">Lire l'enquête →</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <b style="color:#fff;font-size:1.05rem">C.I.M. — Hub IA & FabLab</b>
+      <p style="margin-top:10px">Le hub d'intelligence artificielle du Club Informatique & Multimédia — association loi 1901, champ ESS.<br>Montpellier · La Grande-Motte · Pérols · Lattes — et à distance partout en France.</p>
+    </div>
+    <div>
+      <h4>Démonstrations</h4>
+      <ul>
+        <li><a href="demo-ia.html">💬 Chat IA local</a></li>
+        <li><a href="demo-image.html">🎨 Générateur d'images</a></li>
+        <li><a href="jeux-video.html">🕹️ Jeux contre l'IA</a></li>
+        <li><a href="agents-ia.html">🤖 Équipe d'agents</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Expertises</h4>
+      <ul>
+        <li><a href="ia-souveraine.html">IA souveraine & RAG</a></li>
+        <li><a href="agents-ia.html">Agents autonomes</a></li>
+        <li><a href="machine-editoriale.html">Machine éditoriale</a></li>
+        <li><a href="open-source.html">Open source & robotique</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explorer</h4>
+      <ul>
+        <li><a href="actualites.html">Fil d'actualité IA</a></li>
+        <li><a href="medias.html">Nos médias</a></li>
+        <li><a href="services.html">Solutions</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom"><div class="foot-bottom-in">
+    <span>© <span data-year></span> Hub IA C.I.M. — association loi 1901 · ESS · hébergé en France sur alwaysdata.</span>
+    <span>Fait en Occitanie, avec des agents IA et beaucoup de café ☕</span>
+  </div></div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
